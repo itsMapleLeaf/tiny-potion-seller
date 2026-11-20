@@ -39,7 +39,6 @@ data class Magimins(
             .map { (letter, count) -> letter + count.toString() }
             .joinToString(", ")
             .ifEmpty { "(no magimins?)" }
-
 }
 
 data class PotionSpec(
@@ -47,37 +46,41 @@ data class PotionSpec(
     val type: PotionType,
 )
 
-sealed class PotionType(val name: String, val magiminRatio: Magimins) {
-    object HealthPotion : PotionType("Health Potion", Magimins(a = 1, b = 1))
-    object ManaPotion : PotionType("Mana Potion", Magimins(b = 1, c = 1))
-    object StaminaPotion : PotionType("Stamina Potion", Magimins(a = 1, e = 1))
-    object SpeedPotion : PotionType("Speed Potion", Magimins(c = 1, d = 1))
-    object TolerancePotion : PotionType("Tolerance Potion", Magimins(d = 1, e = 1))
+data class PotionType(val name: String, val magiminRatio: Magimins) {
+    companion object {
+        val HealthPotion = PotionType("Health Potion", Magimins(a = 1, b = 1))
+        val ManaPotion = PotionType("Mana Potion", Magimins(b = 1, c = 1))
+        val StaminaPotion = PotionType("Stamina Potion", Magimins(a = 1, e = 1))
+        val SpeedPotion = PotionType("Speed Potion", Magimins(c = 1, d = 1))
+        val TolerancePotion = PotionType("Tolerance Potion", Magimins(d = 1, e = 1))
 
-    object FireTonic : PotionType("Fire Tonic", Magimins(a = 1, c = 1))
-    object IceTonic : PotionType("Ice Tonic", Magimins(a = 1, d = 1))
-    object ThunderTonic : PotionType("Thunder Tonic", Magimins(b = 1, d = 1))
-    object ShadowTonic : PotionType("Shadow Tonic", Magimins(b = 1, e = 1))
-    object RadiationTonic : PotionType("Radiation Tonic", Magimins(c = 1, e = 1))
+        val FireTonic = PotionType("Fire Tonic", Magimins(a = 1, c = 1))
+        val IceTonic = PotionType("Ice Tonic", Magimins(a = 1, d = 1))
+        val ThunderTonic = PotionType("Thunder Tonic", Magimins(b = 1, d = 1))
+        val ShadowTonic = PotionType("Shadow Tonic", Magimins(b = 1, e = 1))
+        val RadiationTonic = PotionType("Radiation Tonic", Magimins(c = 1, e = 1))
 
-    object SightEnhancer : PotionType("Sight Enhancer", Magimins(a = 3, b = 4, c = 3))
-    object AlertnessEnhancer : PotionType("Alertness Enhancer", Magimins(b = 3, c = 4, d = 3))
-    object InsightEnhancer : PotionType("Insight Enhancer", Magimins(a = 4, b = 3, e = 3))
-    object DowsingEnhancer : PotionType("Dowsing Enhancer", Magimins(a = 3, d = 3, e = 4))
-    object SeekingEnhancer : PotionType("Seeking Enhancer", Magimins(c = 3, d = 4, e = 3))
+        val SightEnhancer = PotionType("Sight Enhancer", Magimins(a = 3, b = 4, c = 3))
+        val AlertnessEnhancer = PotionType("Alertness Enhancer", Magimins(b = 3, c = 4, d = 3))
+        val InsightEnhancer = PotionType("Insight Enhancer", Magimins(a = 4, b = 3, e = 3))
+        val DowsingEnhancer = PotionType("Dowsing Enhancer", Magimins(a = 3, d = 3, e = 4))
+        val SeekingEnhancer = PotionType("Seeking Enhancer", Magimins(c = 3, d = 4, e = 3))
 
-    object PoisonCure : PotionType("Poison Cure", Magimins(a = 2, c = 1, d = 1))
-    object DrowsinessCure : PotionType("Drowsiness Cure", Magimins(a = 1, b = 1, d = 2))
-    object PetrificationCure : PotionType("Petrification Cure", Magimins(a = 1, c = 2, e = 1))
-    object SilenceCure : PotionType("Silence Cure", Magimins(b = 2, c = 1, e = 1))
-    object CurseCure : PotionType("Curse Cure", Magimins(b = 1, c = 1, e = 2))
+        val PoisonCure = PotionType("Poison Cure", Magimins(a = 2, c = 1, d = 1))
+        val DrowsinessCure = PotionType("Drowsiness Cure", Magimins(a = 1, b = 1, d = 2))
+        val PetrificationCure = PotionType("Petrification Cure", Magimins(a = 1, c = 2, e = 1))
+        val SilenceCure = PotionType("Silence Cure", Magimins(b = 2, c = 1, e = 1))
+        val CurseCure = PotionType("Curse Cure", Magimins(b = 1, c = 1, e = 2))
+    }
 }
 
-sealed class PotionTier(val name: String) {
-    object Minor : PotionTier("Minor")
-    object Common : PotionTier("Common")
-    object Greater : PotionTier("Greater")
-    object Grand : PotionTier("Grand")
-    object Superior : PotionTier("Superior")
-    object Masterwork : PotionTier("Masterwork")
+data class PotionTier(val name: String) {
+    companion object {
+        val Minor = PotionTier("Minor")
+        val Common = PotionTier("Common")
+        val Greater = PotionTier("Greater")
+        val Grand = PotionTier("Grand")
+        val Superior = PotionTier("Superior")
+        val Masterwork = PotionTier("Masterwork")
+    }
 }
