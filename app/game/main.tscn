@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b78omdhvmw20n"]
 
-[ext_resource type="Script" path="res://game/main.kt" id="1_oa506"]
+[ext_resource type="Script" uid="uid://chw2cg8eh5vw6" path="res://game/main.kt" id="1_oa506"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
 bg_color = Color(0.19397232, 0.17323434, 0.15444389, 1)
@@ -31,6 +31,7 @@ layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="Inventory" type="PanelContainer" parent="UI/MarginContainer/HBoxContainer" unique_id=1075830818]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
 
@@ -41,61 +42,30 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
 
-[node name="GridContainer" type="GridContainer" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer" unique_id=447972179]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer" unique_id=852929717]
 layout_mode = 2
-columns = 5
 
-[node name="Button" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=508000248]
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/VBoxContainer" unique_id=284207624]
 layout_mode = 2
-text = "test"
+theme_override_font_sizes/font_size = 40
+text = "Inventory"
 
-[node name="Button2" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=574811780]
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/VBoxContainer" unique_id=803840221]
 layout_mode = 2
-text = "test"
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 4
 
-[node name="Button3" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=1280415591]
+[node name="IngredientList" type="VBoxContainer" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/VBoxContainer/ScrollContainer" unique_id=2109211915]
+unique_name_in_owner = true
 layout_mode = 2
-text = "test"
 
-[node name="Button4" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=1552549384]
+[node name="IngredientItem" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/VBoxContainer/ScrollContainer/IngredientList" unique_id=1066104800]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
-text = "test"
-
-[node name="Button5" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=1637898941]
-layout_mode = 2
-text = "test"
-
-[node name="Button6" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=319785733]
-layout_mode = 2
-text = "test"
-
-[node name="Button7" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=1371386377]
-layout_mode = 2
-text = "test"
-
-[node name="Button8" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=468908771]
-layout_mode = 2
-text = "test"
-
-[node name="Button9" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=392606590]
-layout_mode = 2
-text = "test"
-
-[node name="Button10" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=965195366]
-layout_mode = 2
-text = "test"
-
-[node name="Button11" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=2117502501]
-layout_mode = 2
-text = "test"
-
-[node name="Button12" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=1578496265]
-layout_mode = 2
-text = "test"
-
-[node name="Button13" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=1519142187]
-layout_mode = 2
-text = "test"
+theme_override_font_sizes/font_size = 20
+text = "Feyberry (A6)"
 
 [node name="Cauldron" type="PanelContainer" parent="UI/MarginContainer/HBoxContainer" unique_id=698925602]
 layout_mode = 2
