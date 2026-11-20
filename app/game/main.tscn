@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://b78omdhvmw20n"]
+
+[ext_resource type="Script" path="res://game/main.kt" id="1_oa506"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
+bg_color = Color(0.19397232, 0.17323434, 0.15444389, 1)
+
+[node name="Main" type="Node" unique_id=90573184]
+script = ExtResource("1_oa506")
+
+[node name="UI" type="MarginContainer" parent="." unique_id=896333683]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="UI" unique_id=1203841545]
+layout_mode = 2
+color = Color(0.15345201, 0.135997, 0.120179065, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=1029700901]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer" unique_id=1135118376]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Inventory" type="PanelContainer" parent="UI/MarginContainer/HBoxContainer" unique_id=1075830818]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/HBoxContainer/Inventory" unique_id=1466508772]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="GridContainer" type="GridContainer" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer" unique_id=447972179]
+layout_mode = 2
+columns = 5
+
+[node name="Button" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=508000248]
+layout_mode = 2
+text = "test"
+
+[node name="Button2" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=574811780]
+layout_mode = 2
+text = "test"
+
+[node name="Button3" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=1280415591]
+layout_mode = 2
+text = "test"
+
+[node name="Button4" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=1552549384]
+layout_mode = 2
+text = "test"
+
+[node name="Button5" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=1637898941]
+layout_mode = 2
+text = "test"
+
+[node name="Button6" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=319785733]
+layout_mode = 2
+text = "test"
+
+[node name="Button7" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=1371386377]
+layout_mode = 2
+text = "test"
+
+[node name="Button8" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=468908771]
+layout_mode = 2
+text = "test"
+
+[node name="Button9" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=392606590]
+layout_mode = 2
+text = "test"
+
+[node name="Button10" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=965195366]
+layout_mode = 2
+text = "test"
+
+[node name="Button11" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=2117502501]
+layout_mode = 2
+text = "test"
+
+[node name="Button12" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=1578496265]
+layout_mode = 2
+text = "test"
+
+[node name="Button13" type="Button" parent="UI/MarginContainer/HBoxContainer/Inventory/MarginContainer/GridContainer" unique_id=1519142187]
+layout_mode = 2
+text = "test"
+
+[node name="Cauldron" type="PanelContainer" parent="UI/MarginContainer/HBoxContainer" unique_id=698925602]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
+
+[node name="Stats" type="PanelContainer" parent="UI/MarginContainer/HBoxContainer" unique_id=375375803]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
+
+[node name="Label" type="Label" parent="UI/MarginContainer/HBoxContainer/Stats" unique_id=1214990845]
+layout_mode = 2
+text = "stats"
