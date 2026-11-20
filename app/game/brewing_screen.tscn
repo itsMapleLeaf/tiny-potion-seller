@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://ib2hff2n8dp6"]
+
+[ext_resource type="Script" uid="uid://dxewm44x1j8ho" path="res://game/brewing_screen.kt" id="1_rl7ne"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.19397232, 0.17323434, 0.15444389, 1)
+
+[node name="BrewingScreen" type="HBoxContainer" unique_id=1699676161]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+script = ExtResource("1_rl7ne")
+metadata/_tab_index = 0
+
+[node name="Inventory" type="PanelContainer" parent="." unique_id=1609813062]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Inventory" unique_id=1688033346]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="IngredientList" type="GridContainer" parent="Inventory/ScrollContainer" unique_id=1516394654]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(308, 0)
+layout_mode = 2
+columns = 3
+
+[node name="IngredientItemTile" parent="Inventory/ScrollContainer/IngredientList" unique_id=1492524604 instance_placeholder="res://game/item_tile.tscn"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="IngredientItemTile2" parent="Inventory/ScrollContainer/IngredientList" unique_id=716981390 instance_placeholder="res://game/item_tile.tscn"]
+layout_mode = 2
+
+[node name="IngredientItemTile3" parent="Inventory/ScrollContainer/IngredientList" unique_id=126835517 instance_placeholder="res://game/item_tile.tscn"]
+layout_mode = 2
+
+[node name="Cauldron" type="PanelContainer" parent="." unique_id=1889730233]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
+
+[node name="Stats" type="PanelContainer" parent="." unique_id=2132275224]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
+
+[node name="Label" type="Label" parent="Stats" unique_id=1069375695]
+layout_mode = 2
+text = "stats"

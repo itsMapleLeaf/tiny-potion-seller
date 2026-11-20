@@ -1,10 +1,12 @@
-package game
+package game.extensions
 
-fun <T> MutableMap<T, Int>.add(item: T, amount: Int = 1) {
+typealias CountMap<T> = MutableMap<T, Int>
+
+fun <T> CountMap<T>.addCount(item: T, amount: Int = 1) {
     this[item] = (this[item] ?: 0) + amount
 }
 
-fun <T> MutableMap<T, Int>.remove(item: T, amount: Int = 1) {
+fun <T> CountMap<T>.removeCount(item: T, amount: Int = 1) {
     var count = this[item] ?: 0
     count -= amount
     if (count > 0) {

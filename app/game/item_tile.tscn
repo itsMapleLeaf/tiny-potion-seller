@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bw7bonlmpmgv"]
+
+[ext_resource type="Script" uid="uid://ck2uvt4q7od0" path="res://game/item_tile.kt" id="1_ol2c4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h5w0j"]
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ol2c4"]
+content_margin_top = 3.0
+content_margin_right = 5.0
+
+[node name="ItemTile" type="MarginContainer" unique_id=716981390]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ol2c4")
+
+[node name="Button" type="Button" parent="." unique_id=1492524604]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+
+[node name="NameLabel" type="Label" parent="." unique_id=756011331]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_h5w0j")
+text = "Feyberry
+A6"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="CountLabel" type="Label" parent="." unique_id=2140041217]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ol2c4")
+text = "x 2"
+horizontal_alignment = 2
