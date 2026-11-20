@@ -74,13 +74,13 @@ data class PotionType(val name: String, val magiminRatio: Magimins) {
     }
 }
 
-data class PotionTier(val name: String) {
+data class PotionTier(val name: String, var starRatingMagiminCounts: List<Int>) {
     companion object {
-        val Minor = PotionTier("Minor")
-        val Common = PotionTier("Common")
-        val Greater = PotionTier("Greater")
-        val Grand = PotionTier("Grand")
-        val Superior = PotionTier("Superior")
-        val Masterwork = PotionTier("Masterwork")
+        val Minor = PotionTier("Minor", listOf(0, 10, 20, 30, 40, 50))
+        val Common = PotionTier("Common", listOf(60, 75, 90, 105, 115, 130))
+        val Greater = PotionTier("Greater", listOf(150, 170, 195, 215, 235, 260))
+        val Grand = PotionTier("Grand", listOf(290, 315, 345, 370, 400, 430))
+        val Superior = PotionTier("Superior", listOf(470, 505, 545, 580, 620, 660))
+        val Masterwork = PotionTier("Masterwork", listOf(720, 800, 875, 960, 1040, 1121))
     }
 }
