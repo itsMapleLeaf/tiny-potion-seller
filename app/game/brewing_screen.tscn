@@ -49,11 +49,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
 
-[node name="CauldronIngredientList" type="GridContainer" parent="Cauldron" unique_id=878035894]
+[node name="CauldronIngredientList" type="HFlowContainer" parent="Cauldron" unique_id=889306402]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(308, 0)
 layout_mode = 2
-columns = 3
+size_flags_vertical = 4
+alignment = 1
 
 [node name="CauldronIngredientItemTile" parent="Cauldron/CauldronIngredientList" unique_id=339003711 instance_placeholder="res://game/item_tile.tscn"]
 unique_name_in_owner = true
@@ -65,10 +66,14 @@ layout_mode = 2
 [node name="CauldronIngredientItemTile3" parent="Cauldron/CauldronIngredientList" unique_id=900821718 instance_placeholder="res://game/item_tile.tscn"]
 layout_mode = 2
 
-[node name="Stats" type="PanelContainer" parent="." unique_id=2132275224]
+[node name="Output" type="PanelContainer" parent="." unique_id=2132275224]
+custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
 
-[node name="Label" type="Label" parent="Stats" unique_id=1069375695]
+[node name="OutputLabel" type="Label" parent="Output" unique_id=1069375695]
+unique_name_in_owner = true
 layout_mode = 2
-text = "stats"
+size_flags_vertical = 1
+text = "OutputLabel"
+vertical_alignment = 1

@@ -1,5 +1,15 @@
 package game
 
+import game.data.GameData
+import game.data.IngredientSpec
+import game.data.MagiminCounts
+import game.data.PotionData
+import game.data.PotionTier
+import game.data.PotionSpec
+import game.data.asRatio
+import game.data.deviationTo
+import game.data.displayText
+import game.data.magiminCounts
 import game.extensions.addCount
 import game.extensions.counterMapOf
 import game.extensions.getInstancePlaceholder
@@ -7,8 +17,10 @@ import game.extensions.removeCount
 import godot.annotation.Script
 import godot.api.Control
 import godot.api.InstancePlaceholder
+import godot.api.Label
 import godot.extension.connectLambda
 import godot.extension.getNodeAs
+import kotlin.math.abs
 
 
 @Script
@@ -19,33 +31,34 @@ class BrewingScreen : Control() {
     private val ingredientItemTilePlaceholder by lazy { getInstancePlaceholder<ItemTile>("%IngredientItemTile") }
     private val cauldronIngredientList by lazy { getNodeAs<Control>("%CauldronIngredientList")!! }
     private val cauldronIngredientItemTilePlaceholder by lazy { getInstancePlaceholder<ItemTile>("%CauldronIngredientItemTile") }
+    private val outputLabel by lazy { getNodeAs<Label>("%OutputLabel")!! }
 
 
     val gameData = GameData().apply {
-        ingredients.addCount(IngredientSpec.Feyberry, 2)
-        ingredients.addCount(IngredientSpec.MandrakeRoot, 2)
-        ingredients.addCount(IngredientSpec.SackOfSlime, 2)
+        ingredients.addCount(IngredientSpec.Feyberry, 10)
+        ingredients.addCount(IngredientSpec.MandrakeRoot, 10)
+        ingredients.addCount(IngredientSpec.SackOfSlime, 10)
 
-        val minorHealthPotion = PotionSpec(PotionTier.Minor, PotionType.HealthPotion)
-        val minorManaPotion = PotionSpec(PotionTier.Minor, PotionType.ManaPotion)
+        val minorHealthPotion = PotionData(PotionTier.Minor, PotionSpec.HealthPotion)
+        val minorManaPotion = PotionData(PotionTier.Minor, PotionSpec.ManaPotion)
 
         potions.addCount(minorHealthPotion, 2)
         potions.addCount(minorManaPotion, 2)
     }
 
     override fun _ready() {
-        buildUi()
+        refresh()
     }
 
-    private fun buildUi() {
+    private fun refresh() {
+        val compareIngredientNames: Comparator<IngredientSpec> = { a, b ->
+            a.name.compareTo(b.name)
+        }
+
         for (node in ingredientList.getChildren()) {
             if (node !is InstancePlaceholder) {
                 node.queueFree()
             }
-        }
-
-        var compareIngredientNames: Comparator<IngredientSpec> = { a, b ->
-            a.name.compareTo(b.name)
         }
 
         for ((ingredient, count) in gameData.ingredients.toSortedMap(compareIngredientNames)) {
@@ -55,7 +68,7 @@ class BrewingScreen : Control() {
             itemTile.pressed.connectLambda {
                 gameData.ingredients.removeCount(ingredient)
                 ingredientsInCauldron.addCount(ingredient)
-                buildUi()
+                refresh()
             }
         }
 
@@ -72,8 +85,40 @@ class BrewingScreen : Control() {
             itemTile.pressed.connectLambda {
                 ingredientsInCauldron.removeCount(ingredient)
                 gameData.ingredients.addCount(ingredient)
-                buildUi()
+                refresh()
             }
+        }
+
+        if (ingredientsInCauldron.isEmpty()) {
+            outputLabel.text = ""
+        } else {
+            val cauldronMagimins: MagiminCounts =
+                ingredientsInCauldron
+                    .map { (i, count) -> i.magimins.map { it * count } }
+                    .reduce { a, b ->
+                        a.zip(b).map { (a, b) -> a + b }
+                    }
+
+            val cauldronMagiminRatio = cauldronMagimins.asRatio()
+
+            val deviations = PotionSpec.library.map {
+                it to it.magiminRatio.deviationTo(cauldronMagiminRatio)
+            }
+
+            val (matchingPotion, deviation) = deviations.minBy { (_, d) -> d }
+
+            val deviationListText = deviations.joinToString("\n") { (pot, dev) ->
+                "${pot.name}: $dev (${pot.magiminRatio})"
+            }
+
+            outputLabel.text = listOf(
+                "Magimins: ${cauldronMagimins.displayText}",
+                "Ratio: $cauldronMagiminRatio",
+                "Potion: ${matchingPotion.name}",
+                "Deviation: $deviation",
+                "---",
+                deviationListText
+            ).joinToString("\n")
         }
     }
 }
