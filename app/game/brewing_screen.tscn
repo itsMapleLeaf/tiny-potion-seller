@@ -49,6 +49,22 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
 
+[node name="CauldronIngredientList" type="GridContainer" parent="Cauldron" unique_id=878035894]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(308, 0)
+layout_mode = 2
+columns = 3
+
+[node name="CauldronIngredientItemTile" parent="Cauldron/CauldronIngredientList" unique_id=339003711 instance_placeholder="res://game/item_tile.tscn"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CauldronIngredientItemTile2" parent="Cauldron/CauldronIngredientList" unique_id=798878602 instance_placeholder="res://game/item_tile.tscn"]
+layout_mode = 2
+
+[node name="CauldronIngredientItemTile3" parent="Cauldron/CauldronIngredientList" unique_id=900821718 instance_placeholder="res://game/item_tile.tscn"]
+layout_mode = 2
+
 [node name="Stats" type="PanelContainer" parent="." unique_id=2132275224]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")

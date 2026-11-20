@@ -5,10 +5,14 @@ import godot.annotation.Script
 import godot.api.Button
 import godot.api.Control
 import godot.api.Label
+import godot.core.signal0
+import godot.extension.connectLambda
 import godot.extension.getNodeAs
 
 @Script
 class ItemTile : Control() {
+    val pressed by signal0()
+
     @Export
     var itemName = "Unknown Item"
         set(value) {
@@ -20,10 +24,14 @@ class ItemTile : Control() {
     var count = 1
         set(value) {
             field = value
-            countLabel.text = value.toString()
+            countLabel.text = "x $value"
         }
 
     private val nameLabel by lazy { getNodeAs<Label>("%NameLabel")!! }
     private val countLabel by lazy { getNodeAs<Label>("%CountLabel")!! }
     private val button by lazy { getNodeAs<Button>("%Button")!! }
+
+    override fun _ready() {
+        button.pressed.connectLambda { pressed.emit() }
+    }
 }
