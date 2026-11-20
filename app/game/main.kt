@@ -8,13 +8,10 @@ import godot.extension.getNodeAs
 
 @Script
 class Main : Node() {
-    lateinit var ingredientItemTemplate: Button
-    lateinit var ingredientList: Control
+    val ingredientItemTemplate by lazy { getNodeAs<Button>("%IngredientItem")!! }
+    val ingredientList by lazy { getNodeAs<Control>("%IngredientList")!! }
 
     override fun _ready() {
-        ingredientItemTemplate = getNodeAs<Button>("%IngredientItem")!!
-        ingredientList = getNodeAs<Control>("%IngredientList")!!
-
         val minorHealthPotion = PotionSpec(PotionTier.Minor, PotionType.HealthPotion)
         val minorManaPotion = PotionSpec(PotionTier.Minor, PotionType.ManaPotion)
 
