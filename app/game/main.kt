@@ -16,9 +16,9 @@ class Main : Node() {
         val minorManaPotion = PotionSpec(PotionTier.Minor, PotionType.ManaPotion)
 
         val gameData = GameData().run {
-            ingredients.add(IngredientSpec.library[0], 2)
-            ingredients.add(IngredientSpec.library[1], 2)
-            ingredients.add(IngredientSpec.library[2], 2)
+            ingredients.add(IngredientSpec.Feyberry, 2)
+            ingredients.add(IngredientSpec.MandrakeRoot, 2)
+            ingredients.add(IngredientSpec.SackOfSlime, 2)
 
             potions.add(minorHealthPotion, 2)
             potions.add(minorManaPotion, 2)

@@ -11,12 +11,18 @@ data class IngredientSpec(
     val name: String,
     val magimins: Magimins,
 ) {
+    init {
+        libraryInternal.add(this)
+    }
+
     companion object {
-        val library = listOf(
-            IngredientSpec("Feyberry", Magimins(a = 6)),
-            IngredientSpec("Mandrake Root", Magimins(b = 6)),
-            IngredientSpec("Sack of Slime", Magimins(c = 6)),
-        )
+        val library get(): List<IngredientSpec> = libraryInternal
+
+        private val libraryInternal = mutableListOf<IngredientSpec>()
+
+        val Feyberry = IngredientSpec("Feyberry", Magimins(a = 6))
+        val MandrakeRoot = IngredientSpec("Mandrake Root", Magimins(b = 6))
+        val SackOfSlime = IngredientSpec("Sack of Slime", Magimins(c = 6))
     }
 }
 
