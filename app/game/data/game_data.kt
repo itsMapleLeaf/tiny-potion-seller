@@ -2,6 +2,8 @@ package game.data
 
 
 data class GameData(
+    var dayNumber: Int = 1,
+    var timeRemaining: Int = 6,
     var gold: Int = 0,
     val ingredients: MutableMap<IngredientSpec, Int> = mutableMapOf(),
     val potions: MutableMap<PotionData, Int> = mutableMapOf(),
@@ -68,7 +70,15 @@ data class PotionSpec(val name: String, val magiminRatio: MagiminRatio) {
 }
 
 data class PotionTier(val name: String, var starRatingMagiminCounts: List<Int>) {
+    init {
+        libraryInternal.add(this)
+    }
+
     companion object {
+        val library get(): List<PotionTier> = libraryInternal
+
+        private val libraryInternal = mutableListOf<PotionTier>()
+
         val Minor = PotionTier("Minor", listOf(0, 10, 20, 30, 40, 50))
         val Common = PotionTier("Common", listOf(60, 75, 90, 105, 115, 130))
         val Greater = PotionTier("Greater", listOf(150, 170, 195, 215, 235, 260))
