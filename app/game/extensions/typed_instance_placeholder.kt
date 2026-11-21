@@ -6,7 +6,7 @@ import godot.extension.getNodeAs
 
 
 fun <T : Node> Node.getInstancePlaceholder(path: String): TypedInstancePlaceholder<T> =
-    TypedInstancePlaceholder(getNodeAs<InstancePlaceholder>(path)!!)
+    TypedInstancePlaceholder(getNodeAs<InstancePlaceholder>(path) ?: error("Node not found with path \"$path\""))
 
 
 class TypedInstancePlaceholder<T>(val placeholder: InstancePlaceholder) {

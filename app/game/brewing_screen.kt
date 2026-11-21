@@ -1,6 +1,7 @@
 package game
 
 import game.data.GameData
+import game.data.HasName
 import game.data.IngredientSpec
 import game.data.MagiminCounts
 import game.data.PotionData
@@ -10,6 +11,7 @@ import game.data.asRatio
 import game.data.deviationTo
 import game.data.displayText
 import game.data.magiminCounts
+import game.extensions.CounterMap
 import game.extensions.addCount
 import game.extensions.counterMapOf
 import game.extensions.getInstancePlaceholder
@@ -19,6 +21,7 @@ import godot.api.Button
 import godot.api.Control
 import godot.api.InstancePlaceholder
 import godot.api.Label
+import godot.api.Node
 import godot.extension.connectLambda
 import godot.extension.getNodeAs
 import godot.global.GD
@@ -31,8 +34,13 @@ class BrewingScreen : Control() {
 
     private val ingredientList by lazy { getNodeAs<Control>("%IngredientList")!! }
     private val ingredientItemTilePlaceholder by lazy { getInstancePlaceholder<ItemTile>("%IngredientItemTile") }
+
     private val cauldronIngredientList by lazy { getNodeAs<Control>("%CauldronIngredientList")!! }
     private val cauldronIngredientItemTilePlaceholder by lazy { getInstancePlaceholder<ItemTile>("%CauldronIngredientItemTile") }
+
+    private val potionList by lazy { getNodeAs<Control>("%PotionList")!! }
+    private val potionItemTilePlaceholder by lazy { getInstancePlaceholder<ItemTile>("%PotionItemTile") }
+
     private val outputLabel by lazy { getNodeAs<Label>("%OutputLabel")!! }
     private val brewButton by lazy { getNodeAs<Button>("%BrewButton")!! }
 
@@ -72,7 +80,7 @@ class BrewingScreen : Control() {
             // TODO: get the actual star rating within the tier
             val tier = PotionTier.library.last { tier ->
                 tier.starRatingMagiminCounts.asReversed().any { requiredCount ->
-                    requiredCount < totalMagimins
+                    requiredCount <= totalMagimins
                 }
             }
 
@@ -90,9 +98,8 @@ class BrewingScreen : Control() {
     }
 
     private fun refresh() {
-        val compareIngredientNames: Comparator<IngredientSpec> = { a, b ->
-            a.name.compareTo(b.name)
-        }
+        val compareNames: Comparator<in HasName> =
+            { a, b -> a.name.compareTo(b.name) }
 
         for (node in ingredientList.getChildren()) {
             if (node !is InstancePlaceholder) {
@@ -100,7 +107,7 @@ class BrewingScreen : Control() {
             }
         }
 
-        for ((ingredient, count) in gameData.ingredients.toSortedMap(compareIngredientNames)) {
+        for ((ingredient, count) in gameData.ingredients.toSortedMap(compareNames)) {
             val itemTile = ingredientItemTilePlaceholder.createInstance()
             itemTile.itemName = "${ingredient.name}\n${ingredient.magimins.displayText}"
             itemTile.count = count
@@ -117,7 +124,7 @@ class BrewingScreen : Control() {
             }
         }
 
-        for ((ingredient, count) in ingredientsInCauldron.toSortedMap(compareIngredientNames)) {
+        for ((ingredient, count) in ingredientsInCauldron.toSortedMap(compareNames)) {
             val itemTile = cauldronIngredientItemTilePlaceholder.createInstance()
             itemTile.itemName = "${ingredient.name}\n${ingredient.magimins.displayText}"
             itemTile.count = count
@@ -126,6 +133,23 @@ class BrewingScreen : Control() {
                 gameData.ingredients.addCount(ingredient)
                 refresh()
             }
+        }
+
+        for (node in potionList.getChildren()) {
+            if (node !is InstancePlaceholder) {
+                node.queueFree()
+            }
+        }
+
+        for ((potion, count) in gameData.potions.toSortedMap(compareNames)) {
+            val itemTile = potionItemTilePlaceholder.createInstance()
+            itemTile.itemName = potion.name
+            itemTile.count = count
+            // itemTile.pressed.connectLambda {
+            //     ingredientsInCauldron.removeCount(potion)
+            //     gameData.ingredients.addCount(potion)
+            //     refresh()
+            // }
         }
 
         if (ingredientsInCauldron.isEmpty()) {

@@ -12,12 +12,14 @@ data class GameData(
 data class PotionData(
     val tier: PotionTier,
     val type: PotionSpec,
-)
+) : HasName {
+    override val name get() = "${tier.name} ${type.name}"
+}
 
 data class IngredientSpec(
-    val name: String,
+    override val name: String,
     val magimins: MagiminCounts,
-) {
+) : HasName {
     init {
         libraryInternal.add(this)
     }
@@ -33,7 +35,7 @@ data class IngredientSpec(
     }
 }
 
-data class PotionSpec(val name: String, val magiminRatio: MagiminRatio) {
+data class PotionSpec(override val name: String, val magiminRatio: MagiminRatio) : HasName {
     init {
         libraryInternal.add(this)
     }
