@@ -42,14 +42,6 @@ fun magiminRatio(
     e: Double = 0.0,
 ): MagiminRatio = listOf(a, b, c, d, e).normalize()
 
-fun magiminRatio(
-    a: Int = 0,
-    b: Int = 0,
-    c: Int = 0,
-    d: Int = 0,
-    e: Int = 0,
-): MagiminRatio = magiminCounts(a, b, c, d, e).asRatio()
-
 
 val MagiminCounts.displayText: String
     get() = zip("ABCDE".asIterable())
