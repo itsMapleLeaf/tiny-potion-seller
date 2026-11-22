@@ -4,11 +4,15 @@ import game.data.GameData
 import game.data.IngredientSpec
 import game.data.MagiminCounts
 import game.data.Potion
+import game.data.addMagimins
 import game.data.asRatio
 import game.data.deviationTo
 import game.data.displayText
+import game.data.magiminCounts
+import game.data.multiplyMagimins
 import game.extensions.addCount
 import game.extensions.counterMapOf
+import game.extensions.lazyNode
 import game.extensions.removeCount
 import godot.annotation.Script
 import godot.api.Button
@@ -20,7 +24,6 @@ import godot.extension.connectLambda
 import godot.extension.getNodeAs
 import godot.global.GD
 
-
 @Script
 class BrewingPanel : Control() {
     var gameData = GameData()
@@ -28,47 +31,50 @@ class BrewingPanel : Control() {
     private val itemTileScene = GD.load<PackedScene>("res://game/components/item_tile.tscn")!!
 
     private val ingredientsInCauldron = counterMapOf<IngredientSpec>()
-    private val ingredientList by lazy { getNodeAs<Control>("%IngredientList")!! }
-    private val cauldronIngredientList by lazy { getNodeAs<Control>("%CauldronIngredientList")!! }
-    private val potionList by lazy { getNodeAs<Control>("%PotionList")!! }
-    private val brewButton by lazy { getNodeAs<Button>("%BrewButton")!! }
-    private val brewingResultPotionSummary by lazy { getNodeAs<BrewingResultPotionSummary>("%BrewingResultPotionSummary")!! }
+    private val ingredientList by lazyNode<Control>("%IngredientList")
+    private val cauldronIngredientList by lazyNode<Control>("%CauldronIngredientList")
+    private val potionList by lazyNode<Control>("%PotionList")
+    private val brewButton by lazyNode<Button>("%BrewButton")
+    private val brewingResultPotionSummary by lazyNode<BrewingResultPotionSummary>("%BrewingResultPotionSummary")
 
     private val cauldronMagimins
         get(): MagiminCounts = ingredientsInCauldron
-            .map { (i, count) -> i.magimins.map { it * count } }
-            .reduce { a, b ->
-                a.zip(b).map { (a, b) -> a + b }
-            }
+            .map { (i, count) -> i.magimins.multiplyMagimins(count) }
+            .fold(magiminCounts()) { a, b -> a.addMagimins(b) }
 
+    private val cauldronMagiminTotal get() = cauldronMagimins.sum()
     private val cauldronMagiminRatio get() = cauldronMagimins.asRatio()
 
-    private val deviations
-        get() = Potion.Kind.entries.map {
-            it to it.magimins.asRatio().deviationTo(cauldronMagiminRatio)
+    private data class BrewingResult(val potion: Potion, val count: Int)
+
+    private fun getBrewedPotion(): BrewingResult? {
+        if (cauldronMagiminTotal == 0) return null
+
+        val kind = Potion.Kind.entries.minBy {
+            it.magimins.asRatio().deviationTo(cauldronMagiminRatio)
         }
+
+        // TODO: get the actual star rating within the tier
+        val tier = Potion.Tier.entries.last { tier ->
+            tier.starRatingMagiminCounts.asReversed().any { requiredCount ->
+                requiredCount <= cauldronMagiminTotal
+            }
+        }
+
+        // TODO: figure out how many potions we got based on how many magis we put in
+        val count = 1
+
+        return BrewingResult(Potion(tier, kind), count)
+    }
 
 
     override fun _ready() {
         brewButton.pressed.connectLambda {
-            val (matchingPotion, deviation) = deviations.minBy { (_, d) -> d }
-            val totalMagimins = cauldronMagimins.sum()
+            val result = getBrewedPotion() ?: return@connectLambda
 
-            // TODO: get the actual star rating within the tier
-            val tier = Potion.Tier.entries.last { tier ->
-                tier.starRatingMagiminCounts.asReversed().any { requiredCount ->
-                    requiredCount <= totalMagimins
-                }
-            }
-
-            // TODO: figure out how many potions we got based on how many magis we put in
-            val brewedCount = 1
-
-            gameData.potions.addCount(Potion(tier, matchingPotion), brewedCount)
+            gameData.potions.addCount(result.potion, result.count)
             ingredientsInCauldron.clear()
             refresh()
-
-            GD.print(gameData.potions)
         }
 
         refresh()
@@ -115,25 +121,16 @@ class BrewingPanel : Control() {
             tile.count = count
         }
 
-        if (ingredientsInCauldron.isNotEmpty()) {
-            // TODO: get the actual star rating within the tier
-            val totalMagimins = cauldronMagimins.sum()
-
-            val tier = Potion.Tier.entries.last { tier ->
-                tier.starRatingMagiminCounts.asReversed().any { requiredCount ->
-                    requiredCount <= totalMagimins
-                }
-            }
-
-            // TODO: figure out how many potions we got based on how many magis we put in
-            val brewedCount = 1
-
-            val (matchingPotion, deviation) = deviations.minBy { (_, d) -> d }
-            brewingResultPotionSummary.potion = Potion(tier, matchingPotion)
+        val result = getBrewedPotion()
+        if (result == null) {
+            brewingResultPotionSummary.modulateMutate { a = 0.0 }
+        } else {
+            brewingResultPotionSummary.modulateMutate { a = 1.0 }
+            brewingResultPotionSummary.potion = result.potion
         }
     }
 
-    fun <T> populateItemCollection(
+    private fun <T> populateItemCollection(
         dataItems: Iterable<T>,
         container: Node,
         configureItemTile: (item: T, tile: ItemTile) -> Unit,

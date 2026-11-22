@@ -63,3 +63,11 @@ fun MagiminCounts.asRatio(): MagiminRatio =
 
 fun MagiminRatio.deviationTo(other: MagiminRatio) =
     zip(other).sumOf { (a, b) -> abs(a - b) } / 5
+
+
+fun MagiminCounts.multiplyMagimins(factor: Int): MagiminCounts =
+    map { it * factor }
+
+
+fun MagiminCounts.addMagimins(other: MagiminCounts): MagiminCounts =
+    zip(other).map { (a, b) -> a + b }

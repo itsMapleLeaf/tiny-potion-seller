@@ -89,7 +89,8 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(308, 0)
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_horizontal = 4
+size_flags_vertical = 6
 alignment = 1
 
 [node name="CauldronIngredientItemTile" parent="Cauldron/MarginContainer/VBoxContainer/VBoxContainer/CauldronIngredientList" unique_id=1481392541 instance_placeholder="res://game/components/item_tile.tscn"]
@@ -123,7 +124,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(308, 0)
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 6
 alignment = 1
 
 [node name="FuelItemTile" parent="Cauldron/MarginContainer/VBoxContainer/VBoxContainer2/FuelList" unique_id=985886655 instance_placeholder="res://game/components/item_tile.tscn"]
