@@ -1,6 +1,11 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# JVM stuff
 /build/
 /.gradle/
 /jvm/
+
+# weird temporary files
+~*
