@@ -34,12 +34,12 @@ class BrewingPanel : Control() {
     private val itemTileScene = GD.load<PackedScene>("res://game/components/item_tile.tscn")!!
 
     private val ingredientsInCauldron = counterMapOf<IngredientSpec>()
+
     private val ingredientList by lazyNode<Control>("%IngredientList")
     private val cauldronIngredientList by lazyNode<Control>("%CauldronIngredientList")
     private val potionList by lazyNode<Control>("%PotionList")
     private val brewButton by lazyNode<Button>("%BrewButton")
-    private val magiminBalance by lazyNode<Control>("%MagiminBalance")
-    private val brewingResultPotionSummary by lazyNode<BrewingResultPotionSummary>("%BrewingResultPotionSummary")
+    private val brewingResultPanel by lazyNode<BrewingResultPanel>("%BrewingResultPanel")
 
     private val cauldronMagimins
         get(): MagiminCounts = ingredientsInCauldron
@@ -49,12 +49,7 @@ class BrewingPanel : Control() {
     private val cauldronMagiminTotal get() = cauldronMagimins.sum()
     private val cauldronMagiminRatio get() = cauldronMagimins.asRatio()
 
-    private data class BrewingResult(
-        val potion: Potion,
-        val count: Int,
-    )
-
-    private fun getBrewedPotion(): BrewingResult? {
+    private fun getBrewingResult(): BrewingResult? {
         if (cauldronMagiminTotal == 0) return null
 
         val kind = Potion.Kind.entries.minBy {
@@ -71,13 +66,13 @@ class BrewingPanel : Control() {
         // TODO: figure out how many potions we got based on how many magis we put in
         val count = 1
 
-        return BrewingResult(Potion(tier, kind), count)
+        return BrewingResult(cauldronMagimins, Potion(tier, kind), count)
     }
 
 
     override fun _ready() {
         brewButton.pressed.connectLambda {
-            val result = getBrewedPotion() ?: return@connectLambda
+            val result = getBrewingResult() ?: return@connectLambda
 
             gameData.potions.addCount(result.potion, result.count)
             ingredientsInCauldron.clear()
@@ -128,29 +123,7 @@ class BrewingPanel : Control() {
             tile.count = count
         }
 
-        val result = getBrewedPotion()
-        if (result == null) {
-            brewingResultPotionSummary.modulateMutate { a = 0.0 }
-            magiminBalance.modulateMutate { a = 0.0 }
-        } else {
-            brewingResultPotionSummary.modulateMutate { a = 1.0 }
-            brewingResultPotionSummary.potion = result.potion
-
-            magiminBalance.modulateMutate { a = 1.0 }
-
-            val presentMagimins = cauldronMagiminRatio.filter { it != 0.0 }
-            val magiminAverage = presentMagimins.sum() / presentMagimins.size
-
-            val potionMagiminRatio = result.potion.kind.magimins.asRatio()
-
-            for ((index, magimin) in Magimin.entries.withIndex()) {
-                val meter = magiminBalance.getChild(index) as MagiminMeter
-                meter.magimin = magimin
-                meter.amount = cauldronMagimins[index]
-                meter.ratio = cauldronMagiminRatio[index]
-                meter.target = potionMagiminRatio[index]
-            }
-        }
+        brewingResultPanel.result = getBrewingResult()
     }
 
     private fun <T> populateItemCollection(

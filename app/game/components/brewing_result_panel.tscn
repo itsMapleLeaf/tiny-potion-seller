@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://c3v68k2m24uo8"]
+
+[ext_resource type="Script" uid="uid://cwq1jyvxgjrc2" path="res://game/components/brewing_result_panel.kt" id="1_oa40w"]
+[ext_resource type="PackedScene" uid="uid://d1o2iv0gnmmu1" path="res://game/components/brewing_result_potion_summary.tscn" id="1_ujeut"]
+[ext_resource type="PackedScene" uid="uid://dkxbaqythft4t" path="res://game/components/magimin_meter.tscn" id="2_oa40w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.19397232, 0.17323434, 0.15444389, 1)
+
+[node name="BrewingResultPanel" type="PanelContainer" unique_id=767439798]
+custom_minimum_size = Vector2(320, 0)
+offset_right = 320.0
+offset_bottom = 528.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
+script = ExtResource("1_oa40w")
+
+[node name="ContentContainer" type="MarginContainer" parent="." unique_id=341169403]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_top = 39
+theme_override_constants/margin_bottom = 67
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer" unique_id=287381703]
+layout_mode = 2
+theme_override_constants/separation = 23
+alignment = 1
+
+[node name="BrewingResultPotionSummary" parent="ContentContainer/VBoxContainer" unique_id=1199854162 instance=ExtResource("1_ujeut")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MagiminBalance" type="HBoxContainer" parent="ContentContainer/VBoxContainer" unique_id=199992950]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="MagiminMeter" parent="ContentContainer/VBoxContainer/MagiminBalance" unique_id=1467407970 instance=ExtResource("2_oa40w")]
+layout_mode = 2
+amount = 69
+ratio = 0.5
+
+[node name="MagiminMeter2" parent="ContentContainer/VBoxContainer/MagiminBalance" unique_id=76898394 instance=ExtResource("2_oa40w")]
+layout_mode = 2
+magimin = 1
+amount = 69
+ratio = 0.5
+
+[node name="MagiminMeter3" parent="ContentContainer/VBoxContainer/MagiminBalance" unique_id=1837761321 instance=ExtResource("2_oa40w")]
+layout_mode = 2
+magimin = 2
+amount = 69
+ratio = 0.5
+
+[node name="MagiminMeter4" parent="ContentContainer/VBoxContainer/MagiminBalance" unique_id=1789491294 instance=ExtResource("2_oa40w")]
+layout_mode = 2
+magimin = 3
+amount = 69
+ratio = 0.5
+
+[node name="MagiminMeter5" parent="ContentContainer/VBoxContainer/MagiminBalance" unique_id=1098223501 instance=ExtResource("2_oa40w")]
+layout_mode = 2
+magimin = 4
+amount = 69
+ratio = 0.5
+
+[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/VBoxContainer" unique_id=502901762]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="StabilitySection" type="VBoxContainer" parent="ContentContainer/VBoxContainer/MarginContainer" unique_id=607540762]
+modulate = Color(0.48235294, 1, 0.43529412, 1)
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="StabilitySummary" type="Label" parent="ContentContainer/VBoxContainer/MarginContainer/StabilitySection" unique_id=1116394637]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "Balance of magimins is stable!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="StabilityDetails" type="Label" parent="ContentContainer/VBoxContainer/MarginContainer/StabilitySection" unique_id=554150008]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/line_spacing = -2
+theme_override_font_sizes/font_size = 16
+text = "Chance of gaining 1 additional star on completion."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="PendingStateContainer" type="MarginContainer" parent="." unique_id=1940257619]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="Label" type="Label" parent="PendingStateContainer" unique_id=1851681042]
+modulate = Color(1, 1, 1, 0.64705884)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Add ingredients to start a brew!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

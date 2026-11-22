@@ -58,7 +58,7 @@ layout_mode = 2
 size_flags_vertical = 0
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, 90)
-offset_transform_position_ratio = Vector2(0, -1)
+offset_transform_position_ratio = Vector2(0, -1.5)
 offset_transform_visual_only = false
 theme_override_styles/panel = SubResource("StyleBoxFlat_4gt5m")
 

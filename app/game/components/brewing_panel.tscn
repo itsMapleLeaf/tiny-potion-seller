@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://ib2hff2n8dp6"]
 
 [ext_resource type="Script" uid="uid://ea37yimatbya" path="res://game/components/brewing_panel.kt" id="1_1jsom"]
-[ext_resource type="PackedScene" uid="uid://d1o2iv0gnmmu1" path="res://game/components/brewing_result_potion_summary.tscn" id="2_towfw"]
-[ext_resource type="PackedScene" uid="uid://dkxbaqythft4t" path="res://game/components/magimin_meter.tscn" id="4_6o4f2"]
+[ext_resource type="PackedScene" uid="uid://c3v68k2m24uo8" path="res://game/components/brewing_result_panel.tscn" id="2_1fil6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
 content_margin_left = 8.0
@@ -146,88 +145,6 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 32
 text = "Brew"
 
-[node name="BrewingResultPanel" type="PanelContainer" parent="." unique_id=2132275224]
-custom_minimum_size = Vector2(320, 0)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
-
-[node name="MarginContainer" type="MarginContainer" parent="BrewingResultPanel" unique_id=362745931]
-layout_mode = 2
-theme_override_constants/margin_top = 39
-theme_override_constants/margin_bottom = 67
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BrewingResultPanel/MarginContainer" unique_id=1092847197]
-layout_mode = 2
-theme_override_constants/separation = 23
-alignment = 1
-
-[node name="BrewingResultPotionSummary" parent="BrewingResultPanel/MarginContainer/VBoxContainer" unique_id=1199854162 instance=ExtResource("2_towfw")]
+[node name="BrewingResultPanel" parent="." unique_id=767439798 instance=ExtResource("2_1fil6")]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="MagiminBalance" type="HBoxContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer" unique_id=321415891]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 6
-theme_override_constants/separation = 12
-alignment = 1
-
-[node name="MagiminMeter" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance" unique_id=1467407970 instance=ExtResource("4_6o4f2")]
-layout_mode = 2
-amount = 69
-ratio = 0.5
-
-[node name="MagiminMeter2" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance" unique_id=985361651 instance=ExtResource("4_6o4f2")]
-layout_mode = 2
-magimin = 1
-amount = 69
-ratio = 0.5
-
-[node name="MagiminMeter3" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance" unique_id=371869236 instance=ExtResource("4_6o4f2")]
-layout_mode = 2
-magimin = 2
-amount = 69
-ratio = 0.5
-
-[node name="MagiminMeter4" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance" unique_id=1863896749 instance=ExtResource("4_6o4f2")]
-layout_mode = 2
-magimin = 3
-amount = 69
-ratio = 0.5
-
-[node name="MagiminMeter5" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance" unique_id=679074566 instance=ExtResource("4_6o4f2")]
-layout_mode = 2
-magimin = 4
-amount = 69
-ratio = 0.5
-
-[node name="MarginContainer" type="MarginContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer" unique_id=1513018449]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_right = 16
-
-[node name="StabilitySection" type="VBoxContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MarginContainer" unique_id=1543564793]
-modulate = Color(0.48235294, 1, 0.43529412, 1)
-layout_mode = 2
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="StabilitySummary" type="Label" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MarginContainer/StabilitySection" unique_id=839260448]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/line_spacing = -5
-theme_override_font_sizes/font_size = 20
-text = "Balance of magimins is stable!"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="StabilityDetails" type="Label" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MarginContainer/StabilitySection" unique_id=2071042604]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_constants/line_spacing = -2
-theme_override_font_sizes/font_size = 16
-text = "Chance of gaining 1 additional star on completion."
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
