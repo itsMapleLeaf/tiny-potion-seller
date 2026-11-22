@@ -1,35 +1,10 @@
 [gd_scene format=3 uid="uid://b78omdhvmw20n"]
 
 [ext_resource type="Script" uid="uid://chw2cg8eh5vw6" path="res://game/main.kt" id="1_oa506"]
-[ext_resource type="PackedScene" uid="uid://ib2hff2n8dp6" path="res://game/brewing_screen.tscn" id="2_xtpaf"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frjul"]
-content_margin_left = 8.0
-content_margin_top = 8.0
-content_margin_right = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(0.15294118, 0.13725491, 0.12156863, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8v33q"]
-bg_color = Color(0.15294118, 0.13725491, 0.12156863, 1)
+[ext_resource type="PackedScene" uid="uid://ib2hff2n8dp6" path="res://game/screens/brewing_screen.tscn" id="2_xtpaf"]
 
 [node name="Main" type="Node" unique_id=90573184]
 script = ExtResource("1_oa506")
 
-[node name="TabContainer" type="TabContainer" parent="." unique_id=301012484]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_frjul")
-theme_override_styles/tabbar_background = SubResource("StyleBoxFlat_8v33q")
-current_tab = 0
-
-[node name="Brewing" parent="TabContainer" unique_id=1699676161 instance=ExtResource("2_xtpaf")]
-layout_mode = 2
-
-[node name="TODO lol" type="PanelContainer" parent="TabContainer" unique_id=1645022832]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
+[node name="BrewingScreen" parent="." unique_id=1699676161 instance=ExtResource("2_xtpaf")]
+unique_name_in_owner = true

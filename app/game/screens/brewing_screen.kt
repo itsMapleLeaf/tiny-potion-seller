@@ -1,5 +1,6 @@
-package game
+package game.screens
 
+import game.components.ItemTile
 import game.data.GameData
 import game.data.HasName
 import game.data.IngredientSpec
@@ -10,26 +11,25 @@ import game.data.PotionSpec
 import game.data.asRatio
 import game.data.deviationTo
 import game.data.displayText
-import game.data.magiminCounts
-import game.extensions.CounterMap
 import game.extensions.addCount
 import game.extensions.counterMapOf
 import game.extensions.getInstancePlaceholder
 import game.extensions.removeCount
+import godot.annotation.Export
 import godot.annotation.Script
 import godot.api.Button
 import godot.api.Control
 import godot.api.InstancePlaceholder
 import godot.api.Label
-import godot.api.Node
 import godot.extension.connectLambda
 import godot.extension.getNodeAs
 import godot.global.GD
-import kotlin.math.abs
 
 
 @Script
 class BrewingScreen : Control() {
+    var gameData = GameData()
+
     private val ingredientsInCauldron = counterMapOf<IngredientSpec>()
 
     private val ingredientList by lazy { getNodeAs<Control>("%IngredientList")!! }
@@ -44,29 +44,16 @@ class BrewingScreen : Control() {
     private val outputLabel by lazy { getNodeAs<Label>("%OutputLabel")!! }
     private val brewButton by lazy { getNodeAs<Button>("%BrewButton")!! }
 
-
-    val gameData = GameData().apply {
-        ingredients.addCount(IngredientSpec.Feyberry, 10)
-        ingredients.addCount(IngredientSpec.MandrakeRoot, 10)
-        ingredients.addCount(IngredientSpec.SackOfSlime, 10)
-
-        val minorHealthPotion = PotionData(PotionTier.Minor, PotionSpec.HealthPotion)
-        val minorManaPotion = PotionData(PotionTier.Minor, PotionSpec.ManaPotion)
-
-        potions.addCount(minorHealthPotion, 2)
-        potions.addCount(minorManaPotion, 2)
-    }
-
-    val cauldronMagimins
+    private val cauldronMagimins
         get(): MagiminCounts = ingredientsInCauldron
             .map { (i, count) -> i.magimins.map { it * count } }
             .reduce { a, b ->
                 a.zip(b).map { (a, b) -> a + b }
             }
 
-    val cauldronMagiminRatio get() = cauldronMagimins.asRatio()
+    private val cauldronMagiminRatio get() = cauldronMagimins.asRatio()
 
-    val deviations
+    private val deviations
         get() = PotionSpec.library.map {
             it to it.magiminRatio.deviationTo(cauldronMagiminRatio)
         }
@@ -97,7 +84,7 @@ class BrewingScreen : Control() {
         refresh()
     }
 
-    private fun refresh() {
+    fun refresh() {
         val compareNames: Comparator<in HasName> =
             { a, b -> a.name.compareTo(b.name) }
 

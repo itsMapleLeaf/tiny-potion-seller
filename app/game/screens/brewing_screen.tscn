@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ib2hff2n8dp6"]
 
-[ext_resource type="Script" uid="uid://dxewm44x1j8ho" path="res://game/brewing_screen.kt" id="1_rl7ne"]
+[ext_resource type="Script" uid="uid://dip53esd8diir" path="res://game/screens/brewing_screen.kt" id="1_rl7ne"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
 content_margin_left = 8.0
@@ -36,14 +36,8 @@ custom_minimum_size = Vector2(308, 0)
 layout_mode = 2
 columns = 3
 
-[node name="IngredientItemTile" parent="Inventory/Ingredients/IngredientList" unique_id=1492524604 instance_placeholder="res://game/item_tile.tscn"]
+[node name="IngredientItemTile" parent="Inventory/Ingredients/IngredientList" unique_id=716981390 instance_placeholder="res://game/components/item_tile.tscn"]
 unique_name_in_owner = true
-layout_mode = 2
-
-[node name="IngredientItemTile2" parent="Inventory/Ingredients/IngredientList" unique_id=716981390 instance_placeholder="res://game/item_tile.tscn"]
-layout_mode = 2
-
-[node name="IngredientItemTile3" parent="Inventory/Ingredients/IngredientList" unique_id=126835517 instance_placeholder="res://game/item_tile.tscn"]
 layout_mode = 2
 
 [node name="Potions" type="ScrollContainer" parent="Inventory" unique_id=705132026]
@@ -59,14 +53,8 @@ custom_minimum_size = Vector2(308, 0)
 layout_mode = 2
 columns = 3
 
-[node name="PotionItemTile" parent="Inventory/Potions/PotionList" unique_id=118348781 instance_placeholder="res://game/item_tile.tscn"]
+[node name="PotionItemTile" parent="Inventory/Potions/PotionList" unique_id=301908315 instance_placeholder="res://game/components/item_tile.tscn"]
 unique_name_in_owner = true
-layout_mode = 2
-
-[node name="PotionItemTile2" parent="Inventory/Potions/PotionList" unique_id=1258539552 instance_placeholder="res://game/item_tile.tscn"]
-layout_mode = 2
-
-[node name="PotionItemTile3" parent="Inventory/Potions/PotionList" unique_id=21606824 instance_placeholder="res://game/item_tile.tscn"]
 layout_mode = 2
 
 [node name="Cauldron" type="PanelContainer" parent="." unique_id=1889730233]
@@ -86,14 +74,8 @@ layout_mode = 2
 size_flags_vertical = 4
 alignment = 1
 
-[node name="CauldronIngredientItemTile" parent="Cauldron/VBoxContainer/CauldronIngredientList" unique_id=339003711 instance_placeholder="res://game/item_tile.tscn"]
+[node name="CauldronIngredientItemTile" parent="Cauldron/VBoxContainer/CauldronIngredientList" unique_id=1481392541 instance_placeholder="res://game/components/item_tile.tscn"]
 unique_name_in_owner = true
-layout_mode = 2
-
-[node name="CauldronIngredientItemTile2" parent="Cauldron/VBoxContainer/CauldronIngredientList" unique_id=798878602 instance_placeholder="res://game/item_tile.tscn"]
-layout_mode = 2
-
-[node name="CauldronIngredientItemTile3" parent="Cauldron/VBoxContainer/CauldronIngredientList" unique_id=900821718 instance_placeholder="res://game/item_tile.tscn"]
 layout_mode = 2
 
 [node name="BrewButton" type="Button" parent="Cauldron/VBoxContainer" unique_id=1280542109]

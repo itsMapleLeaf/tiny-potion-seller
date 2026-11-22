@@ -31,7 +31,11 @@ enabled=PackedStringArray()
 folder_colors={
 "res://addons/": "red",
 "res://docs/": "blue",
-"res://game/": "green"
+"res://game/": "green",
+"res://game/components/": "orange",
+"res://game/data/": "yellow",
+"res://game/extensions/": "teal",
+"res://game/screens/": "pink"
 }
 
 [input]

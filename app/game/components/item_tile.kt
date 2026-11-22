@@ -1,4 +1,4 @@
-package game
+package game.components
 
 import godot.annotation.Export
 import godot.annotation.Script
