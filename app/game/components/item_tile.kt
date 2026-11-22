@@ -1,5 +1,6 @@
 package game.components
 
+import game.extensions.lazyNode
 import godot.annotation.Export
 import godot.annotation.Script
 import godot.api.Button
@@ -27,9 +28,9 @@ class ItemTile : Control() {
             countLabel.text = "x $value"
         }
 
-    private val nameLabel by lazy { getNodeAs<Label>("%NameLabel")!! }
-    private val countLabel by lazy { getNodeAs<Label>("%CountLabel")!! }
-    private val button by lazy { getNodeAs<Button>("%Button")!! }
+    private val nameLabel by lazyNode<Label>("%NameLabel")
+    private val countLabel by lazyNode<Label>("%CountLabel")
+    private val button by lazyNode<Button>("%Button")
 
     override fun _ready() {
         button.pressed.connectLambda { pressed.emit() }
