@@ -29,8 +29,12 @@ class MagiminBadge : Control() {
 
     private val label by lazyNode<Label>("%Label")
 
+    override fun _ready() {
+        update()
+    }
+
     private fun update() {
-        modulate = magimin.color
+        selfModulate = magimin.color.lightened(0.2)
 
         label.text = magimin.letter
         if (count > 0) label.text += count
