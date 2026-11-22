@@ -31,7 +31,7 @@ fun magiminCounts(
     c: Int = 0,
     d: Int = 0,
     e: Int = 0,
-) = listOf(a, b, c, d, e)
+): MagiminCounts = listOf(a, b, c, d, e)
 
 
 fun magiminRatio(
@@ -40,7 +40,7 @@ fun magiminRatio(
     c: Double = 0.0,
     d: Double = 0.0,
     e: Double = 0.0,
-) = listOf(a, b, c, d, e).normalize()
+): MagiminRatio = listOf(a, b, c, d, e).normalize()
 
 fun magiminRatio(
     a: Int = 0,
@@ -48,7 +48,7 @@ fun magiminRatio(
     c: Int = 0,
     d: Int = 0,
     e: Int = 0,
-) = magiminCounts(a, b, c, d, e).asRatio()
+): MagiminRatio = magiminCounts(a, b, c, d, e).asRatio()
 
 
 val MagiminCounts.displayText: String
