@@ -39,8 +39,7 @@ folder_colors={
 "res://game/assets/": "red",
 "res://game/components/": "orange",
 "res://game/data/": "yellow",
-"res://game/extensions/": "green",
-"res://game/screens/": "blue"
+"res://game/extensions/": "green"
 }
 
 [input]

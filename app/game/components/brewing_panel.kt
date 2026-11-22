@@ -1,6 +1,5 @@
-package game.screens
+package game.components
 
-import game.components.ItemTile
 import game.data.GameData
 import game.data.HasName
 import game.data.IngredientSpec
@@ -15,19 +14,17 @@ import game.extensions.addCount
 import game.extensions.counterMapOf
 import game.extensions.getInstancePlaceholder
 import game.extensions.removeCount
-import godot.annotation.Export
 import godot.annotation.Script
 import godot.api.Button
 import godot.api.Control
 import godot.api.InstancePlaceholder
-import godot.api.Label
 import godot.extension.connectLambda
 import godot.extension.getNodeAs
 import godot.global.GD
 
 
 @Script
-class BrewingScreen : Control() {
+class BrewingPanel : Control() {
     var gameData = GameData()
 
     private val ingredientsInCauldron = counterMapOf<IngredientSpec>()

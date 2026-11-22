@@ -2,20 +2,12 @@ package game
 
 import game.data.GameData
 import game.data.IngredientSpec
-import game.data.PotionData
-import game.data.PotionSpec
-import game.data.PotionTier
 import game.extensions.addCount
-import game.extensions.ensureNodeAs
 import game.extensions.lazyNode
-import game.screens.BrewingScreen
+import game.components.BrewingPanel
 import godot.annotation.Script
-import godot.api.Button
-import godot.api.Control
 import godot.api.InputEvent
-import godot.api.InputEventKey
 import godot.api.Node
-import godot.extension.getNodeAs
 
 @Script
 class Main : Node() {
@@ -25,7 +17,7 @@ class Main : Node() {
         ingredients.addCount(IngredientSpec.SackOfSlime, 10)
     }
 
-    private val brewingScreen by lazyNode<BrewingScreen>("%BrewingScreen")
+    private val brewingScreen by lazyNode<BrewingPanel>("%BrewingScreen")
 
     override fun _ready() {
         brewingScreen.gameData = gameData

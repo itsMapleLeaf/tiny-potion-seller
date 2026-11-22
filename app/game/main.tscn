@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b78omdhvmw20n"]
 
 [ext_resource type="Script" uid="uid://chw2cg8eh5vw6" path="res://game/main.kt" id="1_oa506"]
-[ext_resource type="PackedScene" uid="uid://ib2hff2n8dp6" path="res://game/screens/brewing_screen.tscn" id="2_xtpaf"]
+[ext_resource type="PackedScene" uid="uid://ib2hff2n8dp6" path="res://game/components/brewing_panel.tscn" id="2_xtpaf"]
 
 [node name="Main" type="Node" unique_id=90573184]
 script = ExtResource("1_oa506")
