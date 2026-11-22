@@ -1,12 +1,9 @@
 package game.components
 
 import game.data.GameData
-import game.data.HasName
 import game.data.IngredientSpec
 import game.data.MagiminCounts
-import game.data.PotionData
-import game.data.PotionTier
-import game.data.PotionSpec
+import game.data.Potion
 import game.data.asRatio
 import game.data.deviationTo
 import game.data.displayText
@@ -51,8 +48,8 @@ class BrewingPanel : Control() {
     private val cauldronMagiminRatio get() = cauldronMagimins.asRatio()
 
     private val deviations
-        get() = PotionSpec.library.map {
-            it to it.magiminRatio.deviationTo(cauldronMagiminRatio)
+        get() = Potion.Kind.entries.map {
+            it to it.magimins.asRatio().deviationTo(cauldronMagiminRatio)
         }
 
 
@@ -62,7 +59,7 @@ class BrewingPanel : Control() {
             val totalMagimins = cauldronMagimins.sum()
 
             // TODO: get the actual star rating within the tier
-            val tier = PotionTier.library.last { tier ->
+            val tier = Potion.Tier.entries.last { tier ->
                 tier.starRatingMagiminCounts.asReversed().any { requiredCount ->
                     requiredCount <= totalMagimins
                 }
@@ -71,7 +68,7 @@ class BrewingPanel : Control() {
             // TODO: figure out how many potions we got based on how many magis we put in
             val brewedCount = 1
 
-            gameData.potions.addCount(PotionData(tier, matchingPotion), brewedCount)
+            gameData.potions.addCount(Potion(tier, matchingPotion), brewedCount)
             ingredientsInCauldron.clear()
             refresh()
 
@@ -82,16 +79,13 @@ class BrewingPanel : Control() {
     }
 
     fun refresh() {
-        val compareNames: Comparator<in HasName> =
-            { a, b -> a.name.compareTo(b.name) }
-
         for (node in ingredientList.getChildren()) {
             if (node !is InstancePlaceholder) {
                 node.queueFree()
             }
         }
 
-        for ((ingredient, count) in gameData.ingredients.toSortedMap(compareNames)) {
+        for ((ingredient, count) in gameData.ingredients.toSortedMap { a, b -> a.name.compareTo(b.name) }) {
             val itemTile = ingredientItemTilePlaceholder.createInstance()
             itemTile.itemName = "${ingredient.name}\n${ingredient.magimins.displayText}"
             itemTile.count = count
@@ -108,7 +102,7 @@ class BrewingPanel : Control() {
             }
         }
 
-        for ((ingredient, count) in ingredientsInCauldron.toSortedMap(compareNames)) {
+        for ((ingredient, count) in ingredientsInCauldron.toSortedMap { a, b -> a.name.compareTo(b.name) }) {
             val itemTile = cauldronIngredientItemTilePlaceholder.createInstance()
             itemTile.itemName = "${ingredient.name}\n${ingredient.magimins.displayText}"
             itemTile.count = count
@@ -125,9 +119,9 @@ class BrewingPanel : Control() {
             }
         }
 
-        for ((potion, count) in gameData.potions.toSortedMap(compareNames)) {
+        for ((potion, count) in gameData.potions.toSortedMap { a, b -> a.displayName.compareTo(b.displayName) }) {
             val itemTile = potionItemTilePlaceholder.createInstance()
-            itemTile.itemName = potion.name
+            itemTile.itemName = potion.displayName
             itemTile.count = count
             // itemTile.pressed.connectLambda {
             //     ingredientsInCauldron.removeCount(potion)

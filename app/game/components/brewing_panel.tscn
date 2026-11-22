@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://ib2hff2n8dp6"]
 
-[ext_resource type="Script" uid="uid://dip53esd8diir" path="res://game/components/brewing_panel.kt" id="1_1jsom"]
-[ext_resource type="Texture2D" uid="uid://e6bo5cm1f8hd" path="res://game/assets/round-potion.svg" id="2_msm6v"]
-[ext_resource type="PackedScene" uid="uid://bhhqw7slok4qx" path="res://game/components/magimin_badge.tscn" id="3_76rih"]
+[ext_resource type="Script" uid="uid://ea37yimatbya" path="res://game/components/brewing_panel.kt" id="1_1jsom"]
+[ext_resource type="PackedScene" uid="uid://d1o2iv0gnmmu1" path="res://game/components/brewing_result_potion_summary.tscn" id="2_towfw"]
 [ext_resource type="PackedScene" uid="uid://dkxbaqythft4t" path="res://game/components/magimin_meter.tscn" id="4_6o4f2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
@@ -161,48 +160,8 @@ layout_mode = 2
 theme_override_constants/separation = 23
 alignment = 1
 
-[node name="BrewingResultPotionSummary" type="VBoxContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer" unique_id=90706163]
+[node name="BrewingResultPotionSummary" parent="BrewingResultPanel/MarginContainer/VBoxContainer" unique_id=1199854162 instance=ExtResource("2_towfw")]
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 9
-
-[node name="Name" type="Label" parent="BrewingResultPanel/MarginContainer/VBoxContainer/BrewingResultPotionSummary" unique_id=608847514]
-layout_mode = 2
-theme_override_constants/line_spacing = -5
-theme_override_font_sizes/font_size = 23
-text = "Minor Health Potion"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="Image" type="TextureRect" parent="BrewingResultPanel/MarginContainer/VBoxContainer/BrewingResultPotionSummary" unique_id=1363831671]
-modulate = Color(1, 0.5254902, 0.47058824, 1)
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("2_msm6v")
-expand_mode = 2
-stretch_mode = 5
-
-[node name="MarginContainer" type="MarginContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer/BrewingResultPotionSummary" unique_id=526925436]
-layout_mode = 2
-theme_override_constants/margin_top = 6
-
-[node name="Magimins" type="HBoxContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer/BrewingResultPotionSummary/MarginContainer" unique_id=784934111]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = -4
-metadata/_edit_group_ = true
-
-[node name="MagiminBadge" parent="BrewingResultPanel/MarginContainer/VBoxContainer/BrewingResultPotionSummary/MarginContainer/Magimins" unique_id=288422160 instance=ExtResource("3_76rih")]
-layout_mode = 2
-count = 1
-
-[node name="MagiminBadge2" parent="BrewingResultPanel/MarginContainer/VBoxContainer/BrewingResultPotionSummary/MarginContainer/Magimins" unique_id=1063086766 instance=ExtResource("3_76rih")]
-layout_mode = 2
-magimin = 1
-count = 1
 
 [node name="MagiminBalance" type="HBoxContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer" unique_id=321415891]
 layout_mode = 2
