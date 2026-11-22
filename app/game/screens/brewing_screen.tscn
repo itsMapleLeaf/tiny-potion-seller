@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://ib2hff2n8dp6"]
 
 [ext_resource type="Script" uid="uid://dip53esd8diir" path="res://game/screens/brewing_screen.kt" id="1_rl7ne"]
+[ext_resource type="Texture2D" uid="uid://e6bo5cm1f8hd" path="res://game/assets/round-potion.svg" id="2_kjdjw"]
+[ext_resource type="PackedScene" uid="uid://bhhqw7slok4qx" path="res://game/components/magimin_badge.tscn" id="3_4gt5m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
 content_margin_left = 8.0
@@ -8,6 +10,28 @@ content_margin_top = 8.0
 content_margin_right = 8.0
 content_margin_bottom = 8.0
 bg_color = Color(0.19397232, 0.17323434, 0.15444389, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8v33q"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vux0h"]
+bg_color = Color(1, 0.33088478, 0.36743432, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gt5m"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="BrewingScreen" type="HBoxContainer" unique_id=1699676161]
 anchors_preset = 15
@@ -62,37 +86,363 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Cauldron" unique_id=1451933429]
+[node name="MarginContainer" type="MarginContainer" parent="Cauldron" unique_id=48610498]
+layout_mode = 2
+theme_override_constants/margin_top = 27
+theme_override_constants/margin_bottom = 46
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Cauldron/MarginContainer" unique_id=1451933429]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="CauldronIngredientList" type="HFlowContainer" parent="Cauldron/VBoxContainer" unique_id=889306402]
+[node name="VBoxContainer" type="VBoxContainer" parent="Cauldron/MarginContainer/VBoxContainer" unique_id=370586251]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="Cauldron/MarginContainer/VBoxContainer/VBoxContainer" unique_id=548517582]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Ingredients"
+horizontal_alignment = 1
+
+[node name="CauldronIngredientList" type="HFlowContainer" parent="Cauldron/MarginContainer/VBoxContainer/VBoxContainer" unique_id=889306402]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(308, 0)
 layout_mode = 2
 size_flags_vertical = 4
 alignment = 1
 
-[node name="CauldronIngredientItemTile" parent="Cauldron/VBoxContainer/CauldronIngredientList" unique_id=1481392541 instance_placeholder="res://game/components/item_tile.tscn"]
+[node name="CauldronIngredientItemTile" parent="Cauldron/MarginContainer/VBoxContainer/VBoxContainer/CauldronIngredientList" unique_id=1481392541 instance_placeholder="res://game/components/item_tile.tscn"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BrewButton" type="Button" parent="Cauldron/VBoxContainer" unique_id=1280542109]
+[node name="CauldronIngredientItemTile2" parent="Cauldron/MarginContainer/VBoxContainer/VBoxContainer/CauldronIngredientList" unique_id=1388137923 instance_placeholder="res://game/components/item_tile.tscn"]
+layout_mode = 2
+
+[node name="CauldronIngredientItemTile3" parent="Cauldron/MarginContainer/VBoxContainer/VBoxContainer/CauldronIngredientList" unique_id=1877316694 instance_placeholder="res://game/components/item_tile.tscn"]
+layout_mode = 2
+
+[node name="CauldronIngredientItemTile4" parent="Cauldron/MarginContainer/VBoxContainer/VBoxContainer/CauldronIngredientList" unique_id=1224804638 instance_placeholder="res://game/components/item_tile.tscn"]
+layout_mode = 2
+
+[node name="CauldronIngredientItemTile5" parent="Cauldron/MarginContainer/VBoxContainer/VBoxContainer/CauldronIngredientList" unique_id=86020439 instance_placeholder="res://game/components/item_tile.tscn"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Cauldron/MarginContainer/VBoxContainer" unique_id=2109561185]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Label2" type="Label" parent="Cauldron/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=907874697]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Fuel"
+horizontal_alignment = 1
+
+[node name="FuelList" type="HFlowContainer" parent="Cauldron/MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1070806651]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(308, 0)
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="FuelItemTile" parent="Cauldron/MarginContainer/VBoxContainer/VBoxContainer2/FuelList" unique_id=985886655 instance_placeholder="res://game/components/item_tile.tscn"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FuelItemTile2" parent="Cauldron/MarginContainer/VBoxContainer/VBoxContainer2/FuelList" unique_id=21423345 instance_placeholder="res://game/components/item_tile.tscn"]
+layout_mode = 2
+
+[node name="FuelItemTile3" parent="Cauldron/MarginContainer/VBoxContainer/VBoxContainer2/FuelList" unique_id=538019066 instance_placeholder="res://game/components/item_tile.tscn"]
+layout_mode = 2
+
+[node name="BrewButton" type="Button" parent="Cauldron/MarginContainer/VBoxContainer" unique_id=1280542109]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
 text = "Brew"
 
-[node name="Output" type="PanelContainer" parent="." unique_id=2132275224]
+[node name="BrewingResultPanel" type="PanelContainer" parent="." unique_id=2132275224]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
 
-[node name="OutputLabel" type="Label" parent="Output" unique_id=1069375695]
+[node name="MarginContainer" type="MarginContainer" parent="BrewingResultPanel" unique_id=362745931]
+layout_mode = 2
+theme_override_constants/margin_top = 39
+theme_override_constants/margin_bottom = 67
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BrewingResultPanel/MarginContainer" unique_id=1092847197]
+layout_mode = 2
+theme_override_constants/separation = 23
+alignment = 1
+
+[node name="PotionSummary" type="VBoxContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer" unique_id=90706163]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 9
+
+[node name="Name" type="Label" parent="BrewingResultPanel/MarginContainer/VBoxContainer/PotionSummary" unique_id=608847514]
+layout_mode = 2
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 23
+text = "Minor Health Potion"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Image" type="TextureRect" parent="BrewingResultPanel/MarginContainer/VBoxContainer/PotionSummary" unique_id=1363831671]
+modulate = Color(1, 0.5254902, 0.47058824, 1)
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_kjdjw")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer/PotionSummary" unique_id=526925436]
+layout_mode = 2
+theme_override_constants/margin_top = 6
+
+[node name="Magimins" type="HBoxContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer/PotionSummary/MarginContainer" unique_id=784934111]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -4
+metadata/_edit_group_ = true
+
+[node name="MagiminBadge" parent="BrewingResultPanel/MarginContainer/VBoxContainer/PotionSummary/MarginContainer/Magimins" unique_id=288422160 instance=ExtResource("3_4gt5m")]
+layout_mode = 2
+count = 1
+
+[node name="MagiminBadge2" parent="BrewingResultPanel/MarginContainer/VBoxContainer/PotionSummary/MarginContainer/Magimins" unique_id=1063086766 instance=ExtResource("3_4gt5m")]
+layout_mode = 2
+magimin = 1
+count = 1
+
+[node name="MagiminBalance" type="HBoxContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer" unique_id=321415891]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="MagiminMeter" type="VBoxContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance" unique_id=335328966]
+layout_mode = 2
+
+[node name="Amount" type="Label" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter" unique_id=669987679]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "420"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Meter" type="PanelContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter" unique_id=1503514090]
+custom_minimum_size = Vector2(20, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8v33q")
+metadata/_edit_group_ = true
+
+[node name="MeterFill" type="Panel" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter/Meter" unique_id=1841694170]
+custom_minimum_size = Vector2(20, 180)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1, 0.5)
+offset_transform_pivot_ratio = Vector2(0.5, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_vux0h")
+
+[node name="MeterCenter" type="Panel" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter/Meter" unique_id=1805925066]
+custom_minimum_size = Vector2(20, 2)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_4gt5m")
+
+[node name="Magimin" type="Label" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter" unique_id=380435635]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagiminMeter2" type="VBoxContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance" unique_id=953128413]
+layout_mode = 2
+
+[node name="Amount" type="Label" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter2" unique_id=1781819198]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "420"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Meter" type="PanelContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter2" unique_id=277202022]
+custom_minimum_size = Vector2(20, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8v33q")
+metadata/_edit_group_ = true
+
+[node name="MeterFill" type="Panel" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter2/Meter" unique_id=1010699823]
+custom_minimum_size = Vector2(20, 180)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1, 0.5)
+offset_transform_pivot_ratio = Vector2(0.5, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_vux0h")
+
+[node name="MeterCenter" type="Panel" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter2/Meter" unique_id=674861305]
+custom_minimum_size = Vector2(20, 2)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_4gt5m")
+
+[node name="Magimin" type="Label" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter2" unique_id=1555412082]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagiminMeter3" type="VBoxContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance" unique_id=1676514852]
+layout_mode = 2
+
+[node name="Amount" type="Label" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter3" unique_id=477266475]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "420"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Meter" type="PanelContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter3" unique_id=1248740546]
+custom_minimum_size = Vector2(20, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8v33q")
+metadata/_edit_group_ = true
+
+[node name="MeterFill" type="Panel" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter3/Meter" unique_id=99129710]
+custom_minimum_size = Vector2(20, 180)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1, 0.5)
+offset_transform_pivot_ratio = Vector2(0.5, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_vux0h")
+
+[node name="MeterCenter" type="Panel" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter3/Meter" unique_id=194714539]
+custom_minimum_size = Vector2(20, 2)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_4gt5m")
+
+[node name="Magimin" type="Label" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter3" unique_id=500261881]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagiminMeter4" type="VBoxContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance" unique_id=1920548752]
+layout_mode = 2
+
+[node name="Amount" type="Label" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter4" unique_id=360527443]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "420"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Meter" type="PanelContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter4" unique_id=1157568338]
+custom_minimum_size = Vector2(20, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8v33q")
+metadata/_edit_group_ = true
+
+[node name="MeterFill" type="Panel" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter4/Meter" unique_id=974256382]
+custom_minimum_size = Vector2(20, 180)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1, 0.5)
+offset_transform_pivot_ratio = Vector2(0.5, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_vux0h")
+
+[node name="MeterCenter" type="Panel" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter4/Meter" unique_id=1301240813]
+custom_minimum_size = Vector2(20, 2)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_4gt5m")
+
+[node name="Magimin" type="Label" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter4" unique_id=1970226376]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagiminMeter5" type="VBoxContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance" unique_id=1596425879]
+layout_mode = 2
+
+[node name="Amount" type="Label" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter5" unique_id=1791338837]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "420"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Meter" type="PanelContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter5" unique_id=2031496886]
+custom_minimum_size = Vector2(20, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8v33q")
+metadata/_edit_group_ = true
+
+[node name="MeterFill" type="Panel" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter5/Meter" unique_id=1718822404]
+custom_minimum_size = Vector2(20, 180)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1, 0.5)
+offset_transform_pivot_ratio = Vector2(0.5, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_vux0h")
+
+[node name="MeterCenter" type="Panel" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter5/Meter" unique_id=815308889]
+custom_minimum_size = Vector2(20, 2)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_4gt5m")
+
+[node name="Magimin" type="Label" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MagiminBalance/MagiminMeter5" unique_id=498734408]
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer" unique_id=1513018449]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="StabilitySection" type="VBoxContainer" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MarginContainer" unique_id=1543564793]
+modulate = Color(0.48235294, 1, 0.43529412, 1)
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="StabilitySummary" type="Label" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MarginContainer/StabilitySection" unique_id=839260448]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 1
-text = "OutputLabel"
+theme_override_constants/line_spacing = -5
+theme_override_font_sizes/font_size = 20
+text = "Balance of magimins is stable!"
+horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="StabilityDetails" type="Label" parent="BrewingResultPanel/MarginContainer/VBoxContainer/MarginContainer/StabilitySection" unique_id=2071042604]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/line_spacing = -2
+theme_override_font_sizes/font_size = 16
+text = "Chance of gaining 1 additional star on completion."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

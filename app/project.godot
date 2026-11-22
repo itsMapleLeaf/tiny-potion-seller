@@ -22,6 +22,10 @@ window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor]
+
+naming/script_name_casing=2
+
 [editor_plugins]
 
 enabled=PackedStringArray()
@@ -32,10 +36,11 @@ folder_colors={
 "res://addons/": "red",
 "res://docs/": "blue",
 "res://game/": "green",
+"res://game/assets/": "red",
 "res://game/components/": "orange",
 "res://game/data/": "yellow",
-"res://game/extensions/": "teal",
-"res://game/screens/": "pink"
+"res://game/extensions/": "green",
+"res://game/screens/": "blue"
 }
 
 [input]
