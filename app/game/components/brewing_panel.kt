@@ -9,12 +9,13 @@ import game.data.deviationTo
 import game.data.displayText
 import game.extensions.addCount
 import game.extensions.counterMapOf
-import game.extensions.getInstancePlaceholder
 import game.extensions.removeCount
 import godot.annotation.Script
 import godot.api.Button
 import godot.api.Control
 import godot.api.InstancePlaceholder
+import godot.api.Node
+import godot.api.PackedScene
 import godot.extension.connectLambda
 import godot.extension.getNodeAs
 import godot.global.GD
@@ -24,19 +25,14 @@ import godot.global.GD
 class BrewingPanel : Control() {
     var gameData = GameData()
 
+    private val itemTileScene = GD.load<PackedScene>("res://game/components/item_tile.tscn")!!
+
     private val ingredientsInCauldron = counterMapOf<IngredientSpec>()
-
     private val ingredientList by lazy { getNodeAs<Control>("%IngredientList")!! }
-    private val ingredientItemTilePlaceholder by lazy { getInstancePlaceholder<ItemTile>("%IngredientItemTile") }
-
     private val cauldronIngredientList by lazy { getNodeAs<Control>("%CauldronIngredientList")!! }
-    private val cauldronIngredientItemTilePlaceholder by lazy { getInstancePlaceholder<ItemTile>("%CauldronIngredientItemTile") }
-
     private val potionList by lazy { getNodeAs<Control>("%PotionList")!! }
-    private val potionItemTilePlaceholder by lazy { getInstancePlaceholder<ItemTile>("%PotionItemTile") }
-
-    // private val outputLabel by lazy { getNodeAs<Label>("%OutputLabel")!! }
     private val brewButton by lazy { getNodeAs<Button>("%BrewButton")!! }
+    private val brewingResultPotionSummary by lazy { getNodeAs<BrewingResultPotionSummary>("%BrewingResultPotionSummary")!! }
 
     private val cauldronMagimins
         get(): MagiminCounts = ingredientsInCauldron
@@ -79,74 +75,79 @@ class BrewingPanel : Control() {
     }
 
     fun refresh() {
-        for (node in ingredientList.getChildren()) {
-            if (node !is InstancePlaceholder) {
-                node.queueFree()
-            }
-        }
-
-        for ((ingredient, count) in gameData.ingredients.toSortedMap { a, b -> a.name.compareTo(b.name) }) {
-            val itemTile = ingredientItemTilePlaceholder.createInstance()
-            itemTile.itemName = "${ingredient.name}\n${ingredient.magimins.displayText}"
-            itemTile.count = count
-            itemTile.pressed.connectLambda {
+        populateItemCollection(
+            gameData.ingredients.toSortedMap { a, b ->
+                a.name.compareTo(b.name)
+            }.entries,
+            ingredientList,
+        ) { (ingredient, count), tile ->
+            tile.itemName = "${ingredient.name}\n${ingredient.magimins.displayText}"
+            tile.count = count
+            tile.pressed.connectLambda {
                 gameData.ingredients.removeCount(ingredient)
                 ingredientsInCauldron.addCount(ingredient)
                 refresh()
             }
         }
 
-        for (node in cauldronIngredientList.getChildren()) {
-            if (node !is InstancePlaceholder) {
-                node.queueFree()
-            }
-        }
-
-        for ((ingredient, count) in ingredientsInCauldron.toSortedMap { a, b -> a.name.compareTo(b.name) }) {
-            val itemTile = cauldronIngredientItemTilePlaceholder.createInstance()
-            itemTile.itemName = "${ingredient.name}\n${ingredient.magimins.displayText}"
-            itemTile.count = count
-            itemTile.pressed.connectLambda {
+        populateItemCollection(
+            ingredientsInCauldron.toSortedMap { a, b ->
+                a.name.compareTo(b.name)
+            }.entries,
+            cauldronIngredientList,
+        ) { (ingredient, count), tile ->
+            tile.itemName = "${ingredient.name}\n${ingredient.magimins.displayText}"
+            tile.count = count
+            tile.pressed.connectLambda {
                 ingredientsInCauldron.removeCount(ingredient)
                 gameData.ingredients.addCount(ingredient)
                 refresh()
             }
         }
 
-        for (node in potionList.getChildren()) {
+        populateItemCollection(
+            gameData.potions.toSortedMap { a, b ->
+                a.displayName.compareTo(b.displayName)
+            }.entries,
+            potionList,
+        ) { (potion, count), tile ->
+            tile.itemName = potion.displayName
+            tile.count = count
+        }
+
+        if (ingredientsInCauldron.isNotEmpty()) {
+            // TODO: get the actual star rating within the tier
+            val totalMagimins = cauldronMagimins.sum()
+
+            val tier = Potion.Tier.entries.last { tier ->
+                tier.starRatingMagiminCounts.asReversed().any { requiredCount ->
+                    requiredCount <= totalMagimins
+                }
+            }
+
+            // TODO: figure out how many potions we got based on how many magis we put in
+            val brewedCount = 1
+
+            val (matchingPotion, deviation) = deviations.minBy { (_, d) -> d }
+            brewingResultPotionSummary.potion = Potion(tier, matchingPotion)
+        }
+    }
+
+    fun <T> populateItemCollection(
+        dataItems: Iterable<T>,
+        container: Node,
+        configureItemTile: (item: T, tile: ItemTile) -> Unit,
+    ) {
+        for (node in container.getChildren()) {
             if (node !is InstancePlaceholder) {
                 node.queueFree()
             }
         }
 
-        for ((potion, count) in gameData.potions.toSortedMap { a, b -> a.displayName.compareTo(b.displayName) }) {
-            val itemTile = potionItemTilePlaceholder.createInstance()
-            itemTile.itemName = potion.displayName
-            itemTile.count = count
-            // itemTile.pressed.connectLambda {
-            //     ingredientsInCauldron.removeCount(potion)
-            //     gameData.ingredients.addCount(potion)
-            //     refresh()
-            // }
+        for (item in dataItems) {
+            val itemTile = itemTileScene.instantiate() as ItemTile
+            configureItemTile(item, itemTile)
+            container.addChild(itemTile)
         }
-
-        // if (ingredientsInCauldron.isEmpty()) {
-        //     outputLabel.text = ""
-        // } else {
-        //     val (matchingPotion, deviation) = deviations.minBy { (_, d) -> d }
-
-        //     val deviationListText = deviations.joinToString("\n") { (pot, dev) ->
-        //         "${pot.name}: $dev (${pot.magiminRatio})"
-        //     }
-
-        //     outputLabel.text = listOf(
-        //         "Magimins: ${cauldronMagimins.displayText}",
-        //         "Ratio: $cauldronMagiminRatio",
-        //         "Potion: ${matchingPotion.name}",
-        //         "Deviation: $deviation",
-        //         "---",
-        //         deviationListText
-        //     ).joinToString("\n")
-        // }
     }
 }
