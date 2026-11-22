@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://dkxbaqythft4t"]
+
+[ext_resource type="Script" uid="uid://bs5btxs7fgtr6" path="res://game/components/magimin_meter.kt" id="1_4h0j2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8v33q"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vux0h"]
+bg_color = Color(0.88366604, 0.8836661, 0.883666, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gt5m"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="MagiminMeter" type="VBoxContainer" unique_id=1467407970]
+script = ExtResource("1_4h0j2")
+
+[node name="Amount" type="Label" parent="." unique_id=974075344]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "420"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Meter" type="PanelContainer" parent="." unique_id=49825172]
+custom_minimum_size = Vector2(20, 180)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8v33q")
+metadata/_edit_group_ = true
+
+[node name="MeterFill" type="Panel" parent="Meter" unique_id=2142624664]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 180)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(1, 0.5)
+offset_transform_pivot_ratio = Vector2(0.5, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_vux0h")
+
+[node name="MeterCenter" type="Panel" parent="Meter" unique_id=1532094667]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 2)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_4gt5m")
+
+[node name="Magimin" type="Label" parent="." unique_id=614874533]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/outline_size = 5
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
