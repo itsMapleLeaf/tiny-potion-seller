@@ -41,7 +41,7 @@ class BrewingScreen : Control() {
     private val potionList by lazy { getNodeAs<Control>("%PotionList")!! }
     private val potionItemTilePlaceholder by lazy { getInstancePlaceholder<ItemTile>("%PotionItemTile") }
 
-    private val outputLabel by lazy { getNodeAs<Label>("%OutputLabel")!! }
+    // private val outputLabel by lazy { getNodeAs<Label>("%OutputLabel")!! }
     private val brewButton by lazy { getNodeAs<Button>("%BrewButton")!! }
 
     private val cauldronMagimins
@@ -139,23 +139,23 @@ class BrewingScreen : Control() {
             // }
         }
 
-        if (ingredientsInCauldron.isEmpty()) {
-            outputLabel.text = ""
-        } else {
-            val (matchingPotion, deviation) = deviations.minBy { (_, d) -> d }
+        // if (ingredientsInCauldron.isEmpty()) {
+        //     outputLabel.text = ""
+        // } else {
+        //     val (matchingPotion, deviation) = deviations.minBy { (_, d) -> d }
 
-            val deviationListText = deviations.joinToString("\n") { (pot, dev) ->
-                "${pot.name}: $dev (${pot.magiminRatio})"
-            }
+        //     val deviationListText = deviations.joinToString("\n") { (pot, dev) ->
+        //         "${pot.name}: $dev (${pot.magiminRatio})"
+        //     }
 
-            outputLabel.text = listOf(
-                "Magimins: ${cauldronMagimins.displayText}",
-                "Ratio: $cauldronMagiminRatio",
-                "Potion: ${matchingPotion.name}",
-                "Deviation: $deviation",
-                "---",
-                deviationListText
-            ).joinToString("\n")
-        }
+        //     outputLabel.text = listOf(
+        //         "Magimins: ${cauldronMagimins.displayText}",
+        //         "Ratio: $cauldronMagiminRatio",
+        //         "Potion: ${matchingPotion.name}",
+        //         "Deviation: $deviation",
+        //         "---",
+        //         deviationListText
+        //     ).joinToString("\n")
+        // }
     }
 }
