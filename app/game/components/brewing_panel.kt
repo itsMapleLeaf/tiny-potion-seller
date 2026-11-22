@@ -2,6 +2,7 @@ package game.components
 
 import game.data.GameData
 import game.data.IngredientSpec
+import game.data.Magimin
 import game.data.MagiminCounts
 import game.data.Potion
 import game.data.addMagimins
@@ -20,6 +21,8 @@ import godot.api.Control
 import godot.api.InstancePlaceholder
 import godot.api.Node
 import godot.api.PackedScene
+import godot.common.util.clampValue
+import godot.common.util.lerp
 import godot.extension.connectLambda
 import godot.extension.getNodeAs
 import godot.global.GD
@@ -35,6 +38,7 @@ class BrewingPanel : Control() {
     private val cauldronIngredientList by lazyNode<Control>("%CauldronIngredientList")
     private val potionList by lazyNode<Control>("%PotionList")
     private val brewButton by lazyNode<Button>("%BrewButton")
+    private val magiminBalance by lazyNode<Control>("%MagiminBalance")
     private val brewingResultPotionSummary by lazyNode<BrewingResultPotionSummary>("%BrewingResultPotionSummary")
 
     private val cauldronMagimins
@@ -45,7 +49,10 @@ class BrewingPanel : Control() {
     private val cauldronMagiminTotal get() = cauldronMagimins.sum()
     private val cauldronMagiminRatio get() = cauldronMagimins.asRatio()
 
-    private data class BrewingResult(val potion: Potion, val count: Int)
+    private data class BrewingResult(
+        val potion: Potion,
+        val count: Int,
+    )
 
     private fun getBrewedPotion(): BrewingResult? {
         if (cauldronMagiminTotal == 0) return null
@@ -124,9 +131,25 @@ class BrewingPanel : Control() {
         val result = getBrewedPotion()
         if (result == null) {
             brewingResultPotionSummary.modulateMutate { a = 0.0 }
+            magiminBalance.modulateMutate { a = 0.0 }
         } else {
             brewingResultPotionSummary.modulateMutate { a = 1.0 }
             brewingResultPotionSummary.potion = result.potion
+
+            magiminBalance.modulateMutate { a = 1.0 }
+
+            val presentMagimins = cauldronMagiminRatio.filter { it != 0.0 }
+            val magiminAverage = presentMagimins.sum() / presentMagimins.size
+
+            val potionMagiminRatio = result.potion.kind.magimins.asRatio()
+
+            for ((index, magimin) in Magimin.entries.withIndex()) {
+                val meter = magiminBalance.getChild(index) as MagiminMeter
+                meter.magimin = magimin
+                meter.amount = cauldronMagimins[index]
+                meter.ratio = cauldronMagiminRatio[index]
+                meter.target = potionMagiminRatio[index]
+            }
         }
     }
 

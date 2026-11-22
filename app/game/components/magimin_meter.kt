@@ -8,6 +8,7 @@ import godot.annotation.Script
 import godot.annotation.Tool
 import godot.api.Control
 import godot.api.Label
+import godot.common.util.lerp
 
 @Script
 @Tool
@@ -33,9 +34,17 @@ class MagiminMeter : Control() {
             update()
         }
 
+    @Export
+    var target = 0.5
+        set(value) {
+            field = value
+            update()
+        }
+
     private val amountLabel by lazyNode<Label>("%Amount")
+    private val meterContainer by lazyNode<Control>("%MeterContainer")
     private val meterFill by lazyNode<Control>("%MeterFill")
-    private val meterCenter by lazyNode<Control>("%MeterCenter")
+    private val meterTargetLine by lazyNode<Control>("%MeterTargetLine")
     private val magiminLabel by lazyNode<Label>("%Magimin")
 
     override fun _ready() {
@@ -45,7 +54,15 @@ class MagiminMeter : Control() {
     fun update() {
         amountLabel.text = amount.toString()
         meterFill.modulate = magimin.color
-        meterFill.scaleMutate { y = ratio }
+        meterFill.offsetTransformScaleMutate { y = ratio }
         magiminLabel.text = magimin.letter
+
+        val hasTarget = target > 0.0 && target < 1.0
+        meterTargetLine.visible = hasTarget
+        meterTargetLine.offsetTransformPositionMutate {
+            y = (1 - target) * meterContainer.size.y
+        }
+
+        modulateMutate { a = if (hasTarget) 1.0 else 0.7 }
     }
 }

@@ -35,13 +35,14 @@ text = "420"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Meter" type="PanelContainer" parent="." unique_id=49825172]
+[node name="MeterContainer" type="PanelContainer" parent="." unique_id=49825172]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 180)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8v33q")
 metadata/_edit_group_ = true
 
-[node name="MeterFill" type="Panel" parent="Meter" unique_id=2142624664]
+[node name="MeterFill" type="Panel" parent="MeterContainer" unique_id=2142624664]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 180)
 layout_mode = 2
@@ -50,11 +51,15 @@ offset_transform_scale = Vector2(1, 0.5)
 offset_transform_pivot_ratio = Vector2(0.5, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_vux0h")
 
-[node name="MeterCenter" type="Panel" parent="Meter" unique_id=1532094667]
+[node name="MeterTargetLine" type="Panel" parent="MeterContainer" unique_id=1532094667]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 2)
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 90)
+offset_transform_position_ratio = Vector2(0, -1)
+offset_transform_visual_only = false
 theme_override_styles/panel = SubResource("StyleBoxFlat_4gt5m")
 
 [node name="Magimin" type="Label" parent="." unique_id=614874533]
