@@ -10,7 +10,8 @@ class Potion(
     @Export val tier: Tier,
     @Export val kind: Kind,
 ) : Resource() {
-    val displayName get() = "${tier.name} ${kind.displayName}"
+    val displayName get() = "${tier.displayName} ${kind.displayName}"
+    val magimins get() = kind.magimins
 
     enum class Kind(val magimins: MagiminCounts) {
         HealthPotion(magiminCounts(a = 1, b = 1)),
@@ -46,6 +47,8 @@ class Potion(
         Greater(listOf(150, 170, 195, 215, 235, 260)),
         Grand(listOf(290, 315, 345, 370, 400, 430)),
         Superior(listOf(470, 505, 545, 580, 620, 660)),
-        Masterwork(listOf(720, 800, 875, 960, 1040, 1121)),
+        Masterwork(listOf(720, 800, 875, 960, 1040, 1121));
+
+        val displayName = name
     }
 }

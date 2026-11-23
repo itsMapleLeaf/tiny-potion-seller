@@ -54,7 +54,10 @@ fun MagiminCounts.asRatio(): MagiminRatio =
 
 
 fun MagiminRatio.deviationTo(other: MagiminRatio) =
-    zip(other).sumOf { (a, b) -> abs(a - b) } / 5
+    zip(other).sumOf { (a, b) -> abs(a - b) }
+
+fun MagiminCounts.ratioDeviationTo(other: MagiminCounts) =
+    asRatio().deviationTo(other.asRatio())
 
 
 fun MagiminCounts.multiplyMagimins(factor: Int): MagiminCounts =
@@ -63,3 +66,9 @@ fun MagiminCounts.multiplyMagimins(factor: Int): MagiminCounts =
 
 fun MagiminCounts.addMagimins(other: MagiminCounts): MagiminCounts =
     zip(other).map { (a, b) -> a + b }
+
+
+fun MagiminCounts.subtractMagimins(other: MagiminCounts): MagiminCounts =
+    zip(other).map { (a, b) -> a - b }
+
+fun MagiminCounts.isZero() = all { it == 0 }

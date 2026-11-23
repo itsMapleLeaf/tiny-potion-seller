@@ -20,7 +20,6 @@ script = ExtResource("1_oa40w")
 
 [node name="ContentContainer" type="MarginContainer" parent="." unique_id=341169403]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_constants/margin_top = 39
 theme_override_constants/margin_bottom = 67
@@ -75,13 +74,14 @@ layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_right = 16
 
-[node name="StabilitySection" type="VBoxContainer" parent="ContentContainer/VBoxContainer/MarginContainer" unique_id=607540762]
+[node name="StabilityReport" type="VBoxContainer" parent="ContentContainer/VBoxContainer/MarginContainer" unique_id=607540762]
+unique_name_in_owner = true
 modulate = Color(0.48235294, 1, 0.43529412, 1)
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="StabilitySummary" type="Label" parent="ContentContainer/VBoxContainer/MarginContainer/StabilitySection" unique_id=1116394637]
+[node name="StabilitySummary" type="Label" parent="ContentContainer/VBoxContainer/MarginContainer/StabilityReport" unique_id=1116394637]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/line_spacing = -5
@@ -91,7 +91,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="StabilityDetails" type="Label" parent="ContentContainer/VBoxContainer/MarginContainer/StabilitySection" unique_id=554150008]
+[node name="StabilityDetails" type="Label" parent="ContentContainer/VBoxContainer/MarginContainer/StabilityReport" unique_id=554150008]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/line_spacing = -2
@@ -103,6 +103,7 @@ autowrap_mode = 3
 
 [node name="PendingStateContainer" type="MarginContainer" parent="." unique_id=1940257619]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20

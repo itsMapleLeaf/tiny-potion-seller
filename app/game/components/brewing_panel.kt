@@ -1,13 +1,11 @@
 package game.components
 
+import game.data.BrewingState
 import game.data.GameData
 import game.data.IngredientSpec
-import game.data.Magimin
 import game.data.MagiminCounts
-import game.data.Potion
 import game.data.addMagimins
 import game.data.asRatio
-import game.data.deviationTo
 import game.data.displayText
 import game.data.magiminCounts
 import game.data.multiplyMagimins
@@ -21,10 +19,7 @@ import godot.api.Control
 import godot.api.InstancePlaceholder
 import godot.api.Node
 import godot.api.PackedScene
-import godot.common.util.clampValue
-import godot.common.util.lerp
 import godot.extension.connectLambda
-import godot.extension.getNodeAs
 import godot.global.GD
 
 @Script
@@ -46,35 +41,17 @@ class BrewingPanel : Control() {
             .map { (i, count) -> i.magimins.multiplyMagimins(count) }
             .fold(magiminCounts()) { a, b -> a.addMagimins(b) }
 
-    private val cauldronMagiminTotal get() = cauldronMagimins.sum()
-    private val cauldronMagiminRatio get() = cauldronMagimins.asRatio()
 
-    private fun getBrewingResult(): BrewingResult? {
-        if (cauldronMagiminTotal == 0) return null
-
-        val kind = Potion.Kind.entries.minBy {
-            it.magimins.asRatio().deviationTo(cauldronMagiminRatio)
-        }
-
-        // TODO: get the actual star rating within the tier
-        val tier = Potion.Tier.entries.last { tier ->
-            tier.starRatingMagiminCounts.asReversed().any { requiredCount ->
-                requiredCount <= cauldronMagiminTotal
-            }
-        }
-
-        // TODO: figure out how many potions we got based on how many magis we put in
-        val count = 1
-
-        return BrewingResult(cauldronMagimins, Potion(tier, kind), count)
-    }
+    private fun getBrewingState() =
+        BrewingState.withMagimins(cauldronMagimins)
 
 
     override fun _ready() {
         brewButton.pressed.connectLambda {
-            val result = getBrewingResult() ?: return@connectLambda
+            val state = getBrewingState()
+            if (state !is BrewingState.BrewedPotion) return@connectLambda
 
-            gameData.potions.addCount(result.potion, result.count)
+            gameData.potions.addCount(state.potion, state.count)
             ingredientsInCauldron.clear()
             refresh()
         }
@@ -123,7 +100,7 @@ class BrewingPanel : Control() {
             tile.count = count
         }
 
-        brewingResultPanel.result = getBrewingResult()
+        brewingResultPanel.state = getBrewingState()
     }
 
     private fun <T> populateItemCollection(
