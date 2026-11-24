@@ -1,4 +1,4 @@
-package game.extensions
+package extensions
 
 
 fun List<Double>.normalize(): List<Double> {

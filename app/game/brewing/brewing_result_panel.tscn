@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c3v68k2m24uo8"]
 
-[ext_resource type="Script" uid="uid://cwq1jyvxgjrc2" path="res://game/components/brewing_result_panel.kt" id="1_oa40w"]
-[ext_resource type="PackedScene" uid="uid://d1o2iv0gnmmu1" path="res://game/components/brewing_result_potion_summary.tscn" id="1_ujeut"]
-[ext_resource type="PackedScene" uid="uid://dkxbaqythft4t" path="res://game/components/magimin_meter.tscn" id="2_oa40w"]
+[ext_resource type="Script" uid="uid://d2mrm7ik3wlap" path="res://game/brewing/brewing_result_panel.kt" id="1_oa40w"]
+[ext_resource type="PackedScene" uid="uid://d1o2iv0gnmmu1" path="res://game/brewing/brewing_result_potion_summary.tscn" id="1_ujeut"]
+[ext_resource type="PackedScene" uid="uid://dkxbaqythft4t" path="res://game/magimins/magimin_meter.tscn" id="2_oa40w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
 content_margin_left = 8.0
@@ -68,6 +68,9 @@ layout_mode = 2
 magimin = 4
 amount = 69
 ratio = 0.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/VBoxContainer" unique_id=1171104991]
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/VBoxContainer" unique_id=502901762]
 layout_mode = 2

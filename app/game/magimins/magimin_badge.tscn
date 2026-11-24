@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bhhqw7slok4qx"]
 
 [ext_resource type="Texture2D" uid="uid://df0e53j26svs4" path="res://game/assets/pill.svg" id="1_33qlb"]
-[ext_resource type="Script" uid="uid://buup0wuhj43b0" path="res://game/components/magimin_badge.kt" id="2_7edrk"]
+[ext_resource type="Script" uid="uid://d3528wicyswmk" path="res://game/magimins/magimin_badge.kt" id="2_7edrk"]
 
 [node name="MagiminBadge" type="TextureRect" unique_id=288422160]
 custom_minimum_size = Vector2(32, 32)

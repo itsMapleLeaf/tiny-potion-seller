@@ -1,6 +1,6 @@
-package game.components
+package inventory
 
-import game.extensions.lazyNode
+import extensions.lazyNode
 import godot.annotation.Export
 import godot.annotation.Script
 import godot.api.Button
@@ -8,7 +8,6 @@ import godot.api.Control
 import godot.api.Label
 import godot.core.signal0
 import godot.extension.connectLambda
-import godot.extension.getNodeAs
 
 @Script
 class ItemTile : Control() {

@@ -1,9 +1,7 @@
-package game.components
+package magimins
 
-import game.data.Magimin
-import game.extensions.lazyNode
+import extensions.lazyNode
 import godot.annotation.Export
-import godot.api.TextureRect
 import godot.annotation.Script
 import godot.annotation.Tool
 import godot.api.Control

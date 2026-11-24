@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bw7bonlmpmgv"]
 
-[ext_resource type="Script" uid="uid://cuarji7vry3rj" path="res://game/components/item_tile.kt" id="1_ol2c4"]
+[ext_resource type="Script" uid="uid://xv6kcwj5hq08" path="res://game/inventory/item_tile.kt" id="1_ol2c4"]
 [ext_resource type="Texture2D" uid="uid://e6bo5cm1f8hd" path="res://game/assets/round-potion.svg" id="2_5b6kj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h5w0j"]

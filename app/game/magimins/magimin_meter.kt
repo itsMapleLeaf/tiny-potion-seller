@@ -1,14 +1,11 @@
-package game.components
+package magimins
 
-import game.data.Magimin
-import game.extensions.lazyNode
+import extensions.lazyNode
 import godot.annotation.Export
-import godot.api.VBoxContainer
 import godot.annotation.Script
 import godot.annotation.Tool
 import godot.api.Control
 import godot.api.Label
-import godot.common.util.lerp
 
 @Script
 @Tool

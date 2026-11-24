@@ -1,8 +1,7 @@
-package game.extensions
+package extensions
 
 import godot.api.InstancePlaceholder
 import godot.api.Node
-import godot.extension.getNodeAs
 
 
 fun <T : Node> Node.getInstancePlaceholder(path: String) =

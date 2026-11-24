@@ -1,5 +1,8 @@
-package game.data
+package potions
 
+import inventory.InventoryItem
+import magimins.MagiminCounts
+import magimins.magiminCounts
 import godot.annotation.Export
 import godot.annotation.Script
 import godot.api.Resource
@@ -9,8 +12,8 @@ import godot.common.extensions.convertToTitleCase
 class Potion(
     @Export val tier: Tier,
     @Export val kind: Kind,
-) : Resource() {
-    val displayName get() = "${tier.displayName} ${kind.displayName}"
+) : Resource(), InventoryItem {
+    override val displayName get() = "${tier.displayName} ${kind.displayName}"
     val magimins get() = kind.magimins
 
     enum class Kind(val magimins: MagiminCounts) {

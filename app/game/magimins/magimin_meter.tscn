@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dkxbaqythft4t"]
 
-[ext_resource type="Script" uid="uid://bs5btxs7fgtr6" path="res://game/components/magimin_meter.kt" id="1_4h0j2"]
+[ext_resource type="Script" uid="uid://d2gn2xg2t4n3q" path="res://game/magimins/magimin_meter.kt" id="1_4h0j2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8v33q"]
 content_margin_left = 2.0
