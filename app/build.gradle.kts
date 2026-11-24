@@ -1,7 +1,10 @@
 import godot.gradle.GodotLanguage
+import org.jetbrains.gradle.ext.packagePrefix
+import org.jetbrains.gradle.ext.settings
 
 plugins {
     kotlin("jvm") version libs.versions.kotlin
+    id("org.jetbrains.gradle.plugin.idea-ext") version "1.4.1"
     id("com.utopia-rise.godot-jvm") version "1.0.1"
 }
 
@@ -15,10 +18,10 @@ godot {
     isGodotCoroutinesEnabled.set(true)
 }
 
-sourceSets {
-    main {
-        kotlin {
-            setSrcDirs(listOf("game"))
-        }
-    }
+sourceSets.main {
+    kotlin.srcDir("game")
+}
+
+idea.module.settings {
+    packagePrefix["game"] = "game"
 }
