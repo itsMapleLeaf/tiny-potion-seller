@@ -9,6 +9,7 @@ import godot.api.PanelContainer
 import magimins.Magimin
 import magimins.MagiminMeter
 import magimins.asRatio
+import ui.StarRating
 
 
 @Script
@@ -22,6 +23,7 @@ class BrewingResultPanel : PanelContainer() {
     private val stabilityReportNode by lazyNode<Control>("%StabilityReport")
     private val stabilitySummaryLabel by lazyNode<Label>("%StabilitySummary")
     private val stabilityDetailsLabel by lazyNode<Label>("%StabilityDetails")
+    private val starRating by lazyNode<StarRating>("%StarRating")
 
     override fun _ready() {
         update()
@@ -39,6 +41,10 @@ class BrewingResultPanel : PanelContainer() {
         contentContainer.show()
 
         brewingResultPotionSummary.potion = result.potion
+        brewingResultPotionSummary.brewedCount = result.count
+
+        starRating.filledStarCount = result.potion.rating
+        starRating.pendingStarCount = result.stability.chanceBonusStars
 
         val potionMagiminRatio = result.potion.magimins.asRatio()
 

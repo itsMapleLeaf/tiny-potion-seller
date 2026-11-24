@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bri38i24kaxdo"]
+
+[ext_resource type="Script" uid="uid://br0tta57xyuc0" path="res://game/ui/star_rating.kt" id="1_416u6"]
+[ext_resource type="Texture2D" uid="uid://cppwnorps8svm" path="res://game/assets/star.svg" id="2_jthaf"]
+[ext_resource type="Texture2D" uid="uid://crtj1eanfg5gg" path="res://game/assets/star-outline.svg" id="3_xosy2"]
+
+[node name="StarRating" type="HBoxContainer" unique_id=76973391]
+modulate = Color(0.99999994, 0.9041085, 0.6629024, 1)
+script = ExtResource("1_416u6")
+
+[node name="Star1" type="TextureRect" parent="." unique_id=108920364]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_jthaf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Star2" type="TextureRect" parent="." unique_id=244540352]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_jthaf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Star3" type="TextureRect" parent="." unique_id=1201344596]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_jthaf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Star4" type="TextureRect" parent="." unique_id=676803386]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_xosy2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Star5" type="TextureRect" parent="." unique_id=2135226361]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("3_xosy2")
+expand_mode = 1
+stretch_mode = 5

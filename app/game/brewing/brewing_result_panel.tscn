@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d2mrm7ik3wlap" path="res://game/brewing/brewing_result_panel.kt" id="1_oa40w"]
 [ext_resource type="PackedScene" uid="uid://d1o2iv0gnmmu1" path="res://game/brewing/brewing_result_potion_summary.tscn" id="1_ujeut"]
 [ext_resource type="PackedScene" uid="uid://dkxbaqythft4t" path="res://game/magimins/magimin_meter.tscn" id="2_oa40w"]
+[ext_resource type="PackedScene" uid="uid://bri38i24kaxdo" path="res://game/ui/star_rating.tscn" id="4_s4cc7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
 content_margin_left = 8.0
@@ -14,24 +15,35 @@ bg_color = Color(0.19397232, 0.17323434, 0.15444389, 1)
 [node name="BrewingResultPanel" type="PanelContainer" unique_id=767439798]
 custom_minimum_size = Vector2(320, 0)
 offset_right = 320.0
-offset_bottom = 528.0
+offset_bottom = 797.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
 script = ExtResource("1_oa40w")
 
 [node name="ContentContainer" type="MarginContainer" parent="." unique_id=341169403]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_top = 39
-theme_override_constants/margin_bottom = 67
+theme_override_constants/margin_top = 33
+theme_override_constants/margin_bottom = 49
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer" unique_id=287381703]
 layout_mode = 2
 theme_override_constants/separation = 23
 alignment = 1
 
-[node name="BrewingResultPotionSummary" parent="ContentContainer/VBoxContainer" unique_id=1199854162 instance=ExtResource("1_ujeut")]
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/VBoxContainer" unique_id=653923018]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="BrewingResultPotionSummary" parent="ContentContainer/VBoxContainer/VBoxContainer" unique_id=1199854162 instance=ExtResource("1_ujeut")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 1
+
+[node name="StarRating" parent="ContentContainer/VBoxContainer/VBoxContainer" unique_id=76973391 instance=ExtResource("4_s4cc7")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 
 [node name="MagiminBalance" type="HBoxContainer" parent="ContentContainer/VBoxContainer" unique_id=199992950]
 unique_name_in_owner = true
@@ -69,11 +81,9 @@ magimin = 4
 amount = 69
 ratio = 0.5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/VBoxContainer" unique_id=1171104991]
-layout_mode = 2
-
 [node name="MarginContainer" type="MarginContainer" parent="ContentContainer/VBoxContainer" unique_id=502901762]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_right = 16
 

@@ -40,6 +40,7 @@ folder_colors={
 "res://game/components/": "orange",
 "res://game/data/": "yellow",
 "res://game/extensions/": "green",
+"res://game/ui/": "pink",
 "res://jvm/": "gray"
 }
 

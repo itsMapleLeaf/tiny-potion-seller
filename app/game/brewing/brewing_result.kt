@@ -16,23 +16,21 @@ class BrewingResult(cauldron: Cauldron) {
 
     val magiminTotal = cauldronMagimins.sum()
 
-    val potionKind = Potion.Kind.entries.minBy {
+    private val potionKind = Potion.Kind.entries.minBy {
         it.magimins.ratioDeviationTo(cauldronMagimins)
     }
 
-    // TODO: get the actual star rating within the tier
-    val potionTier = Potion.Tier.entries.last { tier ->
-        tier.starRatingMagiminCounts.asReversed().any { requiredCount ->
-            requiredCount <= magiminTotal
-        }
+    private val potionTier = Potion.Tier.entries.last { tier ->
+        magiminTotal >= tier.starRatingMagiminCounts.first()
     }
 
-    val potion = Potion(potionTier, potionKind)
+    private val potionRating = potionTier.starRatingMagiminCounts.indexOfLast { count ->
+        magiminTotal >= count
+    }
 
-    // TODO: get the number of brewed potions based on magimin total
-    val count = 1
+    val count = cauldron.ingredients.size / 2
 
-    val deviation = potion.magimins.ratioDeviationTo(cauldronMagimins)
+    val deviation = potionKind.magimins.ratioDeviationTo(cauldronMagimins)
 
     val stability = when {
         deviation <= 0.05 -> {
@@ -84,6 +82,8 @@ class BrewingResult(cauldron: Cauldron) {
             )
         }
     }
+
+    val potion = Potion(potionTier, potionKind, potionRating + stability.guaranteedBonusStars)
 
     data class Stability(
         val summary: String,

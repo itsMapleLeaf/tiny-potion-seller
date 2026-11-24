@@ -12,6 +12,7 @@ import godot.common.extensions.convertToTitleCase
 class Potion(
     @Export val tier: Tier,
     @Export val kind: Kind,
+    @Export val rating: Int,
 ) : Resource(), InventoryItem {
     override val displayName get() = "${tier.displayName} ${kind.displayName}"
     val magimins get() = kind.magimins

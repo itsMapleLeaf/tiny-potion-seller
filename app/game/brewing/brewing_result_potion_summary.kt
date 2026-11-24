@@ -14,7 +14,14 @@ import potions.Potion
 @Tool
 class BrewingResultPotionSummary : Control() {
     @Export
-    var potion = Potion(Potion.Tier.Minor, Potion.Kind.HealthPotion)
+    var potion = Potion(Potion.Tier.Minor, Potion.Kind.HealthPotion, 1)
+        set(value) {
+            field = value
+            update()
+        }
+
+    @Export
+    var brewedCount = 1
         set(value) {
             field = value
             update()
@@ -28,10 +35,10 @@ class BrewingResultPotionSummary : Control() {
     }
 
     fun update() {
-        nameLabel.text = potion.displayName
+        nameLabel.text = "${potion.displayName} x$brewedCount"
 
         for ((index, magimin) in Magimin.entries.withIndex()) {
-            var badge = magiminBadgeGroup.getChild(index) as MagiminBadge
+            val badge = magiminBadgeGroup.getChild(index) as MagiminBadge
             badge.magimin = magimin
             badge.count = potion.kind.magimins[index]
             badge.visible = badge.count > 0

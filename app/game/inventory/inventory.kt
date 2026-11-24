@@ -18,8 +18,8 @@ class Inventory<I : InventoryItem> {
 
     operator fun iterator() = items.toList()
 
+    val size get() = items.size
     val isEmpty get() = items.isEmpty()
-
 
     fun add(item: I, amount: Int = 1) {
         for (i in 1..amount) items.add(item)
