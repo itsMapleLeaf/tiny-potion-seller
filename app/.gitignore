@@ -9,3 +9,6 @@
 
 # weird temporary files
 ~*
+
+# editor folders
+/.idea
