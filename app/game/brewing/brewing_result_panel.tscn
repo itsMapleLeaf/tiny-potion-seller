@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d2mrm7ik3wlap" path="res://game/brewing/brewing_result_panel.kt" id="1_oa40w"]
 [ext_resource type="PackedScene" uid="uid://d1o2iv0gnmmu1" path="res://game/brewing/brewing_result_potion_summary.tscn" id="1_ujeut"]
 [ext_resource type="PackedScene" uid="uid://dkxbaqythft4t" path="res://game/magimins/magimin_meter.tscn" id="2_oa40w"]
-[ext_resource type="PackedScene" uid="uid://bri38i24kaxdo" path="res://game/ui/star_rating.tscn" id="4_s4cc7"]
+[ext_resource type="PackedScene" uid="uid://d2q8cad3i0fj6" path="res://game/components/quality_meter.tscn" id="3_s4cc7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
 content_margin_left = 8.0
@@ -40,22 +40,20 @@ grow_vertical = 2
 size_flags_vertical = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="StarRating" parent="ContentContainer" unique_id=76973391 instance=ExtResource("4_s4cc7")]
-unique_name_in_owner = true
+[node name="PanelContainer" parent="ContentContainer" unique_id=677926760 instance=ExtResource("3_s4cc7")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.31370038
+anchor_top = 0.37772086
 anchor_right = 0.5
-anchor_bottom = 0.31370038
-offset_left = -88.0
-offset_top = 40.0
-offset_right = 88.0
-offset_bottom = 72.0
+anchor_bottom = 0.37772086
+offset_left = -120.0
+offset_top = -15.0
+offset_right = 120.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="StabilityReport" type="VBoxContainer" parent="ContentContainer" unique_id=10171474]
 unique_name_in_owner = true

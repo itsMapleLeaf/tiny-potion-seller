@@ -1,0 +1,231 @@
+[gd_scene format=3 uid="uid://d2q8cad3i0fj6"]
+
+[ext_resource type="Script" uid="uid://hiahfrd0nioa" path="res://game/components/quality_meter.kt" id="1_03qrc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pkyun"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsokl"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_03qrc"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 1)
+corner_detail = 5
+
+[node name="QualityMeter" type="PanelContainer" unique_id=677926760]
+offset_right = 240.0
+offset_bottom = 30.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pkyun")
+script = ExtResource("1_03qrc")
+
+[node name="Outline" type="PanelContainer" parent="." unique_id=1155002603]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dsokl")
+
+[node name="Fill" type="PanelContainer" parent="Outline" unique_id=261395760]
+unique_name_in_owner = true
+modulate = Color(0.9999998, 0.07445034, 0.15143073, 0.6)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.42, 1)
+offset_transform_pivot_ratio = Vector2(0, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_03qrc")
+
+[node name="Ticks" type="HBoxContainer" parent="Outline" unique_id=541051794]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SpacerLeft" type="Control" parent="Outline/Ticks" unique_id=775089800]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Tick1" type="Control" parent="Outline/Ticks" unique_id=428765427]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Line" type="ColorRect" parent="Outline/Ticks/Tick1" unique_id=1634434877]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(-0.5, 0)
+
+[node name="Control" type="Control" parent="Outline/Ticks/Tick1" unique_id=1934791522]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.35, 0.35)
+
+[node name="Star" type="Polygon2D" parent="Outline/Ticks/Tick1/Control" unique_id=722246965]
+antialiased = true
+polygon = PackedVector2Array(0, -24.000002, 8, -8, 24, 0, 8, 8, 0, 24, -8, 8, -23.999992, 0, -8, -8)
+uv = PackedVector2Array(-23.999985, -64, -16, -48, 0, -40, -16, -32, -23.999985, -16, -31.999985, -32, -48, -40, -31.999985, -48)
+
+[node name="Tick2" type="Control" parent="Outline/Ticks" unique_id=830024018]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Line" type="ColorRect" parent="Outline/Ticks/Tick2" unique_id=1350683649]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(-0.5, 0)
+
+[node name="Control" type="Control" parent="Outline/Ticks/Tick2" unique_id=666509432]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.35, 0.35)
+
+[node name="Star" type="Polygon2D" parent="Outline/Ticks/Tick2/Control" unique_id=80051562]
+antialiased = true
+polygon = PackedVector2Array(0, -24.000002, 8, -8, 24, 0, 8, 8, 0, 24, -8, 8, -23.999992, 0, -8, -8)
+uv = PackedVector2Array(-23.999985, -64, -16, -48, 0, -40, -16, -32, -23.999985, -16, -31.999985, -32, -48, -40, -31.999985, -48)
+
+[node name="Tick3" type="Control" parent="Outline/Ticks" unique_id=1319882421]
+modulate = Color(0.70048386, 0.7004839, 0.7004839, 1)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Line" type="ColorRect" parent="Outline/Ticks/Tick3" unique_id=2077086045]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(-0.5, 0)
+
+[node name="Control" type="Control" parent="Outline/Ticks/Tick3" unique_id=131963917]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.35, 0.35)
+
+[node name="Star" type="Polygon2D" parent="Outline/Ticks/Tick3/Control" unique_id=1709262709]
+antialiased = true
+polygon = PackedVector2Array(0, -24.000002, 8, -8, 24, 0, 8, 8, 0, 24, -8, 8, -23.999992, 0, -8, -8)
+uv = PackedVector2Array(-23.999985, -64, -16, -48, 0, -40, -16, -32, -23.999985, -16, -31.999985, -32, -48, -40, -31.999985, -48)
+
+[node name="Tick4" type="Control" parent="Outline/Ticks" unique_id=386082338]
+modulate = Color(0.70048386, 0.7004839, 0.7004839, 1)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Line" type="ColorRect" parent="Outline/Ticks/Tick4" unique_id=622308993]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(-0.5, 0)
+
+[node name="Control" type="Control" parent="Outline/Ticks/Tick4" unique_id=1877405684]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.35, 0.35)
+
+[node name="Star" type="Polygon2D" parent="Outline/Ticks/Tick4/Control" unique_id=1114610623]
+antialiased = true
+polygon = PackedVector2Array(0, -24.000002, 8, -8, 24, 0, 8, 8, 0, 24, -8, 8, -23.999992, 0, -8, -8)
+uv = PackedVector2Array(-23.999985, -64, -16, -48, 0, -40, -16, -32, -23.999985, -16, -31.999985, -32, -48, -40, -31.999985, -48)
+
+[node name="Tick5" type="Control" parent="Outline/Ticks" unique_id=1193542128]
+modulate = Color(0.70048386, 0.7004839, 0.7004839, 1)
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Line" type="ColorRect" parent="Outline/Ticks/Tick5" unique_id=1849388109]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(-0.5, 0)
+
+[node name="Control" type="Control" parent="Outline/Ticks/Tick5" unique_id=1333529139]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.35, 0.35)
+
+[node name="Star" type="Polygon2D" parent="Outline/Ticks/Tick5/Control" unique_id=1300064455]
+antialiased = true
+polygon = PackedVector2Array(0, -24.000002, 8, -8, 24, 0, 8, 8, 0, 24, -8, 8, -23.999992, 0, -8, -8)
+uv = PackedVector2Array(-23.999985, -64, -16, -48, 0, -40, -16, -32, -23.999985, -16, -31.999985, -32, -48, -40, -31.999985, -48)
+
+[node name="SpacerRight" type="Control" parent="Outline/Ticks" unique_id=1897338876]
+layout_mode = 2
+size_flags_horizontal = 0
