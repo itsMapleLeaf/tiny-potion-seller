@@ -25,7 +25,7 @@ object GameState {
 
     fun brew() {
         val result = cauldron.getBrewResult() ?: return
-        potionStock.add(result.potion)
+        potionStock.add(result.potion, result.count)
         cauldron.ingredients.clear()
     }
 }
