@@ -1,4 +1,4 @@
-package game.extensions
+package game.shared
 
 import godot.api.InstancePlaceholder
 import godot.api.Node

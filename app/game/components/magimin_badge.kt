@@ -1,6 +1,7 @@
-package game.magimins
+package game.components
 
-import game.extensions.lazyNode
+import game.data.Magimin
+import game.shared.lazyNode
 import godot.annotation.Export
 import godot.annotation.Script
 import godot.annotation.Tool

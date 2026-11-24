@@ -1,8 +1,5 @@
-package game.potions
+package game.data
 
-import game.inventory.InventoryItem
-import game.magimins.MagiminCounts
-import game.magimins.magiminCounts
 import godot.annotation.Export
 import godot.annotation.Script
 import godot.api.Resource
@@ -54,13 +51,13 @@ class Potion(
         Masterwork(listOf(720, 800, 875, 960, 1040, 1121));
 
         val displayName = name
-        
+
         private val minMagimins = starRatingMagiminCounts.first()
         private val maxMagimins = starRatingMagiminCounts.last()
 
         val magiminCheckpoints: List<Int>
             get() {
-                val nextTier = Tier.entries.getOrNull(ordinal + 1)
+                val nextTier = entries.getOrNull(ordinal + 1)
                 return starRatingMagiminCounts.plusElement(
                     nextTier?.minMagimins ?: maxMagimins
                 )

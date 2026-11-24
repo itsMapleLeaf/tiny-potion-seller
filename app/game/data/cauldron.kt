@@ -1,9 +1,4 @@
-package game.cauldrons
-
-import game.brewing.BrewingResult
-import game.ingredients.Ingredient
-import game.inventory.Inventory
-import game.inventory.InventoryItem
+package game.data
 
 
 sealed class Cauldron(displayNamePrefix: String) : InventoryItem {

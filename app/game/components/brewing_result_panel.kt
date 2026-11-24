@@ -1,11 +1,10 @@
-package game.brewing
+package game.components
 
-import game.components.QualityMeter
-import game.extensions.lazyNode
-import game.extensions.reactive
-import game.magimins.Magimin
-import game.magimins.MagiminMeter
-import game.magimins.asRatio
+import game.data.BrewingResult
+import game.data.Magimin
+import game.data.asRatio
+import game.shared.lazyNode
+import game.shared.reactive
 import godot.annotation.Script
 import godot.api.Control
 import godot.api.Label

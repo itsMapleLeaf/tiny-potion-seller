@@ -1,9 +1,4 @@
-package game
-
-import game.cauldrons.Cauldron
-import game.ingredients.Ingredient
-import game.inventory.Inventory
-import game.potions.Potion
+package game.data
 
 
 object GameState {

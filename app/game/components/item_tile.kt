@@ -1,6 +1,6 @@
-package game.inventory
+package game.components
 
-import game.extensions.lazyNode
+import game.shared.lazyNode
 import godot.annotation.Export
 import godot.annotation.Script
 import godot.api.Button

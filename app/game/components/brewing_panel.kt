@@ -1,7 +1,7 @@
-package game.brewing
+package game.components
 
-import game.GameState
-import game.extensions.lazyNode
+import game.data.GameState
+import game.shared.lazyNode
 import godot.annotation.Script
 import godot.api.Button
 import godot.api.Control

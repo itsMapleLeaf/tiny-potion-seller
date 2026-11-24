@@ -1,4 +1,4 @@
-package game.extensions
+package game.shared
 
 import kotlin.reflect.KProperty
 

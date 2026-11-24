@@ -1,9 +1,8 @@
-package game.brewing
+package game.components
 
-import game.extensions.lazyNode
-import game.magimins.Magimin
-import game.magimins.MagiminBadge
-import game.potions.Potion
+import game.data.Magimin
+import game.data.Potion
+import game.shared.lazyNode
 import godot.annotation.Export
 import godot.annotation.Script
 import godot.annotation.Tool

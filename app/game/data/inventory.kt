@@ -1,6 +1,7 @@
-package game.inventory
+package game.data
 
-import game.extensions.loadSceneAs
+import game.components.ItemTile
+import game.shared.loadSceneAs
 import godot.api.InstancePlaceholder
 import godot.api.Node
 import godot.extension.connectLambda
@@ -11,8 +12,6 @@ interface InventoryItem {
 }
 
 class Inventory<I : InventoryItem> {
-    private val itemTileScene = loadSceneAs<ItemTile>("res://game/inventory/item_tile.tscn")!!
-
     val items: List<I>
         field = mutableListOf()
 
@@ -39,6 +38,8 @@ class Inventory<I : InventoryItem> {
     }
 
     fun recreateItemTiles(container: Node, onItemPressed: (I) -> Unit) {
+        val itemTileScene = loadSceneAs<ItemTile>("uid://bw7bonlmpmgv")
+
         for (node in container.getChildren()) {
             if (node !is InstancePlaceholder) {
                 node.queueFree()

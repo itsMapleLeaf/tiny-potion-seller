@@ -1,4 +1,4 @@
-package game.extensions
+package game.shared
 
 typealias CounterMap<T> = MutableMap<T, Int>
 

@@ -1,10 +1,5 @@
-package game.brewing
+package game.data
 
-import game.cauldrons.Cauldron
-import game.magimins.addMagimins
-import game.magimins.magiminCounts
-import game.magimins.ratioDeviationTo
-import game.potions.Potion
 import godot.core.Color
 
 
@@ -28,7 +23,7 @@ class BrewingResult(cauldron: Cauldron) {
     private val potionStarRating = potionTier.starRatingMagiminCounts.indexOfLast { count ->
         magiminTotal >= count
     }
-    
+
     val count = cauldron.ingredients.size / 2
 
     val deviation = potionKind.magimins.ratioDeviationTo(cauldronMagimins)

@@ -1,6 +1,6 @@
 package game.components
 
-import game.extensions.*
+import game.shared.*
 import godot.annotation.Export
 import godot.annotation.Script
 import godot.annotation.Tool

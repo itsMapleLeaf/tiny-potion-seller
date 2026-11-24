@@ -1,6 +1,6 @@
-package game.magimins
+package game.data
 
-import game.extensions.normalize
+import game.shared.normalize
 import godot.core.Color
 import kotlin.math.abs
 

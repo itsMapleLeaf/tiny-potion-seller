@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ib2hff2n8dp6"]
 
-[ext_resource type="Script" uid="uid://box6ler3t7mi3" path="res://game/brewing/brewing_panel.kt" id="1_1jsom"]
-[ext_resource type="PackedScene" uid="uid://c3v68k2m24uo8" path="res://game/brewing/brewing_result_panel.tscn" id="2_1fil6"]
+[ext_resource type="Script" uid="uid://ea37yimatbya" path="res://game/components/brewing_panel.kt" id="1_1jsom"]
+[ext_resource type="PackedScene" uid="uid://c3v68k2m24uo8" path="res://game/components/brewing_result_panel.tscn" id="2_1fil6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
 content_margin_left = 8.0

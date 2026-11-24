@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bri38i24kaxdo"]
 
-[ext_resource type="Script" uid="uid://br0tta57xyuc0" path="res://game/ui/star_rating.kt" id="1_416u6"]
+[ext_resource type="Script" uid="uid://ckds7fvvqy5qv" path="res://game/components/star_rating.kt" id="1_416u6"]
 [ext_resource type="Texture2D" uid="uid://cppwnorps8svm" path="res://game/assets/star.svg" id="2_jthaf"]
 [ext_resource type="Texture2D" uid="uid://crtj1eanfg5gg" path="res://game/assets/star-outline.svg" id="3_xosy2"]
 

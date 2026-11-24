@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d1o2iv0gnmmu1"]
 
-[ext_resource type="Script" uid="uid://baxvbdn5g2lio" path="res://game/brewing/brewing_result_potion_summary.kt" id="1_41i6b"]
+[ext_resource type="Script" uid="uid://d3m73aigv0k87" path="res://game/components/brewing_result_potion_summary.kt" id="1_41i6b"]
 [ext_resource type="Texture2D" uid="uid://e6bo5cm1f8hd" path="res://game/assets/round-potion.svg" id="1_bs6wj"]
-[ext_resource type="PackedScene" uid="uid://bhhqw7slok4qx" path="res://game/magimins/magimin_badge.tscn" id="2_41i6b"]
+[ext_resource type="PackedScene" uid="uid://bhhqw7slok4qx" path="res://game/components/magimin_badge.tscn" id="2_41i6b"]
 
 [node name="BrewingResultPotionSummary" type="VBoxContainer" unique_id=1199854162]
 offset_right = 216.0
