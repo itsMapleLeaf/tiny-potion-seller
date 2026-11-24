@@ -229,3 +229,27 @@ uv = PackedVector2Array(-23.999985, -64, -16, -48, 0, -40, -16, -32, -23.999985,
 [node name="SpacerRight" type="Control" parent="Outline/Ticks" unique_id=1897338876]
 layout_mode = 2
 size_flags_horizontal = 0
+
+[node name="Control" type="Control" parent="." unique_id=1806174952]
+layout_mode = 2
+
+[node name="ValueLabel" type="Label" parent="Control" unique_id=1463568033]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.96666664
+anchor_right = 0.5
+anchor_bottom = 0.96666664
+offset_left = -120.0
+offset_top = -17.0
+offset_right = 120.0
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.6666667)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = "24/60"
+horizontal_alignment = 1
+vertical_alignment = 1

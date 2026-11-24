@@ -9,6 +9,7 @@ import godot.core.Color
 
 
 class BrewingResult(cauldron: Cauldron) {
+
     val cauldronMagimins = cauldron.ingredients.items.fold(magiminCounts())
     { totalMagimins, ingredient ->
         totalMagimins.addMagimins(ingredient.magimins)
@@ -24,10 +25,10 @@ class BrewingResult(cauldron: Cauldron) {
         magiminTotal >= tier.starRatingMagiminCounts.first()
     }
 
-    private val potionRating = potionTier.starRatingMagiminCounts.indexOfLast { count ->
+    private val potionStarRating = potionTier.starRatingMagiminCounts.indexOfLast { count ->
         magiminTotal >= count
     }
-
+    
     val count = cauldron.ingredients.size / 2
 
     val deviation = potionKind.magimins.ratioDeviationTo(cauldronMagimins)
@@ -83,7 +84,7 @@ class BrewingResult(cauldron: Cauldron) {
         }
     }
 
-    val potion = Potion(potionTier, potionKind, potionRating + stability.guaranteedBonusStars)
+    val potion = Potion(potionTier, potionKind, potionStarRating + stability.guaranteedBonusStars)
 
     data class Stability(
         val summary: String,

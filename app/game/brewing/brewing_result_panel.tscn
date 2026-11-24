@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c3v68k2m24uo8"]
 
-[ext_resource type="Script" uid="uid://d2mrm7ik3wlap" path="res://game/brewing/brewing_result_panel.kt" id="1_oa40w"]
+[ext_resource type="Script" uid="uid://3sdpg4i51r0n" path="res://game/brewing/brewing_result_panel.kt" id="1_oa40w"]
 [ext_resource type="PackedScene" uid="uid://d1o2iv0gnmmu1" path="res://game/brewing/brewing_result_potion_summary.tscn" id="1_ujeut"]
 [ext_resource type="PackedScene" uid="uid://dkxbaqythft4t" path="res://game/magimins/magimin_meter.tscn" id="2_oa40w"]
 [ext_resource type="PackedScene" uid="uid://d2q8cad3i0fj6" path="res://game/components/quality_meter.tscn" id="3_s4cc7"]
@@ -40,7 +40,8 @@ grow_vertical = 2
 size_flags_vertical = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="PanelContainer" parent="ContentContainer" unique_id=677926760 instance=ExtResource("3_s4cc7")]
+[node name="QualityMeter" parent="ContentContainer" unique_id=677926760 instance=ExtResource("3_s4cc7")]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5

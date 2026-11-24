@@ -1,11 +1,11 @@
 package game.brewing
 
+import game.components.QualityMeter
 import game.extensions.lazyNode
 import game.extensions.reactive
 import game.magimins.Magimin
 import game.magimins.MagiminMeter
 import game.magimins.asRatio
-import game.ui.StarRating
 import godot.annotation.Script
 import godot.api.Control
 import godot.api.Label
@@ -23,7 +23,7 @@ class BrewingResultPanel : PanelContainer() {
     private val stabilityReportNode by lazyNode<Control>("%StabilityReport")
     private val stabilitySummaryLabel by lazyNode<Label>("%StabilitySummary")
     private val stabilityDetailsLabel by lazyNode<Label>("%StabilityDetails")
-    private val starRating by lazyNode<StarRating>("%StarRating")
+    private val qualityMeter by lazyNode<QualityMeter>("%QualityMeter")
 
     override fun _ready() {
         update()
@@ -43,8 +43,8 @@ class BrewingResultPanel : PanelContainer() {
         brewingResultPotionSummary.potion = result.potion
         brewingResultPotionSummary.brewedCount = result.count
 
-        starRating.filledStarCount = result.potion.rating
-        starRating.pendingStarCount = result.stability.chanceBonusStars
+        qualityMeter.checkpoints = result.potion.tier.magiminCheckpoints
+        qualityMeter.value = result.magiminTotal
 
         val potionMagiminRatio = result.potion.magimins.asRatio()
 

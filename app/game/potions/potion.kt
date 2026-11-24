@@ -54,5 +54,17 @@ class Potion(
         Masterwork(listOf(720, 800, 875, 960, 1040, 1121));
 
         val displayName = name
+        
+        private val minMagimins = starRatingMagiminCounts.first()
+        private val maxMagimins = starRatingMagiminCounts.last()
+
+        val magiminCheckpoints: List<Int>
+            get() {
+                val nextTier = Tier.entries.getOrNull(ordinal + 1)
+                return starRatingMagiminCounts.plusElement(
+                    nextTier?.minMagimins ?: maxMagimins
+                )
+            }
+
     }
 }
