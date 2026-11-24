@@ -19,82 +19,66 @@ offset_bottom = 797.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
 script = ExtResource("1_oa40w")
 
-[node name="ContentContainer" type="MarginContainer" parent="." unique_id=341169403]
+[node name="ContentContainer" type="Control" parent="." unique_id=1037333370]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/margin_top = 33
-theme_override_constants/margin_bottom = 49
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer" unique_id=287381703]
-layout_mode = 2
-theme_override_constants/separation = 23
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/VBoxContainer" unique_id=653923018]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="BrewingResultPotionSummary" parent="ContentContainer/VBoxContainer/VBoxContainer" unique_id=1199854162 instance=ExtResource("1_ujeut")]
+[node name="BrewingResultPotionSummary" parent="ContentContainer" unique_id=1199854162 instance=ExtResource("1_ujeut")]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.17669654
+anchor_right = 0.5
+anchor_bottom = 0.17669654
+offset_left = -152.0
+offset_top = -94.0
+offset_right = 152.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="StarRating" parent="ContentContainer/VBoxContainer/VBoxContainer" unique_id=76973391 instance=ExtResource("4_s4cc7")]
+[node name="StarRating" parent="ContentContainer" unique_id=76973391 instance=ExtResource("4_s4cc7")]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.31370038
+anchor_right = 0.5
+anchor_bottom = 0.31370038
+offset_left = -88.0
+offset_top = 40.0
+offset_right = 88.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="MagiminBalance" type="HBoxContainer" parent="ContentContainer/VBoxContainer" unique_id=199992950]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 6
-theme_override_constants/separation = 12
-alignment = 1
-
-[node name="MagiminMeter" parent="ContentContainer/VBoxContainer/MagiminBalance" unique_id=1467407970 instance=ExtResource("2_oa40w")]
-layout_mode = 2
-amount = 69
-ratio = 0.5
-
-[node name="MagiminMeter2" parent="ContentContainer/VBoxContainer/MagiminBalance" unique_id=76898394 instance=ExtResource("2_oa40w")]
-layout_mode = 2
-magimin = 1
-amount = 69
-ratio = 0.5
-
-[node name="MagiminMeter3" parent="ContentContainer/VBoxContainer/MagiminBalance" unique_id=1837761321 instance=ExtResource("2_oa40w")]
-layout_mode = 2
-magimin = 2
-amount = 69
-ratio = 0.5
-
-[node name="MagiminMeter4" parent="ContentContainer/VBoxContainer/MagiminBalance" unique_id=1789491294 instance=ExtResource("2_oa40w")]
-layout_mode = 2
-magimin = 3
-amount = 69
-ratio = 0.5
-
-[node name="MagiminMeter5" parent="ContentContainer/VBoxContainer/MagiminBalance" unique_id=1098223501 instance=ExtResource("2_oa40w")]
-layout_mode = 2
-magimin = 4
-amount = 69
-ratio = 0.5
-
-[node name="MarginContainer" type="MarginContainer" parent="ContentContainer/VBoxContainer" unique_id=502901762]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_right = 16
-
-[node name="StabilityReport" type="VBoxContainer" parent="ContentContainer/VBoxContainer/MarginContainer" unique_id=607540762]
+[node name="StabilityReport" type="VBoxContainer" parent="ContentContainer" unique_id=10171474]
 unique_name_in_owner = true
 modulate = Color(0.48235294, 1, 0.43529412, 1)
-layout_mode = 2
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.52048653
+anchor_right = 0.5
+anchor_bottom = 0.52048653
+offset_left = -125.0
+offset_top = -73.5
+offset_right = 125.0
+offset_bottom = 73.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 8
 alignment = 1
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
 
-[node name="StabilitySummary" type="Label" parent="ContentContainer/VBoxContainer/MarginContainer/StabilityReport" unique_id=1116394637]
+[node name="StabilitySummary" type="Label" parent="ContentContainer/StabilityReport" unique_id=675998724]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/line_spacing = -5
@@ -104,7 +88,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="StabilityDetails" type="Label" parent="ContentContainer/VBoxContainer/MarginContainer/StabilityReport" unique_id=554150008]
+[node name="StabilityDetails" type="Label" parent="ContentContainer/StabilityReport" unique_id=715755189]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/line_spacing = -2
@@ -113,6 +97,54 @@ text = "Chance of gaining 1 additional star on completion."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="MagiminBalance" type="HBoxContainer" parent="ContentContainer" unique_id=199992950]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -259.0
+offset_right = 152.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 12
+alignment = 1
+metadata/_edit_group_ = true
+
+[node name="MagiminMeter" parent="ContentContainer/MagiminBalance" unique_id=1467407970 instance=ExtResource("2_oa40w")]
+layout_mode = 2
+amount = 69
+ratio = 0.5
+
+[node name="MagiminMeter2" parent="ContentContainer/MagiminBalance" unique_id=76898394 instance=ExtResource("2_oa40w")]
+layout_mode = 2
+magimin = 1
+amount = 69
+ratio = 0.5
+
+[node name="MagiminMeter3" parent="ContentContainer/MagiminBalance" unique_id=1837761321 instance=ExtResource("2_oa40w")]
+layout_mode = 2
+magimin = 2
+amount = 69
+ratio = 0.5
+
+[node name="MagiminMeter4" parent="ContentContainer/MagiminBalance" unique_id=1789491294 instance=ExtResource("2_oa40w")]
+layout_mode = 2
+magimin = 3
+amount = 69
+ratio = 0.5
+
+[node name="MagiminMeter5" parent="ContentContainer/MagiminBalance" unique_id=1098223501 instance=ExtResource("2_oa40w")]
+layout_mode = 2
+magimin = 4
+amount = 69
+ratio = 0.5
 
 [node name="PendingStateContainer" type="MarginContainer" parent="." unique_id=1940257619]
 unique_name_in_owner = true
