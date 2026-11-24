@@ -11,8 +11,43 @@ class Potion(
     @Export val kind: Kind,
     @Export val rating: Int,
 ) : Resource(), InventoryItem {
-    override val displayName get() = "${tier.displayName} ${kind.displayName}"
-    val magimins get() = kind.magimins
+    override val displayName = "${tier.displayName} ${kind.displayName}"
+    val magimins = kind.magimins
+    val price = prices[tier]!![rating]
+
+    companion object {
+        val prices = mapOf(
+            Tier.Minor to listOf(16, 18, 20, 23, 26, 29),
+            Tier.Common to listOf(36, 41, 46, 51, 58, 65),
+            Tier.Greater to listOf(81, 91, 103, 116, 130, 146),
+            Tier.Grand to listOf(183, 206, 231, 260, 293, 330),
+            Tier.Superior to listOf(412, 463, 521, 587, 660, 742),
+            Tier.Masterwork to listOf(928, 1044, 1174, 1321, 1486, 1672),
+        )
+    }
+
+    enum class Tier(val starRatingMagiminCounts: List<Int>) {
+        Minor(listOf(0, 10, 20, 30, 40, 50)),
+        Common(listOf(60, 75, 90, 105, 115, 130)),
+        Greater(listOf(150, 170, 195, 215, 235, 260)),
+        Grand(listOf(290, 315, 345, 370, 400, 430)),
+        Superior(listOf(470, 505, 545, 580, 620, 660)),
+        Masterwork(listOf(720, 800, 875, 960, 1040, 1121));
+
+        val displayName = name
+
+        private val minMagimins = starRatingMagiminCounts.first()
+        private val maxMagimins = starRatingMagiminCounts.last()
+
+        val magiminCheckpoints: List<Int>
+            get() {
+                val nextTier = entries.getOrNull(ordinal + 1)
+                return starRatingMagiminCounts.plusElement(
+                    nextTier?.minMagimins ?: maxMagimins
+                )
+            }
+
+    }
 
     enum class Kind(val magimins: MagiminCounts) {
         HealthPotion(magiminCounts(a = 1, b = 1)),
@@ -40,28 +75,5 @@ class Potion(
         CurseCure(magiminCounts(b = 1, c = 1, e = 2));
 
         val displayName = name.convertToTitleCase()
-    }
-
-    enum class Tier(val starRatingMagiminCounts: List<Int>) {
-        Minor(listOf(0, 10, 20, 30, 40, 50)),
-        Common(listOf(60, 75, 90, 105, 115, 130)),
-        Greater(listOf(150, 170, 195, 215, 235, 260)),
-        Grand(listOf(290, 315, 345, 370, 400, 430)),
-        Superior(listOf(470, 505, 545, 580, 620, 660)),
-        Masterwork(listOf(720, 800, 875, 960, 1040, 1121));
-
-        val displayName = name
-
-        private val minMagimins = starRatingMagiminCounts.first()
-        private val maxMagimins = starRatingMagiminCounts.last()
-
-        val magiminCheckpoints: List<Int>
-            get() {
-                val nextTier = entries.getOrNull(ordinal + 1)
-                return starRatingMagiminCounts.plusElement(
-                    nextTier?.minMagimins ?: maxMagimins
-                )
-            }
-
     }
 }
