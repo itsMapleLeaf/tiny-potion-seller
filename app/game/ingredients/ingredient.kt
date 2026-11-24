@@ -1,8 +1,8 @@
-package ingredients
+package game.ingredients
 
-import inventory.InventoryItem
-import magimins.MagiminCounts
-import magimins.magiminCounts
+import game.inventory.InventoryItem
+import game.magimins.MagiminCounts
+import game.magimins.magiminCounts
 
 
 enum class Ingredient(override val displayName: String, val magimins: MagiminCounts) : InventoryItem {

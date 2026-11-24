@@ -1,6 +1,6 @@
-package inventory
+package game.inventory
 
-import extensions.loadSceneAs
+import game.extensions.loadSceneAs
 import godot.api.InstancePlaceholder
 import godot.api.Node
 import godot.extension.connectLambda

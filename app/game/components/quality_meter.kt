@@ -1,7 +1,7 @@
 package game.components
 
-import extensions.ensureNodeAs
-import extensions.lazyNode
+import game.extensions.ensureNodeAs
+import game.extensions.lazyNode
 import godot.annotation.Export
 import godot.annotation.FloatRange
 import godot.annotation.Script

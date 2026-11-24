@@ -1,4 +1,4 @@
-package ui
+package game.ui
 
 import godot.annotation.Export
 import godot.annotation.Script

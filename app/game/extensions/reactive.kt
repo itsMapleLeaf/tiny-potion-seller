@@ -1,4 +1,4 @@
-package extensions
+package game.extensions
 
 import kotlin.reflect.KProperty
 

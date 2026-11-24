@@ -1,11 +1,11 @@
-package brewing
+package game.brewing
 
-import cauldrons.Cauldron
+import game.cauldrons.Cauldron
+import game.magimins.addMagimins
+import game.magimins.magiminCounts
+import game.magimins.ratioDeviationTo
+import game.potions.Potion
 import godot.core.Color
-import magimins.addMagimins
-import magimins.magiminCounts
-import magimins.ratioDeviationTo
-import potions.Potion
 
 
 class BrewingResult(cauldron: Cauldron) {

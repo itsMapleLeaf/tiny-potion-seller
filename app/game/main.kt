@@ -1,3 +1,5 @@
+package game
+
 import godot.annotation.Script
 import godot.api.InputEvent
 import godot.api.Node

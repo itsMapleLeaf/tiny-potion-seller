@@ -1,4 +1,4 @@
-package extensions
+package game.extensions
 
 import godot.api.Node
 

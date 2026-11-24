@@ -1,8 +1,8 @@
-package potions
+package game.potions
 
-import inventory.InventoryItem
-import magimins.MagiminCounts
-import magimins.magiminCounts
+import game.inventory.InventoryItem
+import game.magimins.MagiminCounts
+import game.magimins.magiminCounts
 import godot.annotation.Export
 import godot.annotation.Script
 import godot.api.Resource

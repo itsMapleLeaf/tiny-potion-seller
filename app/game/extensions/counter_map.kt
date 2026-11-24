@@ -1,4 +1,4 @@
-package extensions
+package game.extensions
 
 typealias CounterMap<T> = MutableMap<T, Int>
 

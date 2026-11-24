@@ -1,15 +1,15 @@
-package brewing
+package game.brewing
 
-import extensions.lazyNode
-import extensions.reactive
+import game.extensions.lazyNode
+import game.extensions.reactive
+import game.magimins.Magimin
+import game.magimins.MagiminMeter
+import game.magimins.asRatio
+import game.ui.StarRating
 import godot.annotation.Script
 import godot.api.Control
 import godot.api.Label
 import godot.api.PanelContainer
-import magimins.Magimin
-import magimins.MagiminMeter
-import magimins.asRatio
-import ui.StarRating
 
 
 @Script
