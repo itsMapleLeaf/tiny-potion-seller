@@ -1,10 +1,70 @@
 [gd_scene format=3 uid="uid://b78omdhvmw20n"]
 
-[ext_resource type="Script" uid="uid://cimkcje2vmvwh" path="res://game/main.kt" id="1_oa506"]
-[ext_resource type="PackedScene" uid="uid://ib2hff2n8dp6" path="res://game/brewing/brewing_panel.tscn" id="2_xtpaf"]
+[ext_resource type="Script" uid="uid://chw2cg8eh5vw6" path="res://game/main.kt" id="1_oa506"]
+[ext_resource type="Texture2D" uid="uid://b4pbd61ufwi2x" path="res://game/assets/coins.svg" id="2_emt18"]
+[ext_resource type="PackedScene" uid="uid://ib2hff2n8dp6" path="res://game/components/brewing_panel.tscn" id="2_xtpaf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
+bg_color = Color(0.19215687, 0.17254902, 0.15294118, 1)
 
 [node name="Main" type="Node" unique_id=90573184]
 script = ExtResource("1_oa506")
 
-[node name="BrewingScreen" parent="." unique_id=1699676161 instance=ExtResource("2_xtpaf")]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=954491489]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1564894791]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer" unique_id=1881178371]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer" unique_id=2074797571]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1727609183]
+modulate = Color(1, 1, 1, 0.81960785)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.35686275)
+theme_override_constants/outline_size = 13
+theme_override_font_sizes/font_size = 28
+text = "tiny potion seller"
+
+[node name="Spacer" type="Control" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1961325046]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GoldCount" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=236517001]
+modulate = Color(0.8599654, 0.76715946, 0.38217473, 1)
+layout_mode = 2
+theme_override_constants/separation = 10
+metadata/_edit_group_ = true
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/GoldCount" unique_id=1398369878]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("2_emt18")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GoldCountLabel" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/GoldCount" unique_id=981372980]
 unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.35686275)
+theme_override_constants/outline_size = 13
+theme_override_font_sizes/font_size = 22
+text = "999"
+
+[node name="BrewingPanel" parent="VBoxContainer" unique_id=1699676161 instance=ExtResource("2_xtpaf")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3

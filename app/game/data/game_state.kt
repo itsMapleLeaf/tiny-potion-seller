@@ -2,9 +2,9 @@ package game.data
 
 
 object GameState {
-    val dayNumber = 1
+    var dayNumber = 1
     var timeRemaining = 6
-    var gold = 0
+    var gold = 300
     val ingredientStock = Inventory<Ingredient>()
     val cauldron = Cauldron.Mudpack()
     val potionStock = Inventory<Potion>()

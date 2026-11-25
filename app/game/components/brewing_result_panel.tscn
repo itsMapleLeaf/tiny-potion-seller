@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c3v68k2m24uo8"]
 
-[ext_resource type="Script" uid="uid://3sdpg4i51r0n" path="res://game/brewing/brewing_result_panel.kt" id="1_oa40w"]
-[ext_resource type="PackedScene" uid="uid://d1o2iv0gnmmu1" path="res://game/brewing/brewing_result_potion_summary.tscn" id="1_ujeut"]
-[ext_resource type="PackedScene" uid="uid://dkxbaqythft4t" path="res://game/magimins/magimin_meter.tscn" id="2_oa40w"]
+[ext_resource type="Script" uid="uid://cwq1jyvxgjrc2" path="res://game/components/brewing_result_panel.kt" id="1_oa40w"]
+[ext_resource type="PackedScene" uid="uid://d1o2iv0gnmmu1" path="res://game/components/brewing_result_potion_summary.tscn" id="1_ujeut"]
+[ext_resource type="PackedScene" uid="uid://dkxbaqythft4t" path="res://game/components/magimin_meter.tscn" id="2_oa40w"]
 [ext_resource type="PackedScene" uid="uid://d2q8cad3i0fj6" path="res://game/components/quality_meter.tscn" id="3_s4cc7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
@@ -15,7 +15,7 @@ bg_color = Color(0.19397232, 0.17323434, 0.15444389, 1)
 [node name="BrewingResultPanel" type="PanelContainer" unique_id=767439798]
 custom_minimum_size = Vector2(320, 0)
 offset_right = 320.0
-offset_bottom = 797.0
+offset_bottom = 656.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
 script = ExtResource("1_oa40w")
 
@@ -28,9 +28,9 @@ unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.17669654
+anchor_top = 0.17044654
 anchor_right = 0.5
-anchor_bottom = 0.17669654
+anchor_bottom = 0.17044654
 offset_left = -152.0
 offset_top = -94.0
 offset_right = 152.0
@@ -45,9 +45,9 @@ unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.37772086
+anchor_top = 0.37615836
 anchor_right = 0.5
-anchor_bottom = 0.37772086
+anchor_bottom = 0.37615833
 offset_left = -120.0
 offset_top = -15.0
 offset_right = 120.0
@@ -63,9 +63,9 @@ custom_minimum_size = Vector2(250, 0)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.52048653
+anchor_top = 0.51267403
 anchor_right = 0.5
-anchor_bottom = 0.52048653
+anchor_bottom = 0.51267403
 offset_left = -125.0
 offset_top = -73.5
 offset_right = 125.0
@@ -82,7 +82,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/line_spacing = -5
 theme_override_font_sizes/font_size = 20
-text = "Balance of magimins is stable!"
+text = "Perfect!"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -92,7 +92,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/line_spacing = -2
 theme_override_font_sizes/font_size = 16
-text = "Chance of gaining 1 additional star on completion."
+text = "Potion gains 2 additional stars on completion, with a chance of gaining a bonus star."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -106,9 +106,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -152.0
-offset_top = -259.0
+offset_top = -243.0
 offset_right = 152.0
-offset_bottom = -21.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
