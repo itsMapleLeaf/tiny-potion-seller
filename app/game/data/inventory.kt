@@ -42,7 +42,7 @@ class Inventory<I : InventoryItem> {
         destination.add(item)
     }
 
-    fun recreateItemTiles(container: Node, onItemPressed: (I) -> Unit) {
+    fun renderItemTiles(container: Node, onItemPressed: (I) -> Unit) {
         val itemTileScene = loadSceneAs<ItemTile>("uid://bw7bonlmpmgv")
 
         for (node in container.getChildren()) {
@@ -51,7 +51,7 @@ class Inventory<I : InventoryItem> {
             }
         }
 
-        for ((item, count) in items) {
+        for ((item, count) in items.toSortedMap { a, b -> a.displayName.compareTo(b.displayName) }) {
             val itemTile = itemTileScene.instantiate() as ItemTile
             itemTile.itemName = item.displayName
             itemTile.count = count

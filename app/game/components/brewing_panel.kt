@@ -31,17 +31,17 @@ class BrewingPanel : Control() {
 
     fun refresh() {
         gameState.run {
-            ingredients.recreateItemTiles(ingredientList) {
+            ingredients.renderItemTiles(ingredientList) {
                 addIngredientToCauldron.emit(it)
                 refresh()
             }
 
-            cauldron.ingredients.recreateItemTiles(cauldronIngredientList) {
+            cauldron.ingredients.renderItemTiles(cauldronIngredientList) {
                 removeIngredientFromCauldron.emit(it)
                 refresh()
             }
 
-            potions.recreateItemTiles(potionList) {}
+            potions.renderItemTiles(potionList) {}
 
             brewingResultPanel.result = cauldron.getBrewResult()
         }
