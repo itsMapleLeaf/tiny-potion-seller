@@ -13,19 +13,17 @@ import godot.extension.connectLambda
 
 @Script
 class Main : Node() {
-    private var gameState = GameState.loadOrCreate()
+    private val gameState = GameState.loadOrCreate()
 
     private val goldCountLabel by lazyNode<Label>("%GoldCountLabel")
     private val brewingPanel by lazyNode<BrewingPanel>("%BrewingPanel")
 
     override fun _ready() {
-        brewingPanel.gameState = gameState
-
         brewingPanel.brew.connectLambda { brew() }
         brewingPanel.addIngredientToCauldron.connectLambda { addIngredientToCauldron(it) }
         brewingPanel.removeIngredientFromCauldron.connectLambda { removeIngredientFromCauldron(it) }
 
-        refresh()
+        render()
     }
 
     override fun _unhandledKeyInput(event: InputEvent) {
@@ -34,9 +32,9 @@ class Main : Node() {
         }
     }
 
-    private fun refresh() {
+    private fun render() {
         goldCountLabel.text = gameState.gold.toString()
-        brewingPanel.refresh()
+        brewingPanel.render(gameState)
     }
 
 
@@ -63,6 +61,6 @@ class Main : Node() {
     private fun GameState.update(block: GameState.() -> Unit) {
         block()
         save()
-        refresh()
+        render()
     }
 }

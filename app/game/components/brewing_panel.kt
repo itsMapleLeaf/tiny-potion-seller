@@ -12,8 +12,6 @@ import godot.extension.connectLambda
 
 @Script
 class BrewingPanel : Control() {
-    var gameState = GameState()
-
     val brew by signal0()
     val addIngredientToCauldron by signal1<Ingredient>()
     val removeIngredientFromCauldron by signal1<Ingredient>()
@@ -29,16 +27,14 @@ class BrewingPanel : Control() {
         brewButton.pressed.connectLambda { brew.emit() }
     }
 
-    fun refresh() {
+    fun render(gameState: GameState) {
         gameState.run {
             ingredients.renderItemTiles(ingredientList) {
                 addIngredientToCauldron.emit(it)
-                refresh()
             }
 
             cauldron.ingredients.renderItemTiles(cauldronIngredientList) {
                 removeIngredientFromCauldron.emit(it)
-                refresh()
             }
 
             potions.renderItemTiles(potionList) {}
