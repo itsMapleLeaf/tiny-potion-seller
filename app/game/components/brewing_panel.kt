@@ -1,6 +1,6 @@
 package game.components
 
-import game.data.GameState
+import game.Game
 import game.shared.lazyNode
 import godot.annotation.Script
 import godot.api.Button
@@ -18,26 +18,24 @@ class BrewingPanel : Control() {
 
     override fun _ready() {
         brewButton.pressed.connectLambda {
-            GameState.brew()
+            Game.brew()
             refresh()
         }
-
-        refresh()
     }
 
     fun refresh() {
-        GameState.run {
-            ingredientStock.recreateItemTiles(ingredientList) {
-                addIngredientToCauldron(it)
+        Game.state.run {
+            ingredients.recreateItemTiles(ingredientList) {
+                Game.addIngredientToCauldron(it)
                 refresh()
             }
 
             cauldron.ingredients.recreateItemTiles(cauldronIngredientList) {
-                removeIngredientFromCauldron(it)
+                Game.removeIngredientFromCauldron(it)
                 refresh()
             }
 
-            potionStock.recreateItemTiles(potionList) {}
+            potions.recreateItemTiles(potionList) {}
 
             brewingResultPanel.result = cauldron.getBrewResult()
         }

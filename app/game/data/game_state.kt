@@ -1,31 +1,25 @@
 package game.data
 
+import kotlinx.serialization.Serializable
 
-object GameState {
+@Serializable
+class GameState {
     var dayNumber = 1
     var timeRemaining = 6
     var gold = 300
-    val ingredientStock = Inventory<Ingredient>()
-    val cauldron = Cauldron.Mudpack()
-    val potionStock = Inventory<Potion>()
 
-    init {
-        ingredientStock.add(Ingredient.Feyberry, 10)
-        ingredientStock.add(Ingredient.MandrakeRoot, 10)
-        ingredientStock.add(Ingredient.SackOfSlime, 10)
-    }
+    val ingredients = Inventory<Ingredient>()
+    val potions = Inventory<Potion>()
+    val cauldrons = Inventory<CauldronSpec>()
 
-    fun addIngredientToCauldron(ingredient: Ingredient) {
-        ingredientStock.transfer(ingredient, cauldron.ingredients)
-    }
+    var cauldron = CauldronState(CauldronSpec.Wooden)
 
-    fun removeIngredientFromCauldron(ingredient: Ingredient) {
-        cauldron.ingredients.transfer(ingredient, ingredientStock)
-    }
+    companion object {
+        fun init() = GameState().apply {
+            ingredients.add(Ingredient.Feyberry, 10)
+            ingredients.add(Ingredient.MandrakeRoot, 10)
+            ingredients.add(Ingredient.SackOfSlime, 10)
+        }
 
-    fun brew() {
-        val result = cauldron.getBrewResult() ?: return
-        potionStock.add(result.potion, result.count)
-        cauldron.ingredients.clear()
     }
 }

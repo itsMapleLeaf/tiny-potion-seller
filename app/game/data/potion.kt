@@ -4,16 +4,17 @@ import godot.annotation.Export
 import godot.annotation.Script
 import godot.api.Resource
 import godot.common.extensions.convertToTitleCase
+import kotlinx.serialization.Serializable
 
-@Script
-class Potion(
+@Serializable
+data class Potion(
     @Export val tier: Tier,
     @Export val kind: Kind,
     @Export val rating: Int,
-) : Resource(), InventoryItem {
-    override val displayName = "${tier.displayName} ${kind.displayName}"
-    val magimins = kind.magimins
-    val price = prices[tier]!![rating]
+) : InventoryItem {
+    override val displayName get() = "${tier.displayName} ${kind.displayName}"
+    val magimins get() = kind.magimins
+    val price get() = prices[tier]!![rating]
 
     companion object {
         val prices = mapOf(

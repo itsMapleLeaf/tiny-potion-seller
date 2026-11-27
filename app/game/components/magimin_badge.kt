@@ -35,7 +35,7 @@ class MagiminBadge : Control() {
     private fun update() {
         selfModulate = magimin.color.lightened(0.2)
 
-        label.text = magimin.letter
+        label.text = magimin.name
         if (count > 0) label.text += count
     }
 }

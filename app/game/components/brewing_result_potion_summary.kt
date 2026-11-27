@@ -3,7 +3,6 @@ package game.components
 import game.data.Magimin
 import game.data.Potion
 import game.shared.lazyNode
-import godot.annotation.Export
 import godot.annotation.Script
 import godot.annotation.Tool
 import godot.api.Control
@@ -12,14 +11,12 @@ import godot.api.Label
 @Script
 @Tool
 class BrewingResultPotionSummary : Control() {
-    @Export
     var potion = Potion(Potion.Tier.Minor, Potion.Kind.HealthPotion, 1)
         set(value) {
             field = value
             update()
         }
 
-    @Export
     var brewedCount = 1
         set(value) {
             field = value

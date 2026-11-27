@@ -53,7 +53,7 @@ class MagiminMeter : Control() {
         amountLabel.text = amount.toString()
         meterFill.modulate = magimin.color
         meterFill.offsetTransformScaleMutate { y = ratio }
-        magiminLabel.text = magimin.letter
+        magiminLabel.text = magimin.name
 
         val hasTarget = target > 0.0 && target < 1.0
         meterTargetLine.visible = hasTarget

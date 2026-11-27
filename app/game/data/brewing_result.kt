@@ -3,11 +3,10 @@ package game.data
 import godot.core.Color
 
 
-class BrewingResult(cauldron: Cauldron) {
-
-    val cauldronMagimins = cauldron.ingredients.items.fold(magiminCounts())
-    { totalMagimins, ingredient ->
-        totalMagimins.addMagimins(ingredient.magimins)
+class BrewingResult(cauldron: CauldronState) {
+    val cauldronMagimins = cauldron.ingredients.listItems().fold(magiminCounts())
+    { total, ingredient ->
+        total.addMagimins(ingredient.magimins)
     }
 
     val magiminTotal = cauldronMagimins.sum()

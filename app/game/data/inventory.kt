@@ -5,27 +5,32 @@ import game.shared.loadSceneAs
 import godot.api.InstancePlaceholder
 import godot.api.Node
 import godot.extension.connectLambda
-
+import kotlinx.serialization.Serializable
 
 interface InventoryItem {
     val displayName: String
 }
 
+@Serializable
 class Inventory<I : InventoryItem> {
-    val items: List<I>
-        field = mutableListOf()
+    val items = mutableMapOf<I, Int>()
 
-    operator fun iterator() = items.toList()
-
-    val size get() = items.size
+    val size get() = items.values.sum()
     val isEmpty get() = items.isEmpty()
 
+    fun listItems() =
+        items.flatMap { (item, count) -> List(count) { item } }
+
+    fun countOf(item: I) =
+        items[item] ?: 0
+
     fun add(item: I, amount: Int = 1) {
-        for (i in 1..amount) items.add(item)
+        items[item] = countOf(item) + amount
     }
 
-    fun remove(item: I) {
-        items.remove(item)
+    fun remove(item: I, amount: Int = 1) {
+        items[item] = countOf(item) - amount
+        if (countOf(item) < 0) items.remove(item)
     }
 
     fun clear() {
@@ -46,14 +51,7 @@ class Inventory<I : InventoryItem> {
             }
         }
 
-        val itemCounts = items
-            .sortedBy { it.displayName }
-            .fold(mutableMapOf<I, Int>()) { counts, item ->
-                counts[item] = (counts[item] ?: 0) + 1
-                counts
-            }
-
-        for ((item, count) in itemCounts) {
+        for ((item, count) in items) {
             val itemTile = itemTileScene.instantiate() as ItemTile
             itemTile.itemName = item.displayName
             itemTile.count = count
@@ -62,4 +60,3 @@ class Inventory<I : InventoryItem> {
         }
     }
 }
-

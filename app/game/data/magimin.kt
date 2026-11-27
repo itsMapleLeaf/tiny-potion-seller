@@ -5,12 +5,12 @@ import godot.core.Color
 import kotlin.math.abs
 
 
-enum class Magimin(val letter: String, val color: Color) {
-    A("A", Color("#ff8678")),
-    B("B", Color("#78ff8f")),
-    C("C", Color("#fff878")),
-    D("D", Color("#789cff")),
-    E("E", Color("#c278ff")),
+enum class Magimin(val color: Color) {
+    A(Color("#ff8678")),
+    B(Color("#78ff8f")),
+    C(Color("#fff878")),
+    D(Color("#789cff")),
+    E(Color("#c278ff")),
 }
 
 
