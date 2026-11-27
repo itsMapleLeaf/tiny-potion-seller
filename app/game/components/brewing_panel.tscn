@@ -20,36 +20,6 @@ theme_override_constants/separation = 8
 script = ExtResource("1_1jsom")
 metadata/_tab_index = 0
 
-[node name="Inventory" type="TabContainer" parent="." unique_id=266635956]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
-current_tab = 0
-
-[node name="Ingredients" type="ScrollContainer" parent="Inventory" unique_id=1688033346]
-layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-metadata/_tab_index = 0
-
-[node name="IngredientList" type="GridContainer" parent="Inventory/Ingredients" unique_id=1516394654]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(308, 0)
-layout_mode = 2
-columns = 3
-
-[node name="Potions" type="ScrollContainer" parent="Inventory" unique_id=705132026]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-metadata/_tab_index = 1
-
-[node name="PotionList" type="GridContainer" parent="Inventory/Potions" unique_id=1070448399]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(308, 0)
-layout_mode = 2
-columns = 3
-
 [node name="Cauldron" type="PanelContainer" parent="." unique_id=1889730233]
 layout_mode = 2
 size_flags_horizontal = 3

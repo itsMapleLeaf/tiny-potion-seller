@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://x5artsjnnidl"]
+
+[ext_resource type="Script" uid="uid://r6o2wt26b4la" path="res://game/components/stock_panel.kt" id="1_dh14s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.19397232, 0.17323434, 0.15444389, 1)
+
+[node name="StockPanel" type="PanelContainer" unique_id=1591533446]
+custom_minimum_size = Vector2(350, 0)
+offset_right = 324.0
+offset_bottom = 704.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_h5w0j")
+script = ExtResource("1_dh14s")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1679179641]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Sections" type="VBoxContainer" parent="ScrollContainer" unique_id=834387596]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="StockPanelSection" parent="ScrollContainer/Sections" unique_id=1492448260 instance_placeholder="res://game/components/stock_panel_section.tscn"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StockPanelSection2" parent="ScrollContainer/Sections" unique_id=870000115 instance_placeholder="res://game/components/stock_panel_section.tscn"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StockPanelSection3" parent="ScrollContainer/Sections" unique_id=1368986592 instance_placeholder="res://game/components/stock_panel_section.tscn"]
+unique_name_in_owner = true
+layout_mode = 2

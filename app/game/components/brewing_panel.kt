@@ -13,12 +13,9 @@ import godot.extension.connectLambda
 @Script
 class BrewingPanel : Control() {
     val brew by signal0()
-    val addIngredientToCauldron by signal1<Ingredient>()
     val removeIngredientFromCauldron by signal1<Ingredient>()
 
-    private val ingredientList by lazyNode<Control>("%IngredientList")
     private val cauldronIngredientList by lazyNode<Control>("%CauldronIngredientList")
-    private val potionList by lazyNode<Control>("%PotionList")
     private val brewButton by lazyNode<Button>("%BrewButton")
     private val brewingResultPanel by lazyNode<BrewingResultPanel>("%BrewingResultPanel")
 
@@ -29,15 +26,9 @@ class BrewingPanel : Control() {
 
     fun update(gameState: GameState) {
         gameState.run {
-            ingredients.renderItemTiles(ingredientList) {
-                addIngredientToCauldron.emit(it)
-            }
-
             cauldron.ingredients.renderItemTiles(cauldronIngredientList) {
                 removeIngredientFromCauldron.emit(it)
             }
-
-            potions.renderItemTiles(potionList) {}
 
             brewingResultPanel.update(cauldron.getBrewResult())
         }

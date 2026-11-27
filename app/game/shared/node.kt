@@ -1,5 +1,6 @@
 package game.shared
 
+import godot.api.InstancePlaceholder
 import godot.api.Node
 
 inline fun <reified T : Node> Node.ensureNodeAs(nodePath: String): T {
@@ -11,3 +12,12 @@ inline fun <reified T : Node> Node.ensureNodeAs(nodePath: String): T {
 
 inline fun <reified T : Node> Node.lazyNode(nodePath: String) =
     lazy { ensureNodeAs<T>(nodePath) }
+
+
+fun Node.clearNonPlaceholderChildren() {
+    for (node in getChildren()) {
+        if (node !is InstancePlaceholder) {
+            node.queueFree()
+        }
+    }
+}

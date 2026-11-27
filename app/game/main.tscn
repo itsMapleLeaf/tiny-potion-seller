@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://chw2cg8eh5vw6" path="res://game/main.kt" id="1_oa506"]
 [ext_resource type="Texture2D" uid="uid://b4pbd61ufwi2x" path="res://game/assets/coins.svg" id="2_emt18"]
 [ext_resource type="PackedScene" uid="uid://ib2hff2n8dp6" path="res://game/components/brewing_panel.tscn" id="2_xtpaf"]
+[ext_resource type="PackedScene" uid="uid://x5artsjnnidl" path="res://game/components/stock_panel.tscn" id="3_vop5m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
 bg_color = Color(0.19215687, 0.17254902, 0.15294118, 1)
@@ -64,7 +65,17 @@ theme_override_constants/outline_size = 13
 theme_override_font_sizes/font_size = 22
 text = "999"
 
-[node name="BrewingPanel" parent="VBoxContainer" unique_id=1699676161 instance=ExtResource("2_xtpaf")]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=137023109]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="StockPanel" parent="VBoxContainer/HBoxContainer" unique_id=1591533446 instance=ExtResource("3_vop5m")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="BrewingPanel" parent="VBoxContainer/HBoxContainer" unique_id=1699676161 instance=ExtResource("2_xtpaf")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3

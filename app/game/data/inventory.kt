@@ -13,7 +13,8 @@ interface InventoryItem {
 
 @Serializable
 class Inventory<I : InventoryItem> {
-    val items = mutableMapOf<I, Int>()
+    val items: Map<I, Int>
+        field = mutableMapOf<I, Int>()
 
     val size get() = items.values.sum()
     val isEmpty get() = items.isEmpty()

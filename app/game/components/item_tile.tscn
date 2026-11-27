@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cuarji7vry3rj" path="res://game/components/item_tile.kt" id="1_ol2c4"]
 [ext_resource type="Texture2D" uid="uid://e6bo5cm1f8hd" path="res://game/assets/round-potion.svg" id="2_5b6kj"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dsokl"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h5w0j"]
 content_margin_bottom = 0.0
 
@@ -10,29 +12,22 @@ content_margin_bottom = 0.0
 content_margin_top = 3.0
 content_margin_right = 5.0
 
-[node name="ItemTile" type="Control" unique_id=154133238]
+[node name="Container" type="PanelContainer" unique_id=1625710716]
 custom_minimum_size = Vector2(100, 100)
-layout_mode = 3
-anchors_preset = 0
 offset_right = 100.0
 offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dsokl")
 script = ExtResource("1_ol2c4")
 
 [node name="Button" type="Button" parent="." unique_id=1492524604]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_font_sizes/font_size = 20
 
 [node name="Control" type="Control" parent="Button" unique_id=1984125531]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_behavior_recursive = 1

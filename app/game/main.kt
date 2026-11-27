@@ -1,6 +1,7 @@
 package game
 
 import game.components.BrewingPanel
+import game.components.StockPanel
 import game.data.GameState
 import game.data.Ingredient
 import game.shared.lazyNode
@@ -16,11 +17,11 @@ class Main : Node() {
     private val gameState = GameState.loadOrCreate()
 
     private val goldCountLabel by lazyNode<Label>("%GoldCountLabel")
+    private val stockPanel by lazyNode<StockPanel>("%StockPanel")
     private val brewingPanel by lazyNode<BrewingPanel>("%BrewingPanel")
 
     override fun _ready() {
         brewingPanel.brew.connectLambda { brew() }
-        brewingPanel.addIngredientToCauldron.connectLambda { addIngredientToCauldron(it) }
         brewingPanel.removeIngredientFromCauldron.connectLambda { removeIngredientFromCauldron(it) }
 
         update()
@@ -35,6 +36,15 @@ class Main : Node() {
     private fun update() {
         goldCountLabel.text = gameState.gold.toString()
         brewingPanel.update(gameState)
+
+        stockPanel.renderSections {
+            renderSection("Ingredients", gameState.ingredients) {
+                addIngredientToCauldron(it)
+            }
+            renderSection("Potions", gameState.potions) {
+                // nothing yet!
+            }
+        }
     }
 
 
