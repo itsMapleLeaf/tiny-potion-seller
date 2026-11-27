@@ -12,9 +12,9 @@ fun FileAccess?.checkFileAccessError(): FileAccess {
     return this
 }
 
-fun FileAccess?.use(block: FileAccess.() -> Unit) {
+fun FileAccess?.use(block: (FileAccess) -> Unit) {
     checkFileAccessError().apply {
-        block()
+        block(this)
         close()
     }
 }
