@@ -27,7 +27,7 @@ class BrewingPanel : Control() {
         brewButton.pressed.connectLambda { brew.emit() }
     }
 
-    fun render(gameState: GameState) {
+    fun update(gameState: GameState) {
         gameState.run {
             ingredients.renderItemTiles(ingredientList) {
                 addIngredientToCauldron.emit(it)
@@ -39,7 +39,7 @@ class BrewingPanel : Control() {
 
             potions.renderItemTiles(potionList) {}
 
-            brewingResultPanel.result = cauldron.getBrewResult()
+            brewingResultPanel.update(cauldron.getBrewResult())
         }
     }
 }

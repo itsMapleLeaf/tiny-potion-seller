@@ -23,7 +23,7 @@ class Main : Node() {
         brewingPanel.addIngredientToCauldron.connectLambda { addIngredientToCauldron(it) }
         brewingPanel.removeIngredientFromCauldron.connectLambda { removeIngredientFromCauldron(it) }
 
-        render()
+        update()
     }
 
     override fun _unhandledKeyInput(event: InputEvent) {
@@ -32,9 +32,9 @@ class Main : Node() {
         }
     }
 
-    private fun render() {
+    private fun update() {
         goldCountLabel.text = gameState.gold.toString()
-        brewingPanel.render(gameState)
+        brewingPanel.update(gameState)
     }
 
 
@@ -61,6 +61,6 @@ class Main : Node() {
     private fun GameState.update(block: GameState.() -> Unit) {
         block()
         save()
-        render()
+        update()
     }
 }

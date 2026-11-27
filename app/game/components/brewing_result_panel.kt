@@ -4,7 +4,6 @@ import game.data.BrewingResult
 import game.data.Magimin
 import game.data.asRatio
 import game.shared.lazyNode
-import game.shared.reactive
 import godot.annotation.Script
 import godot.api.Control
 import godot.api.Label
@@ -13,8 +12,6 @@ import godot.api.PanelContainer
 
 @Script
 class BrewingResultPanel : PanelContainer() {
-    var result by reactive<BrewingResult?>(null) { update() }
-
     private val contentContainer by lazyNode<Control>("%ContentContainer")
     private val magiminBalance by lazyNode<Control>("%MagiminBalance")
     private val brewingResultPotionSummary by lazyNode<BrewingResultPotionSummary>("%BrewingResultPotionSummary")
@@ -25,11 +22,10 @@ class BrewingResultPanel : PanelContainer() {
     private val qualityMeter by lazyNode<QualityMeter>("%QualityMeter")
 
     override fun _ready() {
-        update()
+        update(null)
     }
 
-    fun update() {
-        val result = this.result
+    fun update(result: BrewingResult?) {
         if (result == null) {
             contentContainer.hide()
             pendingStateContainer.show()
