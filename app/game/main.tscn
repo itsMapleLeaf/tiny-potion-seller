@@ -2,8 +2,12 @@
 
 [ext_resource type="Script" uid="uid://chw2cg8eh5vw6" path="res://game/main.kt" id="1_oa506"]
 [ext_resource type="Texture2D" uid="uid://b4pbd61ufwi2x" path="res://game/assets/coins.svg" id="2_emt18"]
+[ext_resource type="Texture2D" uid="uid://djj50m1sqcogk" path="res://game/assets/cauldron.svg" id="2_xkbyp"]
 [ext_resource type="PackedScene" uid="uid://ib2hff2n8dp6" path="res://game/components/brewing_panel.tscn" id="2_xtpaf"]
+[ext_resource type="Texture2D" uid="uid://cdalmvojlvu4v" path="res://game/assets/hanging-sign.svg" id="3_lx3aj"]
 [ext_resource type="PackedScene" uid="uid://x5artsjnnidl" path="res://game/components/stock_panel.tscn" id="3_vop5m"]
+[ext_resource type="Texture2D" uid="uid://bfekud8nt3rpm" path="res://game/assets/spotted-mushroom.svg" id="4_itumj"]
+[ext_resource type="Texture2D" uid="uid://clgfcxaksldhy" path="res://game/assets/swords-emblem.svg" id="5_dp3pf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
 bg_color = Color(0.19215687, 0.17254902, 0.15294118, 1)
@@ -35,18 +39,112 @@ layout_mode = 2
 [node name="Title" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1727609183]
 modulate = Color(1, 1, 1, 0.81960785)
 layout_mode = 2
+size_flags_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0.35686275)
 theme_override_constants/outline_size = 13
 theme_override_font_sizes/font_size = 28
 text = "tiny potion seller"
 
-[node name="Spacer" type="Control" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1961325046]
+[node name="Places" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=388727670]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 13
+alignment = 1
+
+[node name="Brewing" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/Places" unique_id=1938591963]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+button_pressed = true
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/Places/Brewing" unique_id=1572235646]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xkbyp")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="OpenShop" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/Places" unique_id=897874554]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/Places/OpenShop" unique_id=1844387786]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_lx3aj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Ingredients" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/Places" unique_id=400320028]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/Places/Ingredients" unique_id=1762988907]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_itumj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Adventure" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/Places" unique_id=2134455081]
+custom_minimum_size = Vector2(54, 54)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/Places/Adventure" unique_id=2130039301]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_dp3pf")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="GoldCount" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=236517001]
 modulate = Color(0.8599654, 0.76715946, 0.38217473, 1)
 layout_mode = 2
+size_flags_horizontal = 10
 theme_override_constants/separation = 10
 metadata/_edit_group_ = true
 
@@ -79,3 +177,36 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="ShopPanel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=176831224]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.7490196)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Shop is a work in progress!"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="IngredientStorePanel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1290088725]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.7490196)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Ingredient store is a work in progress!"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="AdventureGuildPanel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=704390379]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.7490196)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Adventure guild is a work in progress!"
+horizontal_alignment = 1
+vertical_alignment = 2

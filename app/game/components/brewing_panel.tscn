@@ -83,4 +83,5 @@ text = "Brew"
 
 [node name="BrewingResultPanel" parent="." unique_id=767439798 instance=ExtResource("2_1fil6")]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
