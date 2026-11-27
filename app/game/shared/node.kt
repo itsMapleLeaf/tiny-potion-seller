@@ -1,5 +1,6 @@
 package game.shared
 
+import godot.api.CanvasItem
 import godot.api.InstancePlaceholder
 import godot.api.Node
 
@@ -18,6 +19,15 @@ fun Node.clearNonPlaceholderChildren() {
     for (node in getChildren()) {
         if (node !is InstancePlaceholder) {
             node.queueFree()
+        }
+    }
+}
+
+
+class VisibleSwitch(vararg val nodes: CanvasItem) {
+    fun showOnly(shownNode: CanvasItem) {
+        for (node in nodes) {
+            node.visible = shownNode == node
         }
     }
 }

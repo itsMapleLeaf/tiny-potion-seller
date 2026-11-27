@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdalmvojlvu4v"
-path="res://.godot/imported/hanging-sign.svg-69d7f2f973b8d01dd3da080479865f59.ctex"
+uid="uid://b4pbd61ufwi2x"
+path="res://.godot/imported/coins.svg-58d33302d22a8c83b2340fecb082ce95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/assets/hanging-sign.svg"
-dest_files=["res://.godot/imported/hanging-sign.svg-69d7f2f973b8d01dd3da080479865f59.ctex"]
+source_file="res://game/assets/icons/coins.svg"
+dest_files=["res://.godot/imported/coins.svg-58d33302d22a8c83b2340fecb082ce95.ctex"]
 
 [params]
 

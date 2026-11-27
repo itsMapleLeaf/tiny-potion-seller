@@ -1,16 +1,21 @@
 [gd_scene format=3 uid="uid://b78omdhvmw20n"]
 
 [ext_resource type="Script" uid="uid://chw2cg8eh5vw6" path="res://game/main.kt" id="1_oa506"]
-[ext_resource type="Texture2D" uid="uid://b4pbd61ufwi2x" path="res://game/assets/coins.svg" id="2_emt18"]
-[ext_resource type="Texture2D" uid="uid://djj50m1sqcogk" path="res://game/assets/cauldron.svg" id="2_xkbyp"]
+[ext_resource type="Texture2D" uid="uid://djj50m1sqcogk" path="res://game/assets/icons/cauldron.svg" id="2_xkbyp"]
 [ext_resource type="PackedScene" uid="uid://ib2hff2n8dp6" path="res://game/components/brewing_panel.tscn" id="2_xtpaf"]
-[ext_resource type="Texture2D" uid="uid://cdalmvojlvu4v" path="res://game/assets/hanging-sign.svg" id="3_lx3aj"]
+[ext_resource type="Texture2D" uid="uid://cdalmvojlvu4v" path="res://game/assets/icons/hanging-sign.svg" id="3_lx3aj"]
 [ext_resource type="PackedScene" uid="uid://x5artsjnnidl" path="res://game/components/stock_panel.tscn" id="3_vop5m"]
-[ext_resource type="Texture2D" uid="uid://bfekud8nt3rpm" path="res://game/assets/spotted-mushroom.svg" id="4_itumj"]
-[ext_resource type="Texture2D" uid="uid://clgfcxaksldhy" path="res://game/assets/swords-emblem.svg" id="5_dp3pf"]
+[ext_resource type="Texture2D" uid="uid://bfekud8nt3rpm" path="res://game/assets/icons/spotted-mushroom.svg" id="4_itumj"]
+[ext_resource type="Texture2D" uid="uid://clgfcxaksldhy" path="res://game/assets/icons/swords-emblem.svg" id="5_dp3pf"]
+[ext_resource type="PackedScene" uid="uid://dltbbdkrcgggd" path="res://game/components/resource_counter.tscn" id="6_lx3aj"]
+[ext_resource type="PackedScene" uid="uid://bwxt7hp65wjs2" path="res://game/components/storefront_panel.tscn" id="9_lx3aj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5w0j"]
 bg_color = Color(0.19215687, 0.17254902, 0.15294118, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lx3aj"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/coins.svg-58d33302d22a8c83b2340fecb082ce95.ctex"
 
 [node name="Main" type="Node" unique_id=90573184]
 script = ExtResource("1_oa506")
@@ -141,26 +146,12 @@ texture = ExtResource("5_dp3pf")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="GoldCount" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=236517001]
+[node name="GoldCount" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=536778063 instance=ExtResource("6_lx3aj")]
+unique_name_in_owner = true
 modulate = Color(0.8599654, 0.76715946, 0.38217473, 1)
 layout_mode = 2
 size_flags_horizontal = 10
-theme_override_constants/separation = 10
-metadata/_edit_group_ = true
-
-[node name="Icon" type="TextureRect" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/GoldCount" unique_id=1398369878]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-texture = ExtResource("2_emt18")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="GoldCountLabel" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/GoldCount" unique_id=981372980]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 0.35686275)
-theme_override_constants/outline_size = 13
-theme_override_font_sizes/font_size = 22
+icon_texture = SubResource("CompressedTexture2D_lx3aj")
 text = "999"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=137023109]
@@ -179,15 +170,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="StorefrontPanel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=176831224]
+[node name="StorefrontPanel" parent="VBoxContainer/HBoxContainer" unique_id=239479655 instance=ExtResource("9_lx3aj")]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.7490196)
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 32
-text = "Shop is a work in progress!"
-horizontal_alignment = 1
-vertical_alignment = 2
 
 [node name="IngredientStorePanel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1290088725]
 unique_name_in_owner = true

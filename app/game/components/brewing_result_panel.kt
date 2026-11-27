@@ -14,7 +14,7 @@ import godot.api.PanelContainer
 class BrewingResultPanel : PanelContainer() {
     private val contentContainer by lazyNode<Control>("%ContentContainer")
     private val magiminBalance by lazyNode<Control>("%MagiminBalance")
-    private val brewingResultPotionSummary by lazyNode<BrewingResultPotionSummary>("%BrewingResultPotionSummary")
+    private val brewingResultPotionSummary by lazyNode<PotionSummary>("%BrewingResultPotionSummary")
     private val pendingStateContainer by lazyNode<Control>("%PendingStateContainer")
     private val stabilityReportNode by lazyNode<Control>("%StabilityReport")
     private val stabilitySummaryLabel by lazyNode<Label>("%StabilitySummary")

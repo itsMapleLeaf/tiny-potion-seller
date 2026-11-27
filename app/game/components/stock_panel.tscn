@@ -23,7 +23,7 @@ horizontal_scroll_mode = 0
 [node name="Sections" type="VBoxContainer" parent="ScrollContainer" unique_id=834387596]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 size_flags_vertical = 2
 theme_override_constants/separation = 16
 

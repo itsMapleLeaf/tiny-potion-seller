@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cppwnorps8svm"
-path="res://.godot/imported/star.svg-a3a1de5933559a75cb8629fd0853d6b7.ctex"
+uid="uid://c4knehx6g01e3"
+path="res://.godot/imported/lia.png-aff7966ab1e6a0f5959e24cf9ad1ce82.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/assets/star.svg"
-dest_files=["res://.godot/imported/star.svg-a3a1de5933559a75cb8629fd0853d6b7.ctex"]
+source_file="res://game/assets/characters/lia.png"
+dest_files=["res://.godot/imported/lia.png-aff7966ab1e6a0f5959e24cf9ad1ce82.ctex"]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

@@ -10,7 +10,7 @@ import godot.api.Label
 
 @Script
 @Tool
-class BrewingResultPotionSummary : Control() {
+class PotionSummary : Control() {
     var potion = Potion(Potion.Tier.Minor, Potion.Kind.HealthPotion, 1)
         set(value) {
             field = value

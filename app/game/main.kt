@@ -2,12 +2,16 @@ package game
 
 import game.components.BrewingPanel
 import game.components.StockPanel
+import game.components.StorefrontPanel
 import game.data.GameState
 import game.data.Ingredient
 import game.shared.ensureNodeAs
 import game.shared.lazyNode
 import godot.annotation.Script
-import godot.api.*
+import godot.api.Button
+import godot.api.Control
+import godot.api.InputEvent
+import godot.api.Node
 import godot.extension.connectLambda
 
 
@@ -15,10 +19,10 @@ import godot.extension.connectLambda
 class Main : Node() {
     private val gameState = GameState.loadOrCreate()
 
-    private val goldCountLabel by lazyNode<Label>("%GoldCountLabel")
+    private val goldCountLabel by lazyNode<Control>("%GoldCount")
     private val stockPanel by lazyNode<StockPanel>("%StockPanel")
     private val brewingPanel by lazyNode<BrewingPanel>("%BrewingPanel")
-    private val storefrontPanel by lazyNode<Control>("%StorefrontPanel")
+    private val storefrontPanel by lazyNode<StorefrontPanel>("%StorefrontPanel")
     private val ingredientStorePanel by lazyNode<Control>("%IngredientStorePanel")
     private val adventureGuildPanel by lazyNode<Control>("%AdventureGuildPanel")
     private val placeButtonsContainer by lazyNode<Control>("%Places")
@@ -64,6 +68,18 @@ class Main : Node() {
         brewingPanel.brew.connectLambda { brew() }
         brewingPanel.removeIngredientFromCauldron.connectLambda { removeIngredientFromCauldron(it) }
 
+        storefrontPanel.upsell.connectLambda {
+            gameState.update { haggle?.upsell() }
+        }
+
+        storefrontPanel.closeDeal.connectLambda {
+            gameState.update { haggle?.closeDeal() }
+        }
+
+        storefrontPanel.retry.connectLambda {
+            gameState.update { haggle?.retry() }
+        }
+
         places.show(places.brewing)
 
         update()
@@ -77,7 +93,7 @@ class Main : Node() {
 
 
     private fun update() {
-        goldCountLabel.text = gameState.gold.toString()
+        goldCountLabel.set("text", gameState.gold.toString())
         brewingPanel.update(gameState)
 
         stockPanel.renderSections {
@@ -87,9 +103,21 @@ class Main : Node() {
                 }
             }
 
-            renderSection("Potions", gameState.potions) {
-                // nothing yet!
+            renderSection("Potions", gameState.potions) { potion ->
+                when (places.current) {
+                    places.storefront -> {
+                        gameState.update {
+                            potions.remove(potion)
+                            startHaggle(potion)
+                        }
+                    }
+                }
             }
+        }
+
+        when (val haggle = gameState.haggle) {
+            null -> storefrontPanel.renderPending()
+            else -> storefrontPanel.renderHaggle(haggle)
         }
     }
 

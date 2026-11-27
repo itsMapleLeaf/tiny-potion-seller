@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e6bo5cm1f8hd"
-path="res://.godot/imported/round-potion.svg-ec20e399d3a5e4cbe3c7ef4dcbb7356f.ctex"
+uid="uid://cppwnorps8svm"
+path="res://.godot/imported/star.svg-c3990381be8bb3d8d75dc38df3865a92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/assets/round-potion.svg"
-dest_files=["res://.godot/imported/round-potion.svg-ec20e399d3a5e4cbe3c7ef4dcbb7356f.ctex"]
+source_file="res://game/assets/icons/star.svg"
+dest_files=["res://.godot/imported/star.svg-c3990381be8bb3d8d75dc38df3865a92.ctex"]
 
 [params]
 

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c3v68k2m24uo8"]
 
 [ext_resource type="Script" uid="uid://cwq1jyvxgjrc2" path="res://game/components/brewing_result_panel.kt" id="1_oa40w"]
-[ext_resource type="PackedScene" uid="uid://d1o2iv0gnmmu1" path="res://game/components/brewing_result_potion_summary.tscn" id="1_ujeut"]
+[ext_resource type="PackedScene" uid="uid://d1o2iv0gnmmu1" path="res://game/components/potion_summary.tscn" id="1_ujeut"]
 [ext_resource type="PackedScene" uid="uid://dkxbaqythft4t" path="res://game/components/magimin_meter.tscn" id="2_oa40w"]
 [ext_resource type="PackedScene" uid="uid://d2q8cad3i0fj6" path="res://game/components/quality_meter.tscn" id="3_s4cc7"]
 

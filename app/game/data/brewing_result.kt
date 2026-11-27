@@ -78,6 +78,7 @@ class BrewingResult(cauldron: CauldronState) {
         }
     }
 
+    // TODO(BUG): need to increase the tier and loop the star rating when adding bonus stars
     val potion = Potion(potionTier, potionKind, potionStarRating + stability.guaranteedBonusStars)
 
     data class Stability(

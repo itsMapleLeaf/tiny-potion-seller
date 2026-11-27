@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dltbbdkrcgggd"]
+
+[ext_resource type="Script" uid="uid://ded23bmmbjkj2" path="res://game/components/resource_counter.gd" id="1_5p2xu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pfjnm"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/coins.svg-58d33302d22a8c83b2340fecb082ce95.ctex"
+
+[node name="ResourceCounter" type="HBoxContainer" unique_id=536778063]
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+script = ExtResource("1_5p2xu")
+icon_texture = SubResource("CompressedTexture2D_pfjnm")
+text = "420"
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1024174526]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_pfjnm")
+expand_mode = 1
+stretch_mode = 5
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="." unique_id=1769128531]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.35686275)
+theme_override_constants/outline_size = 13
+theme_override_font_sizes/font_size = 24
+text = "420"
+metadata/_edit_lock_ = true

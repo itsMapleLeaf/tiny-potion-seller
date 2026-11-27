@@ -1,0 +1,241 @@
+[gd_scene format=3 uid="uid://bwxt7hp65wjs2"]
+
+[ext_resource type="Script" uid="uid://r3icqark0sca" path="res://game/components/storefront_panel.kt" id="1_3yeij"]
+[ext_resource type="StyleBox" uid="uid://bb2vi4y8lyri8" path="res://game/assets/main_panel.tres" id="2_ftt6t"]
+[ext_resource type="PackedScene" uid="uid://d1o2iv0gnmmu1" path="res://game/components/potion_summary.tscn" id="3_wul2s"]
+[ext_resource type="Texture2D" uid="uid://b2to8vrkxb2l3" path="res://game/assets/characters/winter.png" id="4_8ujcc"]
+[ext_resource type="PackedScene" uid="uid://dltbbdkrcgggd" path="res://game/components/resource_counter.tscn" id="5_wul2s"]
+[ext_resource type="Texture2D" uid="uid://nok7xr66najq" path="res://game/assets/icons/stopwatch.svg" id="6_8ujcc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6uggs"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8ujcc"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/coins.svg-58d33302d22a8c83b2340fecb082ce95.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ujcc"]
+content_margin_left = 24.0
+content_margin_top = 4.0
+content_margin_right = 24.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vbqv"]
+content_margin_left = 24.0
+content_margin_top = 4.0
+content_margin_right = 24.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ujcc"]
+paragraph_spacing = -12.0
+
+[node name="StorefrontPanel" type="PanelContainer" unique_id=239479655]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -369.0
+offset_bottom = -93.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6uggs")
+script = ExtResource("1_3yeij")
+
+[node name="HaggleState" type="HBoxContainer" parent="." unique_id=73848340]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PotionPanel" type="PanelContainer" parent="HaggleState" unique_id=1399735892]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("2_ftt6t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HaggleState/PotionPanel" unique_id=434558936]
+layout_mode = 2
+theme_override_constants/separation = 26
+alignment = 1
+
+[node name="PotionSummary" parent="HaggleState/PotionPanel/VBoxContainer" unique_id=1199854162 instance=ExtResource("3_wul2s")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PotionPrice" parent="HaggleState/PotionPanel/VBoxContainer" unique_id=536778063 instance=ExtResource("5_wul2s")]
+unique_name_in_owner = true
+modulate = Color(0.8599654, 0.76715946, 0.38217473, 1)
+layout_mode = 2
+icon_texture = SubResource("CompressedTexture2D_8ujcc")
+
+[node name="CloseDealButton" type="Button" parent="HaggleState/PotionPanel/VBoxContainer" unique_id=1838684841]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ujcc")
+text = "Close Deal"
+
+[node name="PatronPanel" type="PanelContainer" parent="HaggleState" unique_id=1749883860]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("2_ftt6t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HaggleState/PatronPanel" unique_id=1879272341]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+
+[node name="PatronIdentity" type="VBoxContainer" parent="HaggleState/PatronPanel/VBoxContainer" unique_id=991258802]
+layout_mode = 2
+theme_override_constants/separation = -3
+
+[node name="PatronName" type="Label" parent="HaggleState/PatronPanel/VBoxContainer/PatronIdentity" unique_id=2040540358]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Winter"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="PatronTagline" type="Label" parent="HaggleState/PatronPanel/VBoxContainer/PatronIdentity" unique_id=269936349]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8802078, 0.8802077, 0.8802078, 1)
+theme_override_font_sizes/font_size = 20
+text = "Practical Athlete"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AvatarPanel" type="PanelContainer" parent="HaggleState/PatronPanel/VBoxContainer" unique_id=120304786]
+layout_mode = 2
+size_flags_horizontal = 4
+metadata/_edit_group_ = true
+
+[node name="AvatarImage" type="TextureRect" parent="HaggleState/PatronPanel/VBoxContainer/AvatarPanel" unique_id=2129525252]
+unique_name_in_owner = true
+texture_filter = 4
+custom_minimum_size = Vector2(180, 180)
+layout_mode = 2
+texture = ExtResource("4_8ujcc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PatienceCounter" parent="HaggleState/PatronPanel/VBoxContainer" unique_id=107977346 instance=ExtResource("5_wul2s")]
+unique_name_in_owner = true
+modulate = Color(0.5744255, 0.7198523, 1, 1)
+layout_mode = 2
+icon_texture = ExtResource("6_8ujcc")
+text = "12"
+font_size = 32
+icon_size = 48.0
+
+[node name="PatronQuote" type="Label" parent="HaggleState/PatronPanel/VBoxContainer" unique_id=1872159661]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 22
+text = "\"I just wanna make sure
+this'll actually work.\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HaggleState/PatronPanel/VBoxContainer" unique_id=1836059585]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="UpsellButton" type="Button" parent="HaggleState/PatronPanel/VBoxContainer/VBoxContainer" unique_id=1846804766]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_7vbqv")
+text = "Upsell"
+
+[node name="UpsellInfo" type="Label" parent="HaggleState/PatronPanel/VBoxContainer/VBoxContainer" unique_id=794869350]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8802078, 0.8802077, 0.8802078, 1)
+theme_override_font_sizes/font_size = 20
+text = "Increase price by 10-20%
+
+Decrease patience by 1-6"
+label_settings = SubResource("LabelSettings_8ujcc")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HaggleLostState" type="PanelContainer" parent="HaggleState" unique_id=2027433751]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("2_ftt6t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HaggleState/HaggleLostState" unique_id=1268504854]
+layout_mode = 2
+theme_override_constants/separation = 22
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HaggleState/HaggleLostState/VBoxContainer" unique_id=128289997]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HaggleState/HaggleLostState/VBoxContainer/VBoxContainer" unique_id=2092223053]
+modulate = Color(1, 1, 1, 0.7490196)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Haggle Lost"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="Body" type="Label" parent="HaggleState/HaggleLostState/VBoxContainer/VBoxContainer" unique_id=1013917556]
+modulate = Color(1, 1, 1, 0.7490196)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Out of patience :("
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="TryAgainButton" type="Button" parent="HaggleState/HaggleLostState/VBoxContainer" unique_id=205304380]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ujcc")
+text = "Try Again"
+
+[node name="PendingState" type="Label" parent="." unique_id=1919161716]
+unique_name_in_owner = true
+visible = false
+modulate = Color(1, 1, 1, 0.7490196)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Select a potion to start haggling!"
+horizontal_alignment = 1
+vertical_alignment = 2

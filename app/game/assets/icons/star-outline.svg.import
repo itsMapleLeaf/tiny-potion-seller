@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clgfcxaksldhy"
-path="res://.godot/imported/swords-emblem.svg-c33950e50ee99c0f22a89ec150237150.ctex"
+uid="uid://crtj1eanfg5gg"
+path="res://.godot/imported/star-outline.svg-5a64fd1fbd213867a9d00e96550d2516.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game/assets/swords-emblem.svg"
-dest_files=["res://.godot/imported/swords-emblem.svg-c33950e50ee99c0f22a89ec150237150.ctex"]
+source_file="res://game/assets/icons/star-outline.svg"
+dest_files=["res://.godot/imported/star-outline.svg-5a64fd1fbd213867a9d00e96550d2516.ctex"]
 
 [params]
 

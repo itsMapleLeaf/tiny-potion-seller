@@ -29,11 +29,26 @@ class GameState {
 
     var cauldron = CauldronState(CauldronSpec.Wooden)
 
+    var haggle: HaggleState? = null
+
     fun save(): GameState {
         FileAccess.open(SAVE_FILE_PATH, FileAccess.ModeFlags.WRITE).use {
             it.storeString(json.encodeToString(this)).checkFileAccessError()
         }
         return this
+    }
+
+    fun startHaggle(potion: Potion) {
+        haggle = HaggleState(potion)
+    }
+
+    fun HaggleState.closeDeal() {
+        gold += price
+        haggle = null
+    }
+
+    fun HaggleState.retry() {
+        haggle = HaggleState(this.potion)
     }
 
     companion object {
@@ -80,4 +95,6 @@ class GameState {
         }
 
     }
+
+
 }
