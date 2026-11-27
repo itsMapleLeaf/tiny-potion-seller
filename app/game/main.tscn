@@ -174,13 +174,13 @@ layout_mode = 2
 
 [node name="BrewingPanel" parent="VBoxContainer/HBoxContainer" unique_id=1699676161 instance=ExtResource("2_xtpaf")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ShopPanel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=176831224]
+[node name="StorefrontPanel" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=176831224]
 unique_name_in_owner = true
-visible = false
 modulate = Color(1, 1, 1, 0.7490196)
 layout_mode = 2
 size_flags_horizontal = 3

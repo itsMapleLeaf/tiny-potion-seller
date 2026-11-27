@@ -18,7 +18,7 @@ class Main : Node() {
     private val goldCountLabel by lazyNode<Label>("%GoldCountLabel")
     private val stockPanel by lazyNode<StockPanel>("%StockPanel")
     private val brewingPanel by lazyNode<BrewingPanel>("%BrewingPanel")
-    private val shopPanel by lazyNode<Control>("%ShopPanel")
+    private val storefrontPanel by lazyNode<Control>("%StorefrontPanel")
     private val ingredientStorePanel by lazyNode<Control>("%IngredientStorePanel")
     private val adventureGuildPanel by lazyNode<Control>("%AdventureGuildPanel")
     private val placeButtonsContainer by lazyNode<Control>("%Places")
@@ -29,7 +29,7 @@ class Main : Node() {
     private val places by lazy {
         object {
             val brewingPlace = makePlace("Brewing", brewingPanel)
-            val openShopPlace = makePlace("OpenShop", shopPanel)
+            val storefrontPlace = makePlace("OpenShop", storefrontPanel)
             val ingredientsPlace = makePlace("Ingredients", ingredientStorePanel)
             val adventurePlace = makePlace("Adventure", adventureGuildPanel)
         }
@@ -41,7 +41,7 @@ class Main : Node() {
         brewingPanel.brew.connectLambda { brew() }
         brewingPanel.removeIngredientFromCauldron.connectLambda { removeIngredientFromCauldron(it) }
 
-        showPlace(places.brewingPlace)
+        showPlace(places.storefrontPlace)
 
         update()
     }
