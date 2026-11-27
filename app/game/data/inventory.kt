@@ -30,7 +30,7 @@ class Inventory<I : InventoryItem> {
 
     fun remove(item: I, amount: Int = 1) {
         items[item] = countOf(item) - amount
-        if (countOf(item) < 0) items.remove(item)
+        if (countOf(item) < 1) items.remove(item)
     }
 
     fun clear() {
