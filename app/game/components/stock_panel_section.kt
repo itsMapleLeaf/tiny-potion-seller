@@ -24,7 +24,9 @@ class StockPanelSection : Control() {
             .filter { it !is InstancePlaceholder }
             .forEach { it.queueFree() }
 
-        for ((item, inventoryCount) in inventory.items) {
+        for ((item, inventoryCount) in inventory.items.toSortedMap { a, b ->
+            a.displayName.compareTo(b.displayName)
+        }) {
             itemsContainer.addChild(
                 itemTileScene.instantiate().apply {
                     itemName = item.displayName
