@@ -23,23 +23,25 @@ class Main : Node() {
     private val adventureGuildPanel by lazyNode<Control>("%AdventureGuildPanel")
     private val placeButtonsContainer by lazyNode<Control>("%Places")
 
+    private val placeList = mutableListOf<Place>()
+    private var currentPlace: Place? = null
+
     private val places by lazy {
-        sortedMapOf(
-            "Brewing" to brewingPanel,
-            "OpenShop" to shopPanel,
-            "Ingredients" to ingredientStorePanel,
-            "Adventure" to adventureGuildPanel,
-        ).map { (buttonName, panel) ->
-            val button = placeButtonsContainer.ensureNodeAs<Button>(buttonName)
-            Place(button, panel)
+        object {
+            val brewingPlace = makePlace("Brewing", brewingPanel)
+            val openShopPlace = makePlace("OpenShop", shopPanel)
+            val ingredientsPlace = makePlace("Ingredients", ingredientStorePanel)
+            val adventurePlace = makePlace("Adventure", adventureGuildPanel)
         }
     }
+
+    private class Place(val button: Button, val panel: Control)
 
     override fun _ready() {
         brewingPanel.brew.connectLambda { brew() }
         brewingPanel.removeIngredientFromCauldron.connectLambda { removeIngredientFromCauldron(it) }
 
-        places[0].show()
+        showPlace(places.brewingPlace)
 
         update()
     }
@@ -50,14 +52,38 @@ class Main : Node() {
         }
     }
 
+    private fun makePlace(name: String, panel: Control): Place {
+        val button = placeButtonsContainer.ensureNodeAs<Button>(name)
+        val place = Place(button, panel)
+        placeList.add(place)
+        button.toggled.connectLambda { showPlace(place) }
+        return place
+    }
+
+    private fun showPlace(place: Place) {
+        currentPlace = place
+        for (other in placeList) {
+            if (place == other) {
+                place.panel.show()
+                place.button.setPressedNoSignal(true)
+            } else {
+                other.panel.hide()
+                other.button.setPressedNoSignal(false)
+            }
+        }
+    }
+
     private fun update() {
         goldCountLabel.text = gameState.gold.toString()
         brewingPanel.update(gameState)
 
         stockPanel.renderSections {
             renderSection("Ingredients", gameState.ingredients) {
-                addIngredientToCauldron(it)
+                when (currentPlace) {
+                    places.brewingPlace -> addIngredientToCauldron(it)
+                }
             }
+
             renderSection("Potions", gameState.potions) {
                 // nothing yet!
             }
@@ -89,28 +115,5 @@ class Main : Node() {
         block()
         save()
         update()
-    }
-
-    private class Place(val button: Button, val panel: Control) {
-        init {
-            instances.add(this)
-            button.toggled.connectLambda { on -> if (on) show() }
-        }
-
-        companion object {
-            private val instances = mutableSetOf<Place>()
-        }
-
-        fun show() {
-            for (place in instances) {
-                if (place == this) {
-                    place.panel.show()
-                    place.button.setPressedNoSignal(true)
-                } else {
-                    place.panel.hide()
-                    place.button.setPressedNoSignal(false)
-                }
-            }
-        }
     }
 }
